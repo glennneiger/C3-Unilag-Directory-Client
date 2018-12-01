@@ -54,7 +54,7 @@ class DashboardIndex extends Component{
                      <div className="row">
                          <div className="col-12">
                              <div className="big-box">
-                                 <div className="big-box-header">
+                                 <div className="big-box-header form-header">
                                     <h3>Birthdays this Month</h3>
                                  </div>
                                  <div className="big-box-body table-responsive">
