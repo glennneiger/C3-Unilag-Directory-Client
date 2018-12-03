@@ -265,7 +265,7 @@ label{
 
 input{
     display: block;
-    padding: 10px;
+    padding: 8px;
     margin-bottom: 15px;
     border-radius: 5px;
     width: 100%;
@@ -312,6 +312,10 @@ input{
     /*z-index: 3;*/
     background: #fff;
     padding: 0 15px;
+}
+
+.custom-select{
+    margin-bottom: 15px !important;
 }
 
 
