@@ -14,6 +14,11 @@ class School_Admin_Register extends Component{
                elementConfig: {
                    type: 'text'
                },
+               validation: {
+                   required: true,
+               },
+               valid: false,
+               wasTouched: false,
                value: '',
                label: 'Surname'
            },
@@ -22,6 +27,11 @@ class School_Admin_Register extends Component{
                 elementConfig: {
                     type: 'text'
                 },
+                validation: {
+                  required: true,
+                },
+                valid: false,
+                wasTouched: false,
                 value: '',
                 label: 'First Name'
             },
@@ -30,6 +40,12 @@ class School_Admin_Register extends Component{
                 elementConfig: {
                     type: 'email'
                 },
+                validation: {
+                    required: true,
+                    email: true
+                },
+                valid: false,
+                wasTouched: false,
                 value: '',
                 label: 'Email'
             },
@@ -39,6 +55,13 @@ class School_Admin_Register extends Component{
                     type: 'password'
                 },
                 value: '',
+                validation: {
+                    required: true,
+                    minLength: 4,
+                    maxLength: 6
+                },
+                valid: false,
+                wasTouched: false,
                 label: 'Password'
             },
             passwordConfirm: {
@@ -47,12 +70,19 @@ class School_Admin_Register extends Component{
                     type: 'password'
                 },
                 value: '',
+                validation: {
+                    required: true,
+                    minLength: 4,
+                    maxLength: 6,
+                    passwordMatcher: true
+                },
+                valid: false,
+                wasTouched: false,
                 label: 'Confirm Password'
             },
             service: {
                elementType: 'select',
                 elementConfig: {
-                   defaultValue: '',
                    optionValues: [
                        { value: '', displayValue: 'Select a Service'},
                        { value: 'first', displayValue: 'First Service'},
@@ -61,21 +91,29 @@ class School_Admin_Register extends Component{
                    ]
                 },
                 label: 'Service',
+                validation: {
+                    required: true,
+                },
+                valid: false,
                 value: ''
             },
             gradYear: {
                 elementType: 'select',
                 elementConfig: {
-                    defaultValue: '',
                     optionValues: [
                         { value: '', displayValue: 'Select a Year' }
                     ]
                 },
                 label: 'Expected Year of Graduation',
+                validation: {
+                    required: true,
+                },
+                valid: false,
                 value: ''
             }
 
-        }
+        }, // end register form
+        formIsValid: false
     };
 
 
@@ -83,7 +121,7 @@ class School_Admin_Register extends Component{
     registerClone = {...this.state.registerForm};
     gradYearClone = {...this.registerClone['gradYear']};
     elementConfigClone = { ...this.gradYearClone.elementConfig };
-    optionsClone = [...this.elementConfigClone['optionValues']];
+    optionsClone = [...this.elementConfigClone.optionValues];
 
     setYearArray = () => {
         for(var i = 0; i <= 4; i++){
@@ -112,18 +150,93 @@ class School_Admin_Register extends Component{
         this.setYearArray();
     }
 
+    checkValidity (value, validationRule) {
+        let isValid = true;
+
+        if (validationRule.required)  {
+            isValid =( value.trim() !== '') && (isValid );
+        }
+
+        if (validationRule.minLength){
+            isValid = (value.length >= validationRule.minLength) && (isValid);
+        }
+
+        if (validationRule.maxLength){
+            isValid = (value.length <= validationRule.maxLength) && (isValid);
+        }
+
+        if (validationRule.email){
+            let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            isValid = regex.test(value) && isValid;
+
+        }
+
+        if(validationRule.passwordMatcher){
+            isValid = (value === this.state.registerForm.password.value) && isValid;
+        }
+
+        return isValid;
+
+    }
+
 
     inputChangedHandler = (event, inputIdentifier) => {
         const registerFormClone = { ...this.state.registerForm };
-        const registerFormKey_Value = { ...registerFormClone[inputIdentifier] };
+        const updatedFormElement = { ...registerFormClone[inputIdentifier] };
 
-        registerFormKey_Value.value = event.target.value;
-        registerFormClone[inputIdentifier] = registerFormKey_Value;
+        updatedFormElement.value = event.target.value;
+        updatedFormElement.valid = this.checkValidity(event.target.value, updatedFormElement.validation);
+        updatedFormElement.wasTouched = true;
+        registerFormClone[inputIdentifier] = updatedFormElement;
+
+        //check overall validity of form
+        let formValidChecker = true;
+        for (let formElement in this.state.registerForm){
+            formValidChecker = registerFormClone[formElement].valid && formValidChecker;
+        }
+
+        // console.log('form element', );
+
 
         //set the state on change
-        this.setState({ registerForm: registerFormClone });
+        this.setState({ registerForm: registerFormClone, formIsValid: formValidChecker });
 
 
+    };
+
+    onBlurHandler =(elementID) => {
+       if (elementID === 'password'){
+           const registerFormClone = { ...this.state.registerForm };
+           const updatedFormElement = { ...registerFormClone['passwordConfirm'] };
+           const match = updatedFormElement.value === this.state.registerForm['password'].value;
+
+           if (!match){
+               updatedFormElement.valid = false;
+               registerFormClone['passwordConfirm'] = updatedFormElement;
+
+               //check overall validity of form
+               let formValidChecker = true;
+               for (let formElement in this.state.registerForm){
+                   formValidChecker = registerFormClone[formElement].valid && formValidChecker;
+               }
+
+               this.setState({ registerForm: registerFormClone, formIsValid: formValidChecker });
+           }
+
+           console.log(updatedFormElement);
+       }
+    };
+
+
+
+    submitForm = (event) => {
+        event.preventDefault();
+        var formValues ={};
+
+        for (let formKeys in this.state.registerForm){
+            formValues[formKeys] = this.state.registerForm[formKeys].value;
+        }
+        console.log(formValues);
     };
 
 
@@ -146,6 +259,9 @@ class School_Admin_Register extends Component{
                     input_type={formElement.config.elementType}
                     theValue={formElement.config.value}
                     changed={(event) => this.inputChangedHandler(event, formElement.id)}
+                    isValid={formElement.config.valid}
+                    wasTouched={formElement.config.wasTouched}
+                    handleBlur={() => this.onBlurHandler(formElement.id)}
                 />
             );
         });
@@ -160,7 +276,7 @@ class School_Admin_Register extends Component{
                     <p style={{ padding: '5px 20px 0px', marginBottom: '0px'}}> <span className="text-danger"> <b>*</b> </span> field is required</p>
                     <form onSubmit={this.submitForm}>
                         {finalFormElements}
-                        <input type="submit" value="submit" />
+                        <input type="submit" value="submit" disabled={!this.state.formIsValid}/>
                     </form>
 
                 </div>

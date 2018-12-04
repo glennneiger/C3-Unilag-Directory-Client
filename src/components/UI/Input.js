@@ -6,11 +6,18 @@ const input = (props) => {
 
     switch(props['input_type']){
         case 'input':
+            let theClass = '';
+             if (props.wasTouched){
+                 theClass = props.isValid ? '' : 'invalid';
+             }
+
             inputElement =
                 <input
                     type={props.theConfig.type}
                     value={props.theValue}
                     onChange={props.changed}
+                    className={theClass}
+                    onBlur={props.handleBlur}
                     required
                 />;
             break;
