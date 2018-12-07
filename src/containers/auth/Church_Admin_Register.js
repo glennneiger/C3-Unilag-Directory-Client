@@ -1,19 +1,45 @@
 import React, { Component } from 'react';
+import { plainTextInput, email, password, passwordConfirm } from '../../util/formConfig';
+
 // import $ from 'jquery';
 
 import HomeHeader from '../../components/UI/Home_Header';
+import Input from "../../components/UI/Input";
+import formValidator from '../../hoc/formValidator';
 
 class Church_Admin_Register extends Component{
     // componentDidMount(){
     //     window.$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
     // }
 
-    handleChange = (event) => {
-        console.log(event.target.value);
-    };
 
 
     render() {
+        let formElementsArray = [];
+        // create form elements array from state
+        for(let key in this.props.registerForm){
+            formElementsArray.push({
+                id: key,
+                config: this.props.registerForm[key]
+            });
+        }
+
+        let finalFormElements = formElementsArray.map(formElement => {
+            return (
+                <Input
+                    key={formElement.id}
+                    theConfig={formElement.config.elementConfig}
+                    label={formElement.config.label}
+                    input_type={formElement.config.elementType}
+                    theValue={formElement.config.value}
+                    changed={(event) => this.props.inputChangedHandler(event, formElement.id)}
+                    isValid={formElement.config.valid}
+                    wasTouched={formElement.config.wasTouched}
+                    handleBlur={() => this.props.onBlurHandler(formElement.id)}
+                />
+            );
+        });
+
         return (
             <section>
                 <HomeHeader/>
@@ -23,27 +49,8 @@ class Church_Admin_Register extends Component{
                     </div>
                     <p style={{ padding: '5px 20px 0px', marginBottom: '0px'}}> <span className="text-danger">* </span> field is required</p>
                     <form onSubmit={this.submitForm}>
-                        <label className="control-label">Surname <span className="text-danger">*</span> </label>
-                        <input type="text" name="surname" onChange={this.handleChange} required/>
-                        
-                        <div className="form-group">
-                            <label>First name <span className="text-danger">*</span> </label>
-                            <input className="form-control" type="text" name="firstName" onChange={this.handleChange} required/>
-                        </div>
-
-
-                        <label>Email <span className="text-danger">*</span> </label>
-                        <input type="email" name="email" onChange={this.handleChange} required/>
-
-                        <label>Password <span className="text-danger">*</span> </label>
-                        <input type="password" name="password" onChange={this.handleChange} required/>
-
-                        <label>Confirm Password <span className="text-danger">*</span> </label>
-                        <input type="password" name="password-confirm" onChange={this.handleChange} required/>
-                        
-
-
-                        <input type="submit" value="submit" />
+                        {finalFormElements}
+                        <input type="submit" value="submit" disabled={!this.props.formIsValid}/>
                     </form>
 
                 </div>
@@ -52,4 +59,12 @@ class Church_Admin_Register extends Component{
     }
 }
 
-export default Church_Admin_Register;
+let theForm = {
+    surname: plainTextInput('Surname'),
+    firstName: plainTextInput('First Name'),
+    email: email,
+    password: password,
+    passwordConfirm: passwordConfirm
+};
+
+export default formValidator(Church_Admin_Register, theForm);

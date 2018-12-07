@@ -123,6 +123,7 @@ class School_Admin_Register extends Component{
     elementConfigClone = { ...this.gradYearClone.elementConfig };
     optionsClone = [...this.elementConfigClone.optionValues];
 
+    // function for setting the years of graduation dynamically
     setYearArray = () => {
         for(var i = 0; i <= 4; i++){
             this.yearArray.push(this.currentYear + i);
