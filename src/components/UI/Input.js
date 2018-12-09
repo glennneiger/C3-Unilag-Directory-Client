@@ -4,6 +4,7 @@ import Wrapper from '../../hoc/Wrapper';
 const input = (props) => {
     let inputElement = '';
 
+
     switch(props['input_type']){
         case 'input':
             let theClass = '';
@@ -18,6 +19,7 @@ const input = (props) => {
                     onChange={props.changed}
                     className={theClass}
                     onBlur={props.handleBlur}
+                    placeholder={props.placeholder ? props.placeholder : ''}
                     required
                 />;
             break;

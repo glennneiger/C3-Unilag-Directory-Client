@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { plainTextInput, email, password, passwordConfirm } from '../../util/formConfig';
+import { plainTextInput, email, password, passwordConfirm, configureDropdown } from '../../util/formConfig';
 
 // import $ from 'jquery';
 
@@ -8,11 +8,17 @@ import Input from "../../components/UI/Input";
 import formValidator from '../../hoc/formValidator';
 
 class Church_Admin_Register extends Component{
-    // componentDidMount(){
-    //     window.$("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
-    // }
 
 
+    submitForm = (event) => {
+        event.preventDefault();
+        var formValues ={};
+
+        for (let formKeys in this.props.registerForm){
+            formValues[formKeys] = this.props.registerForm[formKeys].value;
+        }
+        console.log('form values', formValues);
+    };
 
     render() {
         let formElementsArray = [];
@@ -50,7 +56,7 @@ class Church_Admin_Register extends Component{
                     <p style={{ padding: '5px 20px 0px', marginBottom: '0px'}}> <span className="text-danger">* </span> field is required</p>
                     <form onSubmit={this.submitForm}>
                         {finalFormElements}
-                        <input type="submit" value="submit" disabled={!this.props.formIsValid}/>
+                        <input type="submit" value="submit" disabled={!this.props.formIsValid} />
                     </form>
 
                 </div>
@@ -59,12 +65,14 @@ class Church_Admin_Register extends Component{
     }
 }
 
-let theForm = {
-    surname: plainTextInput('Surname'),
-    firstName: plainTextInput('First Name'),
+
+
+let theFormState = {
+    surname: plainTextInput('Surname', 'text'),
+    firstName: plainTextInput('First Name', 'text'),
     email: email,
     password: password,
-    passwordConfirm: passwordConfirm
+    passwordConfirm: passwordConfirm,
 };
 
-export default formValidator(Church_Admin_Register, theForm);
+export default formValidator(Church_Admin_Register, theFormState);

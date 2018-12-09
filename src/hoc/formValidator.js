@@ -35,6 +35,10 @@ const formValidator = (WrappedComponent, appState) => {
                 isValid = (value === this.state.registerForm.password.value) && isValid;
             }
 
+            if (validationRule.phoneNo){
+                // write a Regular Expression that allows only 11 digit phone numbers
+            }
+
             return isValid;
 
         }
@@ -54,9 +58,6 @@ const formValidator = (WrappedComponent, appState) => {
             for (let formElement in this.state.registerForm){
                 formValidChecker = registerFormClone[formElement].valid && formValidChecker;
             }
-
-            // console.log('form element', );
-
 
             //set the state on change
             this.setState({ registerForm: registerFormClone, formIsValid: formValidChecker });
@@ -83,19 +84,18 @@ const formValidator = (WrappedComponent, appState) => {
                     this.setState({ registerForm: registerFormClone, formIsValid: formValidChecker });
                 }
 
-                console.log(updatedFormElement);
             }
         };
 
         render() {
             var theForm = this.state.registerForm;
-            console.log("the state", this.state.registerForm);
             return (
                 <WrappedComponent
                 registerForm={theForm}
                 inputChangedHandler={this.inputChangedHandler}
                 onBlurHandler={this.onBlurHandler}
                 formIsValid={this.state.formIsValid}
+                {...this.props}
                 />
                 
             );

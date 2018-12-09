@@ -1,14 +1,50 @@
 import React, { Component } from 'react';
+import { plainTextInput, email, configureDropdown, phoneNo } from '../../util/formConfig';
 
 import HomeHeader from '../../components/UI/Home_Header';
+import Input from "../../components/UI/Input";
+import formValidator from '../../hoc/formValidator';
 
 class Student_Register extends Component{
-    handleChange = (event) => {
-        console.log(event.target.value);
+
+    submitForm = (event) => {
+        event.preventDefault();
+        var formValues ={};
+
+        for (let formKeys in this.props.registerForm){
+            formValues[formKeys] = this.props.registerForm[formKeys].value;
+        }
+        console.log('form values', formValues);
     };
 
 
     render() {
+        let formElementsArray = [];
+        // create form elements array from state
+        for(let key in this.props.registerForm){
+            formElementsArray.push({
+                id: key,
+                config: this.props.registerForm[key]
+            });
+        }
+
+        let finalFormElements = formElementsArray.map(formElement => {
+            return (
+                <Input
+                    key={formElement.id}
+                    theConfig={formElement.config.elementConfig}
+                    label={formElement.config.label}
+                    input_type={formElement.config.elementType}
+                    theValue={formElement.config.value}
+                    changed={(event) => this.props.inputChangedHandler(event, formElement.id)}
+                    isValid={formElement.config.valid}
+                    wasTouched={formElement.config.wasTouched}
+                    handleBlur={() => this.props.onBlurHandler(formElement.id)}
+                    placeholder={formElement.config.placeholder}
+                />
+            );
+        });
+
         return (
             <section>
                 <HomeHeader/>
@@ -18,40 +54,8 @@ class Student_Register extends Component{
                     </div>
                     <p style={{ padding: '5px 20px 0px', marginBottom: '0px'}}> <span className="text-danger">* </span> field is required</p>
                     <form onSubmit={this.submitForm}>
-                        <label>Surname <span className="text-danger">*</span> </label>
-                        <input type="text" name="surname" onChange={this.handleChange} required/>
-
-                        <div className="form-group">
-                            <label>First name <span className="text-danger">*</span> </label>
-                            <input className="form-control" type="text" name="firstName" onChange={this.handleChange} required/>
-                        </div>
-
-
-                        <label>Date of Birth <span className="text-danger">*</span> </label>
-                        <input type="date" name="dob"  onChange={this.handleChange} required/>
-
-                        <label>Department <span className="text-danger">*</span> </label>
-                        <input type="text" name="dept" onChange={this.handleChange} required/>
-
-                        <label>Email <span className="text-danger">*</span> </label>
-                        <input type="email" name="email" onChange={this.handleChange} required/>
-
-                        <label>Phone Number <span className="text-danger">*</span> </label>
-                        <input type="text" name="phoneNo" onChange={this.handleChange} required/>
-
-                        <label>Expected Year of Graduation <span className="text-danger">*</span> </label>
-                        <select className="custom-select" onChange={this.handleChange} defaultValue="">
-
-                            <option value={2019}>2019</option>
-                            <option value={2020}>2020</option>
-                            <option value={2021}>2021</option>
-                            <option value={2022}>2022</option>
-                            <option value={2023}>2023</option>
-                            <option value={2024}>2024</option>
-                            <option value={2025}>2025</option>
-                        </select>
-
-                        <input type="submit" value="submit" />
+                        {finalFormElements}
+                        <input type="submit" value="submit" disabled={!this.props.formIsValid} />
                     </form>
 
                 </div>
@@ -60,4 +64,23 @@ class Student_Register extends Component{
     }
 }
 
-export default Student_Register;
+const currentYear = new Date().getFullYear();
+let theValues = [
+    { value: '', displayValue: 'Select a Year' }
+];
+
+for(let i = 0; i <= 4; i++){
+    theValues.push({ value: currentYear + i, displayValue: currentYear + i });
+}
+
+let theFormState = {
+    surname: plainTextInput('Surname', 'text'),
+    firstName: plainTextInput('First Name', 'text'),
+    dob: plainTextInput('Date of Birth', 'date'),
+    dept: plainTextInput('Department', 'text'),
+    email: email,
+    phoneNo: phoneNo,
+    gradYear: configureDropdown('Expected Year of Graduation', theValues)
+};
+
+export default formValidator(Student_Register,theFormState);

@@ -1,8 +1,8 @@
-export let plainTextInput = (theLabel) => {
+export let plainTextInput = (theLabel, theType) => {
     return  {
         elementType: 'input',
         elementConfig: {
-            type: 'text'
+            type: theType
         },
         validation: {
             required: true,
@@ -11,6 +11,21 @@ export let plainTextInput = (theLabel) => {
         wasTouched: false,
         value: '',
         label: theLabel
+    }
+};
+
+export let configureDropdown = (label, options) => {
+    return {
+        elementType: 'select',
+        elementConfig: {
+            optionValues: options
+        },
+        label: label,
+        validation: {
+            required: true,
+        },
+        valid: false,
+        value: ''
     }
 };
 
@@ -61,4 +76,24 @@ export let passwordConfirm = {
     wasTouched: false,
     label: 'Confirm Password'
 };
+
+export let phoneNo = {
+    elementType: 'input',
+    elementConfig: {
+        type: 'text'
+    },
+    validation: {
+        required: true,
+        minLength: 11,
+        maxLength: 11,
+        phoneNo: true
+    },
+    valid: false,
+    wasTouched: false,
+    value: '',
+    label: 'Phone Number',
+    placeholder: 'e.g.  08012345678'
+};
+
+
 
