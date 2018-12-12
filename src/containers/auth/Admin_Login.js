@@ -4,7 +4,7 @@ import axios from '../../axios-instance';
 import Header from '../../components/UI/Home_Header';
 
 class AdminLogin extends Component{
-    state
+
 
    render() {
        return (

@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
-import { plainTextInput, email, password, passwordConfirm, configureDropdown } from '../../util/formConfig';
-
-// import $ from 'jquery';
+import { plainTextInput, email, password, passwordConfirm } from '../../util/formConfig';
+import axios from '../../axios-instance';
 
 import HomeHeader from '../../components/UI/Home_Header';
 import Input from "../../components/UI/Input";
 import formValidator from '../../hoc/formValidator';
+import SuccessLabel from '../../components/UI/SuccessLabel';
+import ErrorLabel from '../../components/UI/ErrorLabel';
 
 class Church_Admin_Register extends Component{
+    state = {
+        responseMsg: ''
+    };
 
-
+    // handler for submitting form
     submitForm = (event) => {
         event.preventDefault();
         var formValues ={};
@@ -17,7 +21,28 @@ class Church_Admin_Register extends Component{
         for (let formKeys in this.props.registerForm){
             formValues[formKeys] = this.props.registerForm[formKeys].value;
         }
-        console.log('form values', formValues);
+        // console.log('form values', formValues);
+
+        // submit the form
+        axios.post(this.props.match.url, formValues)
+            .then(result => {
+                window.scroll(0,0);
+                console.log(result.message, this.props);
+
+                // display appropriate label for registered status
+                let theMsg = result.data.registered ? <SuccessLabel message={result.data.message} /> : <ErrorLabel message={result.data.message}/>;
+                this.setState({ responseMsg: theMsg });
+
+                // redirect if registration is successful
+                if (result.data.registered){
+                    this.props.history.replace(this.props.match.url);
+                }
+
+            })
+            .catch(error => {
+               console.log(error.message);
+            });
+
     };
 
     render() {
@@ -46,10 +71,14 @@ class Church_Admin_Register extends Component{
             );
         });
 
+        // check for register message
+        let tempClass = this.state.responseMsg !== '' ? 'register registerMsg' : 'register';
+
         return (
             <section>
                 <HomeHeader/>
-                <div className="register">
+                {this.state.responseMsg}
+                <div className={tempClass}>
                     <div className="form-header">
                         <h1 style={{ marginBottom: '0px' }}>Church Admin Registration</h1>
                     </div>

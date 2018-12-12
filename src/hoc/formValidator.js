@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 const formValidator = (WrappedComponent, appState) => {
     return class extends Component{
-        currentYear = new Date().getFullYear();
-        yearArray = [];
 
         state = {
             registerForm: {...appState},
@@ -86,6 +84,8 @@ const formValidator = (WrappedComponent, appState) => {
 
             }
         };
+
+
 
         render() {
             var theForm = this.state.registerForm;
