@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import axios from '../axios-instance';
+import SuccessLabel from "../components/UI/SuccessLabel";
+import ErrorLabel from "../components/UI/ErrorLabel";
 
 const formValidator = (WrappedComponent, appState) => {
     return class extends Component{
 
         state = {
             registerForm: {...appState},
-            formIsValid: false
+            formIsValid: false,
+            responseMsg: ''
         };
 
         checkValidity (value, validationRule) {
@@ -85,6 +89,52 @@ const formValidator = (WrappedComponent, appState) => {
             }
         };
 
+        // handler for submitting form
+        submitForm = (event) => {
+            event.preventDefault();
+            var formValues ={};
+
+
+            for (let formKeys in this.state.registerForm){
+                formValues[formKeys] = this.state.registerForm[formKeys].value;
+            }
+
+
+            // submit the form
+            let thePath = this.props.match.url === '/' ? this.props.match.url + 'register_student' : this.props.match.url;
+            console.log('the path', this.props.match.url);
+
+            axios.post(thePath, formValues)
+                .then(result => {
+                    window.scroll(0,0);
+                    const registerFormClone = { ...this.state.registerForm };
+
+                    // reset the form fields after submission
+                    for(let key in registerFormClone){
+                        registerFormClone[key].value = '';
+                        registerFormClone[key].valid = false;
+
+                        // if wasTouched property exists, reset to false
+                        if(registerFormClone[key].wasTouched){
+                            registerFormClone[key].wasTouched = false;
+                        }
+                    }
+
+                    // display appropriate label based on registered status
+                    let theMsg = result.data.registered ? <SuccessLabel message={result.data.message} /> : <ErrorLabel message={result.data.message}/>;
+                    this.setState({ responseMsg: theMsg, registerForm: registerFormClone, formIsValid: false });
+
+                    // redirect if registration is successful
+                    if (result.data.registered){
+                        this.props.history.replace(this.props.match.url);
+                    }
+
+                })
+                .catch(error => {
+                    console.log(error.message);
+                });
+
+        };
 
 
         render() {
@@ -95,6 +145,8 @@ const formValidator = (WrappedComponent, appState) => {
                 inputChangedHandler={this.inputChangedHandler}
                 onBlurHandler={this.onBlurHandler}
                 formIsValid={this.state.formIsValid}
+                submitForm={this.submitForm}
+                responseMsg={this.state.responseMsg}
                 {...this.props}
                 />
                 

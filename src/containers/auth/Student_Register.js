@@ -45,15 +45,19 @@ class Student_Register extends Component{
             );
         });
 
+        // check for register message
+        let tempClass = this.props.responseMsg !== '' ? 'register registerMsg' : 'register';
+
         return (
             <section>
                 <HomeHeader/>
-                <div className="register">
+                {this.props.responseMsg}
+                <div className={tempClass}>
                     <div className="form-header">
                         <h1 style={{ marginBottom: '0px' }}>Student Registration</h1>
                     </div>
                     <p style={{ padding: '5px 20px 0px', marginBottom: '0px'}}> <span className="text-danger">* </span> field is required</p>
-                    <form onSubmit={this.submitForm}>
+                    <form onSubmit={this.props.submitForm}>
                         {finalFormElements}
                         <input type="submit" value="submit" disabled={!this.props.formIsValid} />
                     </form>
@@ -83,4 +87,4 @@ let theFormState = {
     gradYear: configureDropdown('Expected Year of Graduation', theValues)
 };
 
-export default formValidator(Student_Register,theFormState);
+export default formValidator(Student_Register, theFormState);
