@@ -52,8 +52,7 @@ export let password = {
     value: '',
     validation: {
         required: true,
-        minLength: 4,
-        maxLength: 6
+        minLength: 1
     },
     valid: false,
     wasTouched: false,
@@ -68,9 +67,8 @@ export let passwordConfirm = {
     value: '',
     validation: {
         required: true,
-        minLength: 4,
-        maxLength: 6,
-        passwordMatcher: true
+        passwordMatcher: true,
+        minLength: 1
     },
     valid: false,
     wasTouched: false,

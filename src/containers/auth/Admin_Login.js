@@ -2,32 +2,87 @@ import React, { Component } from 'react';
 import axios from '../../axios-instance';
 
 import Header from '../../components/UI/Home_Header';
+import ErrorLabel from '../../components/UI/ErrorLabel';
+import Spinner from '../../components/UI/Spinner';
 
 class AdminLogin extends Component{
+   state = {
+      loginForm: {
+          email: '',
+          password: ''
+      },
+      loading: false,
+       loginMessage: ''
+   };
 
+   handleChange = (event) => {
+      let formClone = {...this.state.loginForm};
+      formClone[event.target.name] = event.target.value;
+
+      // update the state immutably with the new login form
+       this.setState({ loginForm: formClone });
+   };
+
+   submitForm = (event) => {
+      event.preventDefault();
+      // scroll to the top position
+       window.scroll(0, 0);
+
+      let theSpinner = <Spinner />;
+      let targetName = event.target.name;
+      this.setState({ loading: true, loginMessage: theSpinner });
+
+       axios.post(`/admin/login?admin=${targetName}`, this.state.loginForm)
+           .then(result => {
+              if (result.data.authorized){
+                  this.props.history.replace(`/${targetName}_admin/dashboard`);
+              }
+              else{
+                  let errorMsg = <ErrorLabel message={result.data.message}/>;
+                  this.setState({ loginMessage: errorMsg, loading: false })
+              }
+           })
+           .catch(error => {
+
+           });
+      console.log('the login state', this.state.loginForm);
+
+      // console.
+   };
 
    render() {
+
+       // check for register message
+       let tempClass = this.state.loginMessage !== '' ? 'register registerMsg' : 'register';
+
        return (
            <section>
                <Header />
-               <div className="register">
+               {this.state.loginMessage}
+               <div className={tempClass}>
                    <div className="form-header">
                        <h1 style={{ marginBottom: '0px' }}>Login</h1>
                    </div>
 
                    {/*{errorMessage}*/}
-                   <form onSubmit={this.submitForm}>
+                   <form>
                        <label>Email</label>
                        <input type="text" name="email" onChange={this.handleChange} required/>
 
                        <label>Password</label>
                        <input type="password" name="password" onChange={this.handleChange} required/>
 
-                       <input name="school" type="submit" value="Login as School Admin" />
+                       {/*Button Area*/}
+
+                       <button type="submit" name="school"  onClick={this.submitForm} disabled={this.state.loading}>
+                           Login as School Admin
+                       </button>
                        <div className="divider-line">
                            <span>OR</span>
                        </div>
-                       <input name="church" type="submit" value="Login as Church Admin"/>
+                       <button type="submit" name="church"  onClick={this.submitForm} disabled={this.state.loading}>
+                           Login as Church Admin
+                       </button>
                    </form>
                    
                </div>

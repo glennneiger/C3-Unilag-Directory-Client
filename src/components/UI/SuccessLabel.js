@@ -17,3 +17,6 @@ const successLabel = (props) => {
 };
 
 export default successLabel;
+
+// TODO: fix the close button on the label (make it close)
+

@@ -5,7 +5,7 @@ const errorLabel = (props) => {
         <div className="alert alert-danger alert-dismissible theLabel">
             <div>
                 <p>
-                    <span className="fa fa-info" style={{ paddingRight: '8px'}}></span>
+                    <span className="fa fa-close" style={{ paddingRight: '8px'}}></span>
                     {props.message}
                 </p>
                 <button type="button" className="close" data-dismiss="alert" aria-label="Close">
