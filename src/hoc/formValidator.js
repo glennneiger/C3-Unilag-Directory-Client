@@ -107,26 +107,49 @@ const formValidator = (WrappedComponent, appState) => {
             axios.post(thePath, formValues)
                 .then(result => {
                     window.scroll(0,0);
-                    const registerFormClone = { ...this.state.registerForm };
+                    let registerFormClone = { ...this.state.registerForm };
+                    let registerFormCloneKeys = [];
 
-                    // reset the form fields after submission
-                    for(let key in registerFormClone){
-                        registerFormClone[key].value = '';
-                        registerFormClone[key].valid = false;
+                    // immutably copy each key
+                    for (let key in registerFormClone){
+                        let tempObject =  { ...registerFormClone[key] } ;
+                        registerFormCloneKeys.push(tempObject);
 
-                        // if wasTouched property exists, reset to false
-                        if(registerFormClone[key].wasTouched){
-                            registerFormClone[key].wasTouched = false;
-                        }
+                        // console.log('the temp object', tempObject);
                     }
 
                     // display appropriate label based on registered status
                     let theMsg = result.data.registered ? <SuccessLabel message={result.data.message} /> : <ErrorLabel message={result.data.message}/>;
-                    this.setState({ responseMsg: theMsg, registerForm: registerFormClone, formIsValid: false });
+                    let theIndex = 0;
 
                     // redirect if registration is successful
                     if (result.data.registered){
+                        console.log('jmmmm');
+
+                        // edit the cloned form fields
+                        registerFormCloneKeys.forEach(theObject => {
+                            theObject.value = '';
+                            theObject.valid = false;
+
+                            // if wasTouched property exists, reset to false
+                            if(theObject.wasTouched){
+                                theObject.wasTouched = false;
+                            }
+                        });
+
+                        // set the edited values into the cloned registerForm
+                        for(let key in registerFormClone){
+                            registerFormClone[key] = registerFormCloneKeys[theIndex];
+                            theIndex += 1;
+                        }
+
+                        // set state immutably
+                        this.setState({ responseMsg: theMsg, registerForm: registerFormClone, formIsValid: false });
                         this.props.history.replace(this.props.match.url);
+                    } // end registered if statement
+                    else{
+                        console.log('reg form clone', registerFormClone);
+                        this.setState({ responseMsg: theMsg });
                     }
 
                 })

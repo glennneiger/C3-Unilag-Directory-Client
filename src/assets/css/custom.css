@@ -345,6 +345,11 @@ input[type="submit"]:disabled, button:disabled{
     align-items: center;
 }
 
+.theLabel div{
+    display: flex;
+    justify-content: space-between;
+}
+
 .theLabel p, theLabel button{
     display: flex;
     align-items: center;
