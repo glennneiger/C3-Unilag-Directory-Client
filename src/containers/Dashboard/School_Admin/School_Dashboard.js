@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { Link, Switch, Route, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Sidebar from "../../../components/UI/Sidebar";
 import DashboardIndex from "./Dashboard_Index";
 
 class School_Dashboard extends Component{
+    state = {
+            
+    };
+
+
   render(){
       return (
           <section className="dashboard">
@@ -34,4 +40,10 @@ class School_Dashboard extends Component{
   }
 }
 
-export default School_Dashboard;
+const mapStateToProps = state => {
+    return {
+        user: state.school.school_admin
+    }
+};
+
+export default connect(mapStateToProps)(School_Dashboard);

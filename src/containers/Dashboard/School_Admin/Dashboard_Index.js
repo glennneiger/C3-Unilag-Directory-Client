@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import CountUp from 'react-countup'
+import { connect } from 'react-redux';
+import CountUp from 'react-countup';
+
+import axios from '../../../axios-instance';
 
 class DashboardIndex extends Component{
-    render (){
+    async componentDidMount(){
+       // make request
+       let getBirthdays = axios.get();          // get all the birthdays for the current month
+       let getBusStats = axios.get();           // get all the bus stats for the current month
+       let getStudentDetails = axios.get();     // get the details for all the students
+
+       const [ monthBirthdays, busDetails, studentDetails ] = await Promise.all([getBirthdays, getBusStats, getStudentDetails]);
+    }
+
+    render () {
         return (
             <section className="dashindex">
                 <div className="container">
@@ -88,4 +100,10 @@ class DashboardIndex extends Component{
     }
 }
 
-export default DashboardIndex;
+const mapDispatchTProps = dispatch => {
+  return {
+      
+  }
+};
+
+export default connect()(DashboardIndex);

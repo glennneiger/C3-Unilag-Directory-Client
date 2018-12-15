@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import axios from '../../axios-instance';
 
 import Header from '../../components/UI/Home_Header';
 import ErrorLabel from '../../components/UI/ErrorLabel';
 import Spinner from '../../components/UI/Spinner';
+import * as actions from '../../store/actions/index';
 
 class AdminLogin extends Component{
    state = {
@@ -35,6 +37,20 @@ class AdminLogin extends Component{
        axios.post(`/admin/login?admin=${targetName}`, this.state.loginForm)
            .then(result => {
               if (result.data.authorized){
+                  // store token and user details in the local storage
+                  window.localStorage.setItem('token', result.data.token);
+                  window.localStorage.setItem('user', result.data.user);
+
+                  // save user details in the redux store
+                  if (targetName === 'school'){
+                      this.props.loadSchoolAdmin(result.data.user);
+                  }
+
+                  else{
+                      this.props.loadChurchAdmin(result.data.user);
+                  }
+
+                  // redirect to the appropriate dashboard
                   this.props.history.replace(`/${targetName}_admin/dashboard`);
               }
               else{
@@ -91,4 +107,13 @@ class AdminLogin extends Component{
    }
 }
 
-export default AdminLogin;
+
+
+const mapDispatchToProps = dispatch => {
+    return {
+       loadSchoolAdmin: (theAdmin) => dispatch(actions.loadSchoolAdmin(theAdmin)),
+        loadChurchAdmin: (theAdmin) => dispatch(actions.loadChurchAdmin(theAdmin))
+    }
+};
+
+export default connect(null, mapDispatchToProps)(AdminLogin);
