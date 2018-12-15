@@ -360,6 +360,19 @@ input[type="submit"]:disabled, button:disabled{
     margin-top: 30px !important;
 }
 
+.today{
+    background-color: mediumseagreen;
+}
+
+.today th, .today td{
+    color: #fff;
+    font-weight: bold;
+}
+
+.box-icon i{
+    color: #fff;
+}
+
 
 /****** SPINNER CSS ******/
 @keyframes lds-rolling {
@@ -390,7 +403,7 @@ input[type="submit"]:disabled, button:disabled{
     position: absolute;
     width: 160px;
     height: 160px;
-    border: 20px solid #facd9e;
+    border: 20px solid #4246ff;
     border-top-color: transparent;
     border-radius: 50%;
 }
