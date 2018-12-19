@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CountUp from 'react-countup';
+import { Bar } from 'react-chartjs-2';
 
 import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
+import { returnData, returnDataSet } from '../../../util/chartConfig';
 
 class DashboardIndex extends Component{
     state = {
         birthdaysArray: [],
-        busDetails: [],
+        chartData: {},
         studentDetails: [],
         loading: true,
         birthdaysToday: 0
@@ -50,6 +52,39 @@ class DashboardIndex extends Component{
         }
     }
 
+    configureChartData = (rawData) => {
+        // TODO: handle default case i.e when there is no data
+
+        let firstServiceArray = [], secondServiceArray = [], fourthServiceArray = [];
+        let serviceLabelArray = ['First Service Total', 'Second Service Total', 'Fourth Service Total'], dateLabelsArray = [];
+        let colorArray = ['rgba(255,99,132,0.6)', 'rgba(54,162,235,0.6)', 'rgba(75,192,192,0.6)'];
+
+        // fill service arrays for each Sunday
+         rawData.forEach(data => {
+             // populate the arrays for the different services. These are the 3 data sets
+                 firstServiceArray.push(data.FirstService);
+                 secondServiceArray.push(data.SecondService);
+                 fourthServiceArray.push(data.FourthService);
+
+                 // array for the different dates. This is the label for the x-axis
+                 dateLabelsArray.push(data.Date);
+         
+         });
+
+         // the service label is the label for each data set
+         let serviceArray = [firstServiceArray, secondServiceArray, fourthServiceArray];
+         let datasetObjects = [];
+
+         for (let i = 0; i < 3; i++){
+             // create data set objects for first, second and fourth services
+            let theDataObject = returnDataSet(serviceLabelArray[i], serviceArray[i], colorArray[i], colorArray[i], 1);
+            datasetObjects.push(theDataObject);
+
+         }
+
+         return returnData(dateLabelsArray, datasetObjects)
+    };
+
     async componentDidMount(){
        // make request
        let getBirthdays = axios.get(`/admin/birthdays?month=${new Date().getMonth() + 1}`);          // get all the birthdays for the current month
@@ -59,21 +94,25 @@ class DashboardIndex extends Component{
        const [ monthBirthdays, busDetails, studentDetails ] = await Promise.all([getBirthdays, getBusStats, getStudentDetails]);
         console.log(monthBirthdays, busDetails, studentDetails);
         let theBirthdays = monthBirthdays.data.birthdays;
-        let birthdaysToday = 0;
+        let birthdaysToday = 0, theChartData = this.configureChartData(busDetails.data.monthData);
+
+        console.log('chart data', theChartData);
 
         theBirthdays.forEach(birthday => {
             if (birthday.dob.day === new Date().getDate()){
                 birthdaysToday += 1;
             }
         });
+
+
        this.setState({
            birthdaysArray: [...monthBirthdays.data.birthdays],
-           busDetails: [...busDetails.data.monthData],
+           chartData: theChartData,
            studentDetails: [...studentDetails.data.students],
            loading: false,
            birthdaysToday
        });
-    }
+    }  //   end componentDidMount
 
     render () {
         let tableBody = (
@@ -103,6 +142,7 @@ class DashboardIndex extends Component{
         let mainBody = <Spinner/>;
 
         if ( !(this.state.loading) ){
+           let theChart = <Bar data={this.state.chartData}/>;
             
             mainBody = (
                 <div className="container">
@@ -110,7 +150,7 @@ class DashboardIndex extends Component{
                     <div className="row">
                         <div className="col-lg-4 col-sm-12">
                             <div className="box">
-                                <div className="box-icon" style={{ background: '#ff524a'}}>
+                                <div className="box-icon" style={{ background: 'rgb(255,99,132)'}}>
                                    <span>
                                        <i className="glyphicon glyphicon-user"></i>
                                    </span>
@@ -123,7 +163,7 @@ class DashboardIndex extends Component{
                         </div>
                         <div className="col-lg-4 col-sm-12">
                             <div className="box">
-                                <div className="box-icon" style={{ background: 'mediumseagreen'}}>
+                                <div className="box-icon" style={{ background: 'rgb(75,192,192)'}}>
                                    <span>
                                        <i className="glyphicon glyphicon-info-sign"></i>
                                    </span>
@@ -136,7 +176,7 @@ class DashboardIndex extends Component{
                         </div>
                         <div className="col-lg-4 col-sm-12">
                             <div className="box">
-                                <div className="box-icon" style={{ background: 'deepskyblue'}}>
+                                <div className="box-icon" style={{ background: 'rgb(54,162,235)'}}>
                                    <span>
                                        <i className="glyphicon glyphicon-calendar"></i>
                                    </span>
@@ -174,7 +214,21 @@ class DashboardIndex extends Component{
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>   {/* End Row*/}
+
+                    {/*Start row*/}
+                    <div className="row">
+                       <div className="col-12">
+                           <div className="big-box">
+                               <div className="big-box-header form-header">
+                                   <h3>Bus Statistics for {this.getMonth( new Date().getMonth() + 1)} {new Date().getFullYear()}</h3>
+                               </div>
+                               <div className="big-box-body" style={{ paddingBottom: '15px', paddingTop: '10px' }}>
+                                   {theChart}
+                               </div>
+                           </div>
+                       </div>
+                    </div> {/* End row */}
                 </div>
             );
         }
