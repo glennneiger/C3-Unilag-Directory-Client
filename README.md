@@ -1,2 +1,3 @@
 
-This is the Front-End Application for the C3 Unilag Directory API. Built with React + Redux
+This is an application that helps keep track of students. Built with React + Redux.
+T
