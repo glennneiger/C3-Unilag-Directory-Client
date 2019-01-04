@@ -12,6 +12,7 @@ const formValidator = (WrappedComponent, appState) => {
             responseMsg: ''
         };
 
+
         checkValidity (value, validationRule) {
             let isValid = true;
 
@@ -124,7 +125,6 @@ const formValidator = (WrappedComponent, appState) => {
 
                     // redirect if registration is successful
                     if (result.data.registered){
-                        console.log('jmmmm');
 
                         // edit the cloned form fields
                         registerFormCloneKeys.forEach(theObject => {

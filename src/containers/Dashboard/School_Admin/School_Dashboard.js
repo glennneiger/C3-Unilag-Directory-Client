@@ -4,11 +4,42 @@ import { connect } from 'react-redux';
 
 import Sidebar from "../../../components/UI/Sidebar";
 import DashboardIndex from "./Dashboard_Index";
+import axios from "../../../axios-instance";
 
 class School_Dashboard extends Component{
     state = {
             
     };
+
+    setTokenInHeader (token) {
+
+        if (token) {
+            axios.defaults.headers.common['authorization'] = token;
+            // console.log('the token', axios.defaults.headers.common['authorization']);
+        } else {
+            axios.defaults.headers.common['authorization'] = null;
+            console.log('the token', token);
+            /*if setting null does not remove `Authorization` header then try
+              delete axios.defaults.headers.common['Authorization'];
+            */
+        }
+    };
+
+    componentWillMount(){
+        let theToken = window.localStorage.getItem('token');
+        console.log('the token', theToken, window.localStorage.getItem('user'));
+
+        if (theToken !== null){
+            // set token in header
+            this.setTokenInHeader(theToken);
+            console.log('heyyy');
+
+        }
+        else{
+            // redirect to login page
+            this.props.history.replace('/login');
+        }
+    }
 
 
   render(){

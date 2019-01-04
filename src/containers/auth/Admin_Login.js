@@ -5,6 +5,7 @@ import axios from '../../axios-instance';
 import Header from '../../components/UI/Home_Header';
 import ErrorLabel from '../../components/UI/ErrorLabel';
 import Spinner from '../../components/UI/Spinner';
+import errorHandler from '../../hoc/errorHandler';
 import * as actions from '../../store/actions/index';
 
 class AdminLogin extends Component{
@@ -116,4 +117,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(AdminLogin);
+export default connect(null, mapDispatchToProps)( errorHandler(AdminLogin) );

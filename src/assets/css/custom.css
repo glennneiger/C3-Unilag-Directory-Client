@@ -10,7 +10,10 @@ input[type=submit], .register button {
     margin-top: 25px;
 }
 
-
+/*.modal-dialog{*/
+    /*display: flex;*/
+    /**/
+/*}*/
 
 
 

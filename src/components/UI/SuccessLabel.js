@@ -8,7 +8,7 @@ const successLabel = (props) => {
                     <span className="fa fa-check" style={{ paddingRight: '8px'}}></span>
                     {props.message}
                 </p>
-                <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                <button type="button" className="close" data-dismiss="alert" aria-label="Close" style={{ width: '10%' }}>
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

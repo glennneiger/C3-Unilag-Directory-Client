@@ -7,6 +7,12 @@ import formValidator from '../../hoc/formValidator';
 
 class Student_Register extends Component{
 
+    componentWillMount(){
+        // bring scroll position to top of the screen
+        window.scroll(0,0);
+        console.log('mounted ooo');
+    }
+
     submitForm = (event) => {
         event.preventDefault();
         var formValues ={};

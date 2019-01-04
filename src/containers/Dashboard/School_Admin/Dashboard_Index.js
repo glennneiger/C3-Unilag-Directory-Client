@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CountUp from 'react-countup';
 import { Bar } from 'react-chartjs-2';
+import { returnData, returnDataSet } from '../../../util/chartConfig';
 
 import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
-import { returnData, returnDataSet } from '../../../util/chartConfig';
+import errorHandler from '../../../hoc/errorHandler';
 
 class DashboardIndex extends Component{
     state = {
@@ -22,35 +23,9 @@ class DashboardIndex extends Component{
         return months[monthNum - 1];
     };
 
-    getToken (token) {
 
-        if (token) {
-            axios.defaults.headers.common['authorization'] = token;
-            // console.log('the token', axios.defaults.headers.common['authorization']);
-        } else {
-            axios.defaults.headers.common['authorization'] = null;
-            console.log('the token', token);
-            /*if setting null does not remove `Authorization` header then try
-              delete axios.defaults.headers.common['Authorization'];
-            */
-        }
-    };
 
-    componentWillMount(){
-        let theToken = window.localStorage.getItem('token');
-        console.log('the token', theToken, window.localStorage.getItem('user'));
 
-        if (theToken !== null){
-            // set token in header
-            this.getToken(theToken);
-            console.log('heyyy');
-
-        }
-        else{
-            // redirect to login page
-            this.props.history.replace('/login');
-        }
-    }
 
     configureChartData = (rawData) => {
         // TODO: handle default case i.e when there is no data
@@ -115,9 +90,11 @@ class DashboardIndex extends Component{
     }  //   end componentDidMount
 
     render () {
+
+        // if there are no birthdays in the current month
         let tableBody = (
             <tr>
-                <td colSpan={5}>No birthdays this month</td>
+                <td colSpan={5} style={{ textAlign: 'center' }}>No birthdays this month</td>
             </tr>
         );
 
@@ -141,9 +118,9 @@ class DashboardIndex extends Component{
 
         let mainBody = <Spinner/>;
 
+        // if the response from the API has been completed
         if ( !(this.state.loading) ){
-           let theChart = <Bar data={this.state.chartData}/>;
-            
+
             mainBody = (
                 <div className="container">
                     {/*start row */}
@@ -224,7 +201,7 @@ class DashboardIndex extends Component{
                                    <h3>Bus Statistics for {this.getMonth( new Date().getMonth() + 1)} {new Date().getFullYear()}</h3>
                                </div>
                                <div className="big-box-body" style={{ paddingBottom: '15px', paddingTop: '10px' }}>
-                                   {theChart}
+                                   <Bar data={this.state.chartData} />
                                </div>
                            </div>
                        </div>
@@ -248,4 +225,4 @@ const mapDispatchTProps = dispatch => {
   }
 };
 
-export default connect(null, mapDispatchTProps)(DashboardIndex);
+export default connect(null, mapDispatchTProps)( errorHandler(DashboardIndex) );

@@ -78,7 +78,7 @@ export let passwordConfirm = {
 export let phoneNo = {
     elementType: 'input',
     elementConfig: {
-        type: 'text'
+        type: 'tel'
     },
     validation: {
         required: true,
