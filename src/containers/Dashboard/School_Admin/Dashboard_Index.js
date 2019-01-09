@@ -102,7 +102,21 @@ class DashboardIndex extends Component{
             tableBody = this.state.birthdaysArray.map( (student, index) => {
                 let theMonth = this.getMonth(student.dob.month);
                 let theBirthday = `${student.dob.day} ${theMonth}`;
+                let thePhoneNo = student.phoneNo;
+                // let modifiedNo = thePhoneNo;
+                let modifiedNo = thePhoneNo.split('');
+                // remove the first Number from the phone number to allow room for 234
+                modifiedNo.splice(0, 1);
+
+
+                console.log('phone no', modifiedNo);
+
+                // link to Whatsapp message API
+                let whatsappLink = `https://api.whatsapp.com/send?phone=234${modifiedNo.join('')}`;
+
+                // students whose dob corresponds with today's date
                 let todayClass = ( student.dob.day === new Date().getDate() ) ? 'today' : '';
+
                 return (
                     <tr key={index} className={todayClass}>
                         <th scope="row">{index + 1}</th>
@@ -110,6 +124,14 @@ class DashboardIndex extends Component{
                         <td>{student.firstName}</td>
                         <td>{theBirthday}</td>
                         <td>{student.phoneNo}</td>
+                        <td>
+                            <a href={whatsappLink} target="_blank">
+                                <button className="btn btn-success" style={{ marginBottom: '0px', width: '60%' }}>
+                                    <i className="fa fa-whatsapp" style={{ marginRight: '5px'}}></i>
+                                    Message
+                                </button>
+                            </a>
+                        </td>
                     </tr>
                 );
             } );
@@ -182,6 +204,7 @@ class DashboardIndex extends Component{
                                                 <th scope="col">First Name</th>
                                                 <th scope="col">Date of Birth</th>
                                                 <th scope="col">Phone Number</th>
+                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
