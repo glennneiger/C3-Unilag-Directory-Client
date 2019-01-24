@@ -10,16 +10,17 @@ const errorHandler = (WrappedComponent) => {
            error: null
         };
 
-        componentWillMount(){
+        componentDidMount(){
+            console.log('error props', this.props);
             // clear any previous error for every new request
             axios.interceptors.request.use(request => {
-                this.setState({ error: null });
+                //this.setState({ error: null });
                 return request;
             });
 
             // intercept the response for the error
             axios.interceptors.response.use(response => response, error => {
-                console.log('the error o', error.message);
+
                 this.setState({ error: error.message });
             });
         }

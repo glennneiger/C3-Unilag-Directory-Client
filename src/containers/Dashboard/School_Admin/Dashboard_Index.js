@@ -15,17 +15,29 @@ class DashboardIndex extends Component{
         chartData: {},
         studentDetails: [],
         loading: true,
-        birthdaysToday: 0
-    };
+        birthdaysToday: 0,
+        parentMounted: this.props.parentMounted
+    } ;
+
+    componentWillUpdate(){
+        console.log('component updated');
+    }
+
+    componentWillMount(){
+        console.log('child component will mount', this.state.parentMounted);
+    }
+
+    componentWillReceiveProps(nextProps){
+        console.log('child component will receive props', nextProps.parentMounted);
+        if (this.props.parentMounted !== nextProps.parentMounted){
+            this.setState({ parentMounted: nextProps.parentMounted });
+        }
+    }
 
     getMonth = (monthNum) => {
         let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         return months[monthNum - 1];
     };
-
-
-
-
 
     configureChartData = (rawData) => {
         // TODO: handle default case i.e when there is no data
@@ -60,36 +72,49 @@ class DashboardIndex extends Component{
          return returnData(dateLabelsArray, datasetObjects)
     };
 
+
+
+
     async componentDidMount(){
-       // make request
-       let getBirthdays = axios.get(`/admin/birthdays?month=${new Date().getMonth() + 1}`);          // get all the birthdays for the current month
-       let getBusStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);           // get all the bus stats for the current month
-       let getStudentDetails = axios.get('/admin/students');     // get the details for all the students
+        console.log('child component did mount');
+        if (this.state.parentMounted){
+            console.log('hi hi', this.state.parentMounted);
+            // make request
+            let getBirthdays = axios.get(`/admin/birthdays?month=${new Date().getMonth() + 1}`);          // get all the birthdays for the current month
+            let getBusStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);           // get all the bus stats for the current month
+            let getStudentDetails = axios.get('/admin/students');     // get the details for all the students
 
-       const [ monthBirthdays, busDetails, studentDetails ] = await Promise.all([getBirthdays, getBusStats, getStudentDetails]);
-        console.log(monthBirthdays, busDetails, studentDetails);
-        let theBirthdays = monthBirthdays.data.birthdays;
-        let birthdaysToday = 0, theChartData = this.configureChartData(busDetails.data.monthData);
+            const [ monthBirthdays, busDetails, studentDetails ] = await Promise.all([getBirthdays, getBusStats, getStudentDetails]);
+            console.log(monthBirthdays, busDetails, studentDetails);
+            let theBirthdays = monthBirthdays.data.birthdays;
+            let birthdaysToday = 0, theChartData = this.configureChartData(busDetails.data.monthData);
 
-        console.log('chart data', theChartData);
+            console.log('chart data', theChartData);
 
-        theBirthdays.forEach(birthday => {
-            if (birthday.dob.day === new Date().getDate()){
-                birthdaysToday += 1;
-            }
-        });
+            theBirthdays.forEach(birthday => {
+                if (birthday.dob.day === new Date().getDate()){
+                    birthdaysToday += 1;
+                }
+            });
 
 
-       this.setState({
-           birthdaysArray: [...monthBirthdays.data.birthdays],
-           chartData: theChartData,
-           studentDetails: [...studentDetails.data.students],
-           loading: false,
-           birthdaysToday
-       });
+            this.setState({
+                birthdaysArray: [...monthBirthdays.data.birthdays],
+                chartData: theChartData,
+                studentDetails: [...studentDetails.data.students],
+                loading: false,
+                birthdaysToday
+            });
+        }
+
     }  //   end componentDidMount
 
+    componentWillUnmount(){
+        console.log('child component unmounted', this.state.parentMounted);
+    }
+
     render () {
+        console.log('render in child component');
 
         // if there are no birthdays in the current month
         let tableBody = (
@@ -103,7 +128,6 @@ class DashboardIndex extends Component{
                 let theMonth = this.getMonth(student.dob.month);
                 let theBirthday = `${student.dob.day} ${theMonth}`;
                 let thePhoneNo = student.phoneNo;
-                // let modifiedNo = thePhoneNo;
                 let modifiedNo = thePhoneNo.split('');
                 // remove the first Number from the phone number to allow room for 234
                 modifiedNo.splice(0, 1);
@@ -248,4 +272,4 @@ const mapDispatchTProps = dispatch => {
   }
 };
 
-export default connect(null, mapDispatchTProps)( errorHandler(DashboardIndex) );
+export default connect(null, mapDispatchTProps)( DashboardIndex );

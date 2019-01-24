@@ -29,7 +29,7 @@ class AdminLogin extends Component{
    submitForm = (event) => {
       event.preventDefault();
       // scroll to the top position
-       window.scroll(0, 0);
+       window.scrollTo(0, 0);
 
       let theSpinner = <Spinner />;
       let targetName = event.target.name;
@@ -40,7 +40,7 @@ class AdminLogin extends Component{
               if (result.data.authorized){
                   // store token and user details in the local storage
                   window.localStorage.setItem('token', result.data.token);
-                  window.localStorage.setItem('user', result.data.user);
+                  window.localStorage.setItem('user', JSON.stringify(result.data.user) );
 
                   // save user details in the redux store
                   if (targetName === 'school'){
