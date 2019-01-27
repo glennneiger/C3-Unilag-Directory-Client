@@ -178,4 +178,6 @@ const formValidator = (WrappedComponent, appState) => {
     }
 };
 
+formValidator.displayName = 'formValidator';
+
 export default formValidator;

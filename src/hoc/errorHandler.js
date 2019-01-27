@@ -5,13 +5,13 @@ import DismissModal from '../components/UI/DismissModal';
 import axios from '../axios-instance';
 
 const errorHandler = (WrappedComponent) => {
-    return class extends Component {
+    return class errorHandler extends Component {
         state = {
            error: null
         };
 
         componentDidMount(){
-            console.log('error props', this.props);
+            console.log('error props in error handler', this.props);
             // clear any previous error for every new request
             axios.interceptors.request.use(request => {
                 //this.setState({ error: null });
@@ -24,6 +24,12 @@ const errorHandler = (WrappedComponent) => {
                 this.setState({ error: error.message });
             });
         }
+
+        componentDidUpdate(){
+            console.log('error handler component updated');
+        }
+
+
         
        render() {
             // check if error is present;
@@ -41,5 +47,7 @@ const errorHandler = (WrappedComponent) => {
        }
     }
 };
+
+errorHandler.displayName = 'errorHandler';
 
 export default errorHandler;

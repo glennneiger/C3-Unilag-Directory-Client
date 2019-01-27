@@ -19,20 +19,24 @@ class DashboardIndex extends Component{
         parentMounted: this.props.parentMounted
     } ;
 
-    componentWillUpdate(){
-        console.log('component updated');
+    componentWillUpdate() {
+        console.log('child component will update');
+    }
+
+    componentDidUpdate(){
+        console.log('child component did update');
     }
 
     componentWillMount(){
-        console.log('child component will mount', this.state.parentMounted);
+        console.log('child component will mount', this.props.parentMounted);
     }
 
-    componentWillReceiveProps(nextProps){
-        console.log('child component will receive props', nextProps.parentMounted);
-        if (this.props.parentMounted !== nextProps.parentMounted){
-            this.setState({ parentMounted: nextProps.parentMounted });
-        }
-    }
+    // componentWillReceiveProps(nextProps){
+    //     console.log('child component will receive props', nextProps.parentMounted);
+    //     if (this.props.parentMounted !== nextProps.parentMounted){
+    //         this.setState({ parentMounted: nextProps.parentMounted });
+    //     }
+    // }
 
     getMonth = (monthNum) => {
         let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -41,6 +45,7 @@ class DashboardIndex extends Component{
 
     configureChartData = (rawData) => {
         // TODO: handle default case i.e when there is no data
+        // TODO: wrap this class in an error boundary
 
         let firstServiceArray = [], secondServiceArray = [], fourthServiceArray = [];
         let serviceLabelArray = ['First Service Total', 'Second Service Total', 'Fourth Service Total'], dateLabelsArray = [];
@@ -77,40 +82,44 @@ class DashboardIndex extends Component{
 
     async componentDidMount(){
         console.log('child component did mount');
-        if (this.state.parentMounted){
-            console.log('hi hi', this.state.parentMounted);
-            // make request
-            let getBirthdays = axios.get(`/admin/birthdays?month=${new Date().getMonth() + 1}`);          // get all the birthdays for the current month
-            let getBusStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);           // get all the bus stats for the current month
-            let getStudentDetails = axios.get('/admin/students');     // get the details for all the students
+        try{
+            if (this.props.parentMounted){
+                console.log('hi hi', this.props.parentMounted);
+                // make request
+                let getBirthdays = axios.get(`/admin/birthdays?month=${new Date().getMonth() + 1}`);          // get all the birthdays for the current month
+                let getBusStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);           // get all the bus stats for the current month
+                let getStudentDetails = axios.get('/admin/students');     // get the details for all the students
 
-            const [ monthBirthdays, busDetails, studentDetails ] = await Promise.all([getBirthdays, getBusStats, getStudentDetails]);
-            console.log(monthBirthdays, busDetails, studentDetails);
-            let theBirthdays = monthBirthdays.data.birthdays;
-            let birthdaysToday = 0, theChartData = this.configureChartData(busDetails.data.monthData);
+                const [ monthBirthdays, busDetails, studentDetails ] = await Promise.all([getBirthdays, getBusStats, getStudentDetails]);
+                console.log('the statistics',monthBirthdays, busDetails, studentDetails);
+                let theBirthdays = monthBirthdays.data.birthdays;
+                let birthdaysToday = 0, theChartData = this.configureChartData(busDetails.data.monthData);
 
-            console.log('chart data', theChartData);
+                console.log('chart data', theChartData);
 
-            theBirthdays.forEach(birthday => {
-                if (birthday.dob.day === new Date().getDate()){
-                    birthdaysToday += 1;
-                }
-            });
+                theBirthdays.forEach(birthday => {
+                    if (birthday.dob.day === new Date().getDate()){
+                        birthdaysToday += 1;
+                    }
+                });
 
 
-            this.setState({
-                birthdaysArray: [...monthBirthdays.data.birthdays],
-                chartData: theChartData,
-                studentDetails: [...studentDetails.data.students],
-                loading: false,
-                birthdaysToday
-            });
+                this.setState({
+                    birthdaysArray: [...monthBirthdays.data.birthdays],
+                    chartData: theChartData,
+                    studentDetails: [...studentDetails.data.students],
+                    loading: false,
+                    birthdaysToday
+                });
+            }
+        } catch(error){
+            console.log('the error', error);
         }
 
     }  //   end componentDidMount
 
     componentWillUnmount(){
-        console.log('child component unmounted', this.state.parentMounted);
+        console.log('child component unmounted', this.props.parentMounted);
     }
 
     render () {
@@ -266,10 +275,10 @@ class DashboardIndex extends Component{
     }
 }
 
-const mapDispatchTProps = dispatch => {
-  return {
-      
-  }
-};
+// const mapDispatchTProps = dispatch => {
+//   return {
+//
+//   }
+// };
 
-export default connect(null, mapDispatchTProps)( DashboardIndex );
+export default errorHandler(DashboardIndex) ;

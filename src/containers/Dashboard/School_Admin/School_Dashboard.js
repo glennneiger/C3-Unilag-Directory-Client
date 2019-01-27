@@ -2,16 +2,67 @@ import React, { Component } from 'react';
 import { Link, Switch, Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+
 import Sidebar from "../../../components/UI/Sidebar";
 import DashboardIndex from "./Dashboard_Index";
 import axios from "../../../axios-instance";
 import Add_Bus_Statistics from "./Add_Bus_Stats";
 import errorHandler from '../../../hoc/errorHandler';
+import ErrorBoundary from '../../../util/ErrorBoundary';
 
 class School_Dashboard extends Component{
-    state = {
-        mounted: true
-    };
+    constructor(props){
+        super(props);
+
+        let theToken = window.localStorage.getItem('token');
+        let user = JSON.parse( window.localStorage.getItem('user') );
+        let expireTime = user !== null ? user.tokenExpire : 0 , currentTime = new Date().getTime();
+
+        //initialize state
+        this.state = {
+            mounted: !(currentTime > expireTime)
+        };
+
+        // check for token time validity
+        if ( currentTime > expireTime){
+
+            // window.localStorage.removeItem('token');
+            // window.localStorage.removeItem('user');
+            this.props.history.replace('/login');
+            
+        }
+
+        else{
+
+            if (theToken !== null){
+                // set token in header
+                this.setTokenInHeader(theToken);
+
+            }
+            else{
+                // redirect to login page
+                this.props.history.replace('/login');
+            }
+
+        } // end main else statements
+
+
+    }
+
+    componentWillUpdate() {
+        console.log('parent component will update');
+    }
+
+    componentDidUpdate(){
+        let user = JSON.parse( window.localStorage.getItem('user') );
+        let expireTime = user !== null ? user.tokenExpire : 0 , currentTime = new Date().getTime();
+
+        if (currentTime > expireTime){
+            this.props.history.replace('/login');
+        }
+
+        console.log('parent component did update');
+    }
 
     setTokenInHeader (token) {
 
@@ -47,37 +98,7 @@ class School_Dashboard extends Component{
     };
 
      async componentWillMount(){
-        let theToken = window.localStorage.getItem('token');
-        console.log('the token', theToken, window.localStorage.getItem('user'));
 
-        let user = JSON.parse( window.localStorage.getItem('user') );
-        let expireTime = user.tokenExpire, currentTime = new Date().getTime();
-
-         // check for token time validity
-         if (currentTime > expireTime){
-            // token has expired, therefore redirect to login page
-            await this.setState({ mounted: false });
-            console.log('mounted state', this.state.mounted);
-            this.props.history.replace('/login');
-            // return;
-        }
-
-        else{
-
-            console.log('parent component will mount');
-
-            if (theToken !== null){
-                // set token in header
-                this.setTokenInHeader(theToken);
-                console.log('heyyy');
-
-            }
-            else{
-                // redirect to login page
-                this.props.history.replace('/login');
-            }
-
-        } // end main else statements
     } // end componentWillMount
 
 
@@ -110,11 +131,13 @@ class School_Dashboard extends Component{
                           </p>
                       </header>
 
-                      <Switch>
-                          <Route path="/school_admin/dashboard/bus-statistics" component={Add_Bus_Statistics}/>
-                          <Route path="/school_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted}/>} exact/>
+                      <ErrorBoundary>
+                          <Switch>
+                              <Route path="/school_admin/dashboard/bus-statistics" component={Add_Bus_Statistics}/>
+                              <Route path="/school_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted}/>} exact/>
 
-                      </Switch>
+                          </Switch>
+                      </ErrorBoundary>
 
                   </div>
 
@@ -130,4 +153,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)( School_Dashboard );
+export default connect(mapStateToProps)( errorHandler(School_Dashboard) );
