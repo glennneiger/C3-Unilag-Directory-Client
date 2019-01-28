@@ -6,8 +6,12 @@ import Input from '../../components/UI/Input';
 import {configureDropdown, email, passwordConfirm, password, plainTextInput} from "../../util/formConfig";
 
 class School_Admin_Register extends Component{
-    
 
+    constructor(props){
+        super(props);
+
+        window.scrollTo(0, 0);
+    }
 
     render() {
         let formElementsArray = [];

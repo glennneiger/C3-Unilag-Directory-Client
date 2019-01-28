@@ -49,9 +49,9 @@ class School_Dashboard extends Component{
 
     }
 
-    componentWillUpdate() {
-        console.log('parent component will update');
-    }
+    // componentWillUpdate() {
+    //     console.log('parent component will update');
+    // }
 
     componentDidUpdate(){
         let user = JSON.parse( window.localStorage.getItem('user') );
@@ -96,10 +96,6 @@ class School_Dashboard extends Component{
 
         return sidebarMap;
     };
-
-     async componentWillMount(){
-
-    } // end componentWillMount
 
 
     componentDidMount(){

@@ -19,17 +19,17 @@ class DashboardIndex extends Component{
         parentMounted: this.props.parentMounted
     } ;
 
-    componentWillUpdate() {
-        console.log('child component will update');
-    }
+    // componentWillUpdate() {
+    //     console.log('child component will update');
+    // }
 
     componentDidUpdate(){
         console.log('child component did update');
     }
 
-    componentWillMount(){
-        console.log('child component will mount', this.props.parentMounted);
-    }
+    // componentWillMount(){
+    //     console.log('child component will mount', this.props.parentMounted);
+    // }
 
     // componentWillReceiveProps(nextProps){
     //     console.log('child component will receive props', nextProps.parentMounted);
@@ -75,7 +75,7 @@ class DashboardIndex extends Component{
          }
 
          return returnData(dateLabelsArray, datasetObjects)
-    };
+    }; // end configureChartData
 
 
 

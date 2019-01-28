@@ -7,6 +7,12 @@ import formValidator from '../../hoc/formValidator';
 
 class Church_Admin_Register extends Component{
 
+    constructor(props){
+        super(props);
+
+        window.scrollTo(0, 0);
+    }
+
     render() {
         let formElementsArray = [];
         // create form elements array from state
