@@ -82,9 +82,6 @@ input[type=submit], .register button {
 
 .sidebar header h2{
     font-family: 'Roboto Slab', sans-serif;
-    padding: 10px 20px;
-    background: #37b7cb;
-    min-height: 68px;
     width: 100%;
     font-size: 28px;
     /*text-transform: uppercase;*/
@@ -94,6 +91,10 @@ input[type=submit], .register button {
 .sidebar header{
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 0px 20px;
+    min-height: 60px;
+    background: #37b7cb;
 }
 
 .sidebar ul{
@@ -113,13 +114,20 @@ input[type=submit], .register button {
 .dashboard_body header{
     position: fixed;
     width: 100%;
-    padding: 10px 20px;
+    padding: 0px 20px;
     z-index: 5;
     top: 0;
     display: flex;
     background: #fff;
     box-shadow: 0px 1px 3px rgba(198, 198, 198, 0.6);
     justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+}
+
+.dashboard_body header p{
+    margin-bottom: 0;
+    width: 40%;
 }
 
 .dashboard header h1{
@@ -130,6 +138,7 @@ input[type=submit], .register button {
     font-weight: normal !important;
     position: relative;
     top: -5px;
+    margin-bottom: 0;
 }
 
 .dash_header{
@@ -150,13 +159,15 @@ input[type=submit], .register button {
     color: #333;
 }
 
-/*.dashboard_body p{*/
+/*.header-wrapper p{*/
     /*padding-right: 20px;*/
     /*font-size: 18px;*/
     /*width: 48%;*/
     /*position: relative;*/
     /*top: 12px;*/
 /*}*/
+
+
 
 .dashboard_body span{
     font-weight: 600;
@@ -179,6 +190,7 @@ input[type=submit], .register button {
     justify-content: space-between;
     margin-bottom: 30px;
     border-radius: 5px;
+    max-height: 142px;
 }
 
 

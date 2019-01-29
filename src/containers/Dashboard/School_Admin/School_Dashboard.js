@@ -20,7 +20,8 @@ class School_Dashboard extends Component{
 
         //initialize state
         this.state = {
-            mounted: !(currentTime > expireTime)
+            mounted: !(currentTime > expireTime),
+            user: user
         };
 
         // check for token time validity
@@ -120,10 +121,10 @@ class School_Dashboard extends Component{
                   <div>
                       <header>
                           <h1>C3 Unilag <span className="dash_header">Directory</span></h1>
-                          <p>Welcome,  Mekusa
+                          <p>Welcome, Olorondu Chukwuemeka
                               {/*<span>*/}
-                                         {/*{" " + this.props.student.biodata.surname} {this.props.student.biodata.firstname}*/}
-                                    {/*</span>*/}
+                              {/*{" " + this.props.student.biodata.surname} {this.props.student.biodata.firstname}*/}
+                              {/*</span>*/}
                           </p>
                       </header>
 

@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
-import {returnData, returnDataSet} from "../../../util/chartConfig";
+import { returnData, returnDataSet } from "../../../util/chartConfig";
+import CountUp from 'react-countup';
+
+import axios from '../../../axios-instance';
+import Spinner from '../../../components/UI/Spinner';
 
 class Dashboard_Index extends Component{
-    state = {};
+    constructor(props){
+        super(props);
+
+        // initialize state
+        this.state = {
+            totalStudents: null,
+            finalYearStudents: null,
+            monthChartData: [],
+            yearChartData: [],
+            cumulativeChartData: []
+        };
+
+        // scroll to the top of screen
+        window.scrollTo(0, 0);
+    }  // end constructor
 
     getMonth = (monthNum) => {
         let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -43,10 +61,54 @@ class Dashboard_Index extends Component{
         return returnData(dateLabelsArray, datasetObjects)
     }; // end configureChartData
 
+    fetchDashboardData = () => {
+
+    };
+
 
     render() {
+        let mainBody = <Spinner />;
+
+        if (this.state.chartData.length > 0){
+           // display proper UI
+            mainBody = (
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-6 col-sm-12">
+                            <div className="box">
+                                <div className="box-icon">
+                                    <span>
+                                       <i className="glyphicon glyphicon-user"></i>
+                                   </span>
+                                </div>
+                                <div className="box-body">
+                                    <CountUp className="counter" start={0} end={this.state.totalStudents} duration={1.5}/>
+                                    <p className="number-title">Total Students</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-6 col-sm-12">
+                            <div className="box">
+                                <div className="box-icon">
+                                    <span>
+                                       <i className="glyphicon glyphicon-education"></i>
+                                   </span>
+                                </div>
+                                <div className="box-body">
+                                    <CountUp className="counter" start={0} end={this.state.finalYearStudents} duration={1.5}/>
+                                    <p className="number-title">Final Year Students</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
          return (
-             <h1>Hello</h1>
+             <section className="dashindex">
+                 {mainBody}
+             </section>
          );
      }
 }

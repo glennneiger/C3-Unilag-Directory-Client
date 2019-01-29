@@ -13,7 +13,7 @@ class DashboardIndex extends Component{
     state = {
         birthdaysArray: [],
         chartData: {},
-        studentDetails: [],
+        totalStudents: null,
         loading: true,
         birthdaysToday: 0,
         parentMounted: this.props.parentMounted
@@ -107,7 +107,8 @@ class DashboardIndex extends Component{
                 this.setState({
                     birthdaysArray: [...monthBirthdays.data.birthdays],
                     chartData: theChartData,
-                    studentDetails: [...studentDetails.data.students],
+                    totalStudents: studentDetails.data.totalStudents,
+                    finalYearStudents: studentDetails.data.finalYearStudents,
                     loading: false,
                     birthdaysToday
                 });
@@ -180,7 +181,7 @@ class DashboardIndex extends Component{
                 <div className="container">
                     {/*start row */}
                     <div className="row">
-                        <div className="col-lg-4 col-sm-12">
+                        <div className="col-lg-3 col-sm-12">
                             <div className="box">
                                 <div className="box-icon" style={{ background: 'rgb(255,99,132)'}}>
                                    <span>
@@ -188,12 +189,25 @@ class DashboardIndex extends Component{
                                    </span>
                                 </div>
                                 <div className="box-body">
-                                    <CountUp className="counter" start={0} end={this.state.studentDetails.length} duration={1.5}/>
+                                    <CountUp className="counter" start={0} end={this.state.totalStudents} duration={1.5}/>
                                     <p className="number-title">Total Students</p>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-sm-12">
+                        <div className="col-lg-3 col-sm-12">
+                            <div className="box">
+                                <div className="box-icon" style={{ background: 'rgb(255,99,132)'}}>
+                                   <span>
+                                       <i className="glyphicon glyphicon-education"></i>
+                                   </span>
+                                </div>
+                                <div className="box-body">
+                                    <CountUp className="counter" start={0} end={this.state.finalYearStudents} duration={1.5}/>
+                                    <p className="number-title">Final Year Students</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-lg-3 col-sm-12">
                             <div className="box">
                                 <div className="box-icon" style={{ background: 'rgb(75,192,192)'}}>
                                    <span>
@@ -206,7 +220,7 @@ class DashboardIndex extends Component{
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-sm-12">
+                        <div className="col-lg-3 col-sm-12">
                             <div className="box">
                                 <div className="box-icon" style={{ background: 'rgb(54,162,235)'}}>
                                    <span>
