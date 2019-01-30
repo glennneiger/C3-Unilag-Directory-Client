@@ -4,6 +4,7 @@ import CountUp from 'react-countup';
 
 import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
+import { Bar } from "react-chartjs-2";
 
 class Dashboard_Index extends Component{
     constructor(props){
@@ -13,9 +14,7 @@ class Dashboard_Index extends Component{
         this.state = {
             totalStudents: null,
             finalYearStudents: null,
-            monthChartData: [],
-            yearChartData: [],
-            cumulativeChartData: []
+            monthChartData: {}
         };
 
         // scroll to the top of screen
@@ -30,6 +29,7 @@ class Dashboard_Index extends Component{
     configureChartData = (rawData) => {
         // TODO: handle default case i.e when there is no data
         // TODO: wrap this class in an error boundary
+        // TODO: use the getSnapshotBeforeUpdate() lifecycle method to handle scroll position
 
         let firstServiceArray = [], secondServiceArray = [], fourthServiceArray = [];
         let serviceLabelArray = ['First Service Total', 'Second Service Total', 'Fourth Service Total'], dateLabelsArray = [];
@@ -61,22 +61,39 @@ class Dashboard_Index extends Component{
         return returnData(dateLabelsArray, datasetObjects)
     }; // end configureChartData
 
-    fetchDashboardData = () => {
+    async componentDidMount() {
+        try{
+            const getMonthStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);
+            const getStudentDetails = axios.get('/admin/students');
 
+            const [ monthStats, studentDetails ] = await Promise.all([getMonthStats, getStudentDetails]);
+            const theChartData = this.configureChartData(monthStats.data.monthData);
+
+            this.setState({
+                totalStudents: studentDetails.data.totalStudents,
+                finalYearStudents: studentDetails.data.finalYearStudents,
+                monthChartData: theChartData
+            });
+
+            window.scrollTo(0, 0);
+
+        }  catch (error) {
+            console.log('error');
+        }
     };
 
 
     render() {
         let mainBody = <Spinner />;
 
-        if (this.state.chartData.length > 0){
+        if (this.state.totalStudents !== null){
            // display proper UI
             mainBody = (
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6 col-sm-12">
                             <div className="box">
-                                <div className="box-icon">
+                                <div className="box-icon" style={{ background: 'rgb(255,99,132)'}}>
                                     <span>
                                        <i className="glyphicon glyphicon-user"></i>
                                    </span>
@@ -89,7 +106,7 @@ class Dashboard_Index extends Component{
                         </div>
                         <div className="col-md-6 col-sm-12">
                             <div className="box">
-                                <div className="box-icon">
+                                <div className="box-icon" style={{ background: 'rgb(54,162,235)'}}>
                                     <span>
                                        <i className="glyphicon glyphicon-education"></i>
                                    </span>
@@ -100,7 +117,22 @@ class Dashboard_Index extends Component{
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> {/* end row*/}
+
+                    {/*Start row*/}
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="big-box">
+                                <div className="big-box-header form-header">
+                                    <h3>Bus Statistics for {this.getMonth( new Date().getMonth() + 1)} {new Date().getFullYear()}</h3>
+                                </div>
+                                <div className="big-box-body" style={{ paddingBottom: '15px', paddingTop: '10px' }}>
+                                    <Bar data={this.state.monthChartData} />
+                                </div>
+                            </div>
+                        </div>
+                    </div> {/* End row */}
+                    
                 </div>
             );
         }

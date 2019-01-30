@@ -49,9 +49,7 @@ class Church_Dashboard extends Component{
 
     }
 
-    componentWillUpdate() {
-        console.log('parent component will update');
-    }
+    
 
     componentDidUpdate(){
         let user = JSON.parse( window.localStorage.getItem('user') );
