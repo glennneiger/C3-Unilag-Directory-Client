@@ -12,6 +12,9 @@ export let returnDataSet = (theLabel, dataArray, backgroundColorArray, borderCol
 export const returnData = (labelsArray, datasetsArray) =>{
     return {
         labels: labelsArray,   // these are the main labels for the x-axis
-        datasets: datasetsArray
+        datasets: datasetsArray  // these are the different datasets,
+                                // each a representation of the returnDataSet object above
     }
 };
+
+

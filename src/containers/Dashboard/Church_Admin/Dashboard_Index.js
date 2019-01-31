@@ -26,13 +26,16 @@ class Dashboard_Index extends Component{
         return months[monthNum - 1];
     };
 
+   // bar chart configuration
     configureChartData = (rawData) => {
         // TODO: handle default case i.e when there is no data
         // TODO: wrap this class in an error boundary
         // TODO: use the getSnapshotBeforeUpdate() lifecycle method to handle scroll position
 
         let firstServiceArray = [], secondServiceArray = [], fourthServiceArray = [];
+        // this is the label signifying each of the bar in the bar chart
         let serviceLabelArray = ['First Service Total', 'Second Service Total', 'Fourth Service Total'], dateLabelsArray = [];
+
         let colorArray = ['rgba(255,99,132,0.6)', 'rgba(54,162,235,0.6)', 'rgba(75,192,192,0.6)'];
 
         // fill service arrays for each Sunday
@@ -48,12 +51,13 @@ class Dashboard_Index extends Component{
         });
 
         // the service label is the label for each data set
-        let serviceArray = [firstServiceArray, secondServiceArray, fourthServiceArray];
+        // eg. firstServiceArray = [10,20,30,40,50]
+        let serviceDataArray = [firstServiceArray, secondServiceArray, fourthServiceArray];
         let datasetObjects = [];
 
         for (let i = 0; i < 3; i++){
             // create data set objects for first, second and fourth services
-            let theDataObject = returnDataSet(serviceLabelArray[i], serviceArray[i], colorArray[i], colorArray[i], 1);
+            let theDataObject = returnDataSet(serviceLabelArray[i], serviceDataArray[i], colorArray[i], colorArray[i], 1);
             datasetObjects.push(theDataObject);
 
         }
