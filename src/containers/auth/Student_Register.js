@@ -93,4 +93,4 @@ let theFormState = {
     gradYear: configureDropdown('Expected Year of Graduation', theValues)
 };
 
-export default formValidator(Student_Register, theFormState);
+export default formValidator(Student_Register, theFormState, null, null);

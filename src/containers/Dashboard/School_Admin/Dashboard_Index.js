@@ -84,7 +84,7 @@ class DashboardIndex extends Component{
         console.log('child component did mount');
         try{
             if (this.props.parentMounted){
-                console.log('hi hi', this.props.parentMounted);
+                console.log('church dashboard index', this.props.parentMounted);
                 // make request
                 let getBirthdays = axios.get(`/admin/birthdays?month=${new Date().getMonth() + 1}`);          // get all the birthdays for the current month
                 let getBusStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);           // get all the bus stats for the current month

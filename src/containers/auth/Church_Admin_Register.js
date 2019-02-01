@@ -72,4 +72,4 @@ let theFormState = {
     passwordConfirm: passwordConfirm,
 };
 
-export default formValidator(Church_Admin_Register, theFormState);
+export default formValidator(Church_Admin_Register, theFormState, 'admin', 'church');

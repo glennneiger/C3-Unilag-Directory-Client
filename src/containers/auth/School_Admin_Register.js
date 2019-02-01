@@ -67,10 +67,16 @@ let theValues = [
     { value: '', displayValue: 'Select a Year' }
 ];
 let serviceOptions = [
-    { value: '', displayValue: 'Select a Service'},
-    { value: 'first', displayValue: 'First Service'},
-    { value: 'second', displayValue: 'Second Service'},
-    { value: 'fourth', displayValue: 'Fourth Service'}
+    { value: '', displayValue: 'Select a Service' },
+    { value: 'first', displayValue: 'First Service' },
+    { value: 'second', displayValue: 'Second Service' },
+    { value: 'fourth', displayValue: 'Fourth Service' }
+];
+
+let leaderOptions = [
+    { value: '', displayValue: 'Select an option' },
+    { value: true, displayValue: 'Yes' },
+    { value: false, displayValue: 'No' }
 ];
 
 for(let i = 0; i <= 4; i++){
@@ -83,9 +89,10 @@ let theFormState = {
     email: email,
     password: password,
     passwordConfirm: passwordConfirm,
+    leader: configureDropdown('Transport Unit Leader', leaderOptions),
     service: configureDropdown('Service', serviceOptions),
     gradYear: configureDropdown('Expected Year of Graduation', theValues)
 };
 
 
-export default formValidator(School_Admin_Register, theFormState);
+export default formValidator(School_Admin_Register, theFormState, 'admin', 'school');

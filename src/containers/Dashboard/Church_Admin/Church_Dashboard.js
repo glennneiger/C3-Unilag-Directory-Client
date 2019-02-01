@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Link, Switch, Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-
 import Sidebar from "../../../components/UI/Sidebar";
 import DashboardIndex from "./Dashboard_Index";
 import axios from "../../../axios-instance";
 import Add_Bus_Statistics from "./View_Bus_Statistics";
+import Logout from './Logout';
+
 import errorHandler from '../../../hoc/errorHandler';
 import ErrorBoundary from '../../../util/ErrorBoundary';
 
@@ -127,8 +128,8 @@ class Church_Dashboard extends Component{
                         <ErrorBoundary>
                             <Switch>
                                 <Route path="/church_admin/dashboard/view-bus-statistics" component={Add_Bus_Statistics}/>
+                                <Route path="/church_admin/dashboard/logout" component={Logout}/>
                                 <Route path="/church_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted}/>} exact/>
-
                             </Switch>
                         </ErrorBoundary>
 

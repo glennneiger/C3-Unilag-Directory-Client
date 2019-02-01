@@ -3,7 +3,7 @@ import axios from '../axios-instance';
 import SuccessLabel from "../components/UI/SuccessLabel";
 import ErrorLabel from "../components/UI/ErrorLabel";
 
-const formValidator = (WrappedComponent, appState) => {
+const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
     return class extends Component{
 
         state = {
@@ -101,9 +101,9 @@ const formValidator = (WrappedComponent, appState) => {
             }
 
 
+            console.log('the path', this.props);
             // submit the form
             let thePath = this.props.match.url === '/' ? this.props.match.url + 'register_student' : this.props.match.url;
-            console.log('the path', this.props.match.url);
 
             axios.post(thePath, formValues)
                 .then(result => {
@@ -145,7 +145,28 @@ const formValidator = (WrappedComponent, appState) => {
 
                         // set state immutably
                         this.setState({ responseMsg: theMsg, registerForm: registerFormClone, formIsValid: false });
-                        this.props.history.replace(this.props.match.url);
+
+                        // redirection options
+                        if (adminStatus === 'admin'){
+                            // store token and user details in the local storage
+                            window.localStorage.setItem('token', result.data.token);
+                            window.localStorage.setItem('user', JSON.stringify(result.data.user) );
+                            
+                            switch(adminType){
+                                case 'school':
+                                    this.props.history.replace('/school_admin/dashboard');
+                                    break;
+                                case 'church':
+                                    this.props.history.replace('/church_admin/dashboard');
+                                    break;
+                                default:
+                                    this.props.history.replace(this.props.match.url);
+                                    break;
+                            }
+                        }
+                        else{
+                            this.props.history.replace(this.props.match.url);
+                        }
                     } // end registered if statement
                     else{
                         console.log('reg form clone', registerFormClone);
@@ -157,7 +178,7 @@ const formValidator = (WrappedComponent, appState) => {
                     console.log(error.message);
                 });
 
-        };
+        };  // end submit form
 
 
         render() {

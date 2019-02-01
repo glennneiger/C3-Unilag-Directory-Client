@@ -236,6 +236,32 @@ input[type=submit], .register button {
     margin-bottom: 0px !important;
 }
 
+.logout{
+    width: 80%;
+    margin: 20px;
+}
+
+.logout div{
+    margin-top: 30px;
+}
+
+.logout button{
+    padding: 10px 5px;
+    width: 35%;
+    border: none;
+    background-color: tomato;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+}
+
+.logout button:first-child{
+    margin-right: 20px;
+    background: green;
+
+}
+
 
 /******* STUDENT REGISTRATION AND LOGIN ******/
 .register{

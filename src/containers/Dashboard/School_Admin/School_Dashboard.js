@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Link, Switch, Route, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-
 import Sidebar from "../../../components/UI/Sidebar";
 import DashboardIndex from "./Dashboard_Index";
 import axios from "../../../axios-instance";
 import Add_Bus_Statistics from "./Add_Bus_Stats";
+import Logout from './Logout';
+
 import errorHandler from '../../../hoc/errorHandler';
 import ErrorBoundary from '../../../util/ErrorBoundary';
 
@@ -55,7 +56,7 @@ class School_Dashboard extends Component{
     // }
 
     componentDidUpdate(){
-        let user = JSON.parse( window.localStorage.getItem('user') );
+        let user = this.state.user;
         let expireTime = user !== null ? user.tokenExpire : 0 , currentTime = new Date().getTime();
 
         if (currentTime > expireTime){
@@ -95,6 +96,11 @@ class School_Dashboard extends Component{
         sidebarMap.set('View Students', this.setSidebarObject('active', 'glyphicon glyphicon-user'));
         sidebarMap.set('Logout', this.setSidebarObject('active', 'glyphicon glyphicon-log-out'));
 
+        // if user is a leader, assign an additional link
+        if (this.state.user.leader){
+            sidebarMap.set('Assign Leader', this.setSidebarObject('active', 'fa fa-key'));
+        }
+
         return sidebarMap;
     };
 
@@ -131,8 +137,8 @@ class School_Dashboard extends Component{
                       <ErrorBoundary>
                           <Switch>
                               <Route path="/school_admin/dashboard/bus-statistics" component={Add_Bus_Statistics}/>
+                              <Route path="/school_admin/dashboard/logout" component={Logout} />
                               <Route path="/school_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted}/>} exact/>
-
                           </Switch>
                       </ErrorBoundary>
 
