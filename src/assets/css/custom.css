@@ -258,9 +258,10 @@ input[type=submit], .register button {
 
 .logout button:first-child{
     margin-right: 20px;
-    background: green;
+    background: #28a745;
 
 }
+
 
 
 /******* STUDENT REGISTRATION AND LOGIN ******/
@@ -315,6 +316,21 @@ input, button{
 input{
     border: 1px solid #ccc;
 }
+
+/*.login-dropdown{*/
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+/*}*/
+
+/*.login-dropdown label{*/
+    /*display: inline-block;*/
+    /*width: 35%;*/
+/*}*/
+
+.login button, .login i{
+    font-weight: bold;
+}
+
 
 
 

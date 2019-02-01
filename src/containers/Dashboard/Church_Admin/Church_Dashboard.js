@@ -91,6 +91,8 @@ class Church_Dashboard extends Component{
         sidebarMap.set('Dashboard', this.setSidebarObject('active', 'glyphicon glyphicon-dashboard'));
         sidebarMap.set('View Bus Statistics', this.setSidebarObject('active', 'fa fa-line-chart'));
         sidebarMap.set('Logout', this.setSidebarObject('active', 'glyphicon glyphicon-log-out'));
+        sidebarMap.set('Delete Account', this.setSidebarObject('active', 'glyphicon glyphicon-trash'));
+
 
         return sidebarMap;
     };

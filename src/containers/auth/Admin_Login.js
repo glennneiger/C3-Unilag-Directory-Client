@@ -14,6 +14,7 @@ class AdminLogin extends Component{
           email: '',
           password: ''
       },
+       admin: 'school',
       loading: false,
        loginMessage: ''
    };
@@ -26,16 +27,19 @@ class AdminLogin extends Component{
        this.setState({ loginForm: formClone });
    };
 
+   handleDropdowwnChange = (event) => {
+       this.setState({ admin: event.target.value });
+   };
+
    submitForm = (event) => {
       event.preventDefault();
       // scroll to the top position
        window.scrollTo(0, 0);
 
       let theSpinner = <Spinner />;
-      let targetName = event.target.name;
       this.setState({ loading: true, loginMessage: theSpinner });
 
-       axios.post(`/admin/login?admin=${targetName}`, this.state.loginForm)
+       axios.post(`/admin/login?admin=${this.state.admin}`, this.state.loginForm)
            .then(result => {
               if (result.data.authorized){
                   // store token and user details in the local storage
@@ -43,16 +47,10 @@ class AdminLogin extends Component{
                   window.localStorage.setItem('user', JSON.stringify(result.data.user) );
 
                   // save user details in the redux store
-                  if (targetName === 'school'){
-                      this.props.loadSchoolAdmin(result.data.user);
-                  }
 
-                  else{
-                      this.props.loadChurchAdmin(result.data.user);
-                  }
 
                   // redirect to the appropriate dashboard
-                  this.props.history.replace(`/${targetName}_admin/dashboard`);
+                  this.props.history.replace(`/${this.state.admin}_admin/dashboard`);
               }
               else{
                   let errorMsg = <ErrorLabel message={result.data.message}/>;
@@ -73,7 +71,7 @@ class AdminLogin extends Component{
        let tempClass = this.state.loginMessage !== '' ? 'register registerMsg' : 'register';
 
        return (
-           <section>
+           <section className="login">
                <Header />
                {this.state.loginMessage}
                <div className={tempClass}>
@@ -83,6 +81,14 @@ class AdminLogin extends Component{
 
                    {/*{errorMessage}*/}
                    <form>
+                       <div className="login-dropdown">
+                           <label>Login As: </label>
+                           <select className="custom-select" value={this.state.admin} onChange={this.handleDropdowwnChange} required>
+                               <option value="school">School Admin</option>
+                               <option value="church">Church Admin</option>
+                           </select>
+                       </div>
+                       
                        <label>Email</label>
                        <input type="text" name="email" onChange={this.handleChange} required/>
 
@@ -91,15 +97,11 @@ class AdminLogin extends Component{
 
                        {/*Button Area*/}
 
-                       <button type="submit" name="school"  onClick={this.submitForm} disabled={this.state.loading}>
-                           Login as School Admin
+                       <button type="submit"  onClick={this.submitForm} disabled={this.state.loading}>
+                           <span style={{ marginRight: '10px' }}><i className="glyphicon glyphicon-send"></i></span>
+                           Login 
                        </button>
-                       <div className="divider-line">
-                           <span>OR</span>
-                       </div>
-                       <button type="submit" name="church"  onClick={this.submitForm} disabled={this.state.loading}>
-                           Login as Church Admin
-                       </button>
+
                    </form>
                    
                </div>

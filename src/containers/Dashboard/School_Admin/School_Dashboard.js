@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 
 import Sidebar from "../../../components/UI/Sidebar";
 import DashboardIndex from "./Dashboard_Index";
-import axios from "../../../axios-instance";
 import Add_Bus_Statistics from "./Add_Bus_Stats";
+import Assign_leader from './Assign_Leader';
 import Logout from './Logout';
 
+import axios from "../../../axios-instance";
 import errorHandler from '../../../hoc/errorHandler';
 import ErrorBoundary from '../../../util/ErrorBoundary';
 
@@ -92,14 +93,17 @@ class School_Dashboard extends Component{
 
         // configure elements
         sidebarMap.set('Dashboard', this.setSidebarObject('active', 'glyphicon glyphicon-dashboard'));
-        sidebarMap.set('Bus Statistics', this.setSidebarObject('active', 'glyphicon glyphicon-stats'));
+        sidebarMap.set('Add Bus Statistics', this.setSidebarObject('active', 'glyphicon glyphicon-stats'));
         sidebarMap.set('View Students', this.setSidebarObject('active', 'glyphicon glyphicon-user'));
-        sidebarMap.set('Logout', this.setSidebarObject('active', 'glyphicon glyphicon-log-out'));
 
-        // if user is a leader, assign an additional link
-        if (this.state.user.leader){
+        // if user is a leader and user exists, assign an additional link
+        if ( (this.state.user !== null) && this.state.user.leader ){
             sidebarMap.set('Assign Leader', this.setSidebarObject('active', 'fa fa-key'));
         }
+
+        sidebarMap.set('Logout', this.setSidebarObject('active', 'glyphicon glyphicon-log-out'));
+        sidebarMap.set('Delete Account', this.setSidebarObject('active', 'glyphicon glyphicon-trash'));
+
 
         return sidebarMap;
     };
@@ -136,9 +140,10 @@ class School_Dashboard extends Component{
 
                       <ErrorBoundary>
                           <Switch>
-                              <Route path="/school_admin/dashboard/bus-statistics" component={Add_Bus_Statistics}/>
+                              <Route path="/school_admin/dashboard/add-bus-statistics" component={Add_Bus_Statistics}/>
+                              <Route path="/school_admin/dashboard/assign-leader" component={Assign_leader} />
                               <Route path="/school_admin/dashboard/logout" component={Logout} />
-                              <Route path="/school_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted}/>} exact/>
+                              <Route path="/school_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted} />} exact/>
                           </Switch>
                       </ErrorBoundary>
 
