@@ -83,7 +83,7 @@ class Add_Bus_Stats extends Component{
         ) : null;
 
         return (
-            <section>
+            <section >
 
                 {this.state.submitMessage}
 

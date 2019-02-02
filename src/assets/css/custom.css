@@ -262,6 +262,39 @@ input[type=submit], .register button {
 
 }
 
+.radio-options {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    text-transform: capitalize;
+}
+
+.radio-options input{
+    display: inline-block;
+    width: 8%;
+    margin-bottom: 0;
+}
+
+.radio-options label{
+    font-weight: normal;
+}
+
+.leader-subheading{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.leader-submit{
+    background: #28a745;
+    border: none;
+    width: 100px;
+    margin-left: 80px;
+    margin-top: 40px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+}
+
 
 
 /******* STUDENT REGISTRATION AND LOGIN ******/

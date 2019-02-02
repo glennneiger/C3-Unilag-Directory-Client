@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Sidebar from "../../../components/UI/Sidebar";
 import DashboardIndex from "./Dashboard_Index";
 import axios from "../../../axios-instance";
-import Add_Bus_Statistics from "./View_Bus_Statistics";
+import View_Bus_Statistics from "./View_Bus_Statistics";
 import Logout from './Logout';
 
 import errorHandler from '../../../hoc/errorHandler';
@@ -129,7 +129,7 @@ class Church_Dashboard extends Component{
 
                         <ErrorBoundary>
                             <Switch>
-                                <Route path="/church_admin/dashboard/view-bus-statistics" component={Add_Bus_Statistics}/>
+                                <Route path="/church_admin/dashboard/view-bus-statistics" render={() => <View_Bus_Statistics parentMounted={this.state.mounted}/>}/>
                                 <Route path="/church_admin/dashboard/logout" component={Logout}/>
                                 <Route path="/church_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted}/>} exact/>
                             </Switch>

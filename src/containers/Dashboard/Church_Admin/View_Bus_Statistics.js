@@ -86,24 +86,26 @@ class View_Bus_Statistics extends Component{
 
     async componentDidMount(){
         try{
-            const getMonthStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);
-            const getYearStats = axios.get(`/admin/bus_stats/year?year=${new Date().getFullYear()}`);
-            const getCumulStats = axios.get('/admin/bus_stats/cumulative');
+            if (this.props.parentMounted){
+                const getMonthStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);
+                const getYearStats = axios.get(`/admin/bus_stats/year?year=${new Date().getFullYear()}`);
+                const getCumulStats = axios.get('/admin/bus_stats/cumulative');
 
-            const [ monthStats, yearStats, cumulStats ] = await Promise.all([getMonthStats, getYearStats, getCumulStats]);
+                const [ monthStats, yearStats, cumulStats ] = await Promise.all([getMonthStats, getYearStats, getCumulStats]);
 
-            // configure bar and line chart data
-            const monthBarChart = this.configureChartData(monthStats.data.monthData, 'bar', 'month');
-            const yearLineChart = this.configureChartData(yearStats.data.yearData, 'line', 'year');
-            const cumulLineData = this.configureChartData(cumulStats.data.cumulativeData, 'line', 'cumulative');
+                // configure bar and line chart data
+                const monthBarChart = this.configureChartData(monthStats.data.monthData, 'bar', 'month');
+                const yearLineChart = this.configureChartData(yearStats.data.yearData, 'line', 'year');
+                const cumulLineData = this.configureChartData(cumulStats.data.cumulativeData, 'line', 'cumulative');
 
-            // set the state
-            this.setState({
-                monthChartData: monthBarChart,
-                yearChartData: yearLineChart,
-                cumulativeChartData: cumulLineData,
-                loading: false
-            });
+                // set the state
+                this.setState({
+                    monthChartData: monthBarChart,
+                    yearChartData: yearLineChart,
+                    cumulativeChartData: cumulLineData,
+                    loading: false
+                });
+            }
 
 
         }  catch(error){

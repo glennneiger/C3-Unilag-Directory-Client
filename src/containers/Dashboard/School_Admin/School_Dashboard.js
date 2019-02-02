@@ -141,7 +141,7 @@ class School_Dashboard extends Component{
                       <ErrorBoundary>
                           <Switch>
                               <Route path="/school_admin/dashboard/add-bus-statistics" component={Add_Bus_Statistics}/>
-                              <Route path="/school_admin/dashboard/assign-leader" component={Assign_leader} />
+                              <Route path="/school_admin/dashboard/assign-leader" render={ () => <Assign_leader parentMounted={this.state.mounted}/>} />
                               <Route path="/school_admin/dashboard/logout" component={Logout} />
                               <Route path="/school_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted} />} exact/>
                           </Switch>

@@ -14,7 +14,8 @@ class Dashboard_Index extends Component{
         this.state = {
             totalStudents: null,
             finalYearStudents: null,
-            monthChartData: {}
+            monthChartData: {},
+            loading: true
         };
 
         // scroll to the top of screen
@@ -67,17 +68,20 @@ class Dashboard_Index extends Component{
 
     async componentDidMount() {
         try{
-            const getMonthStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);
-            const getStudentDetails = axios.get('/admin/students');
+            if (this.props.parentMounted){
+                const getMonthStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);
+                const getStudentDetails = axios.get('/admin/students');
 
-            const [ monthStats, studentDetails ] = await Promise.all([getMonthStats, getStudentDetails]);
-            const theChartData = this.configureChartData(monthStats.data.monthData);
+                const [ monthStats, studentDetails ] = await Promise.all([getMonthStats, getStudentDetails]);
+                const theChartData = this.configureChartData(monthStats.data.monthData);
 
-            this.setState({
-                totalStudents: studentDetails.data.totalStudents,
-                finalYearStudents: studentDetails.data.finalYearStudents,
-                monthChartData: theChartData
-            });
+                this.setState({
+                    totalStudents: studentDetails.data.totalStudents,
+                    finalYearStudents: studentDetails.data.finalYearStudents,
+                    monthChartData: theChartData,
+                    loading: false
+                });
+            }
 
             window.scrollTo(0, 0);
 
@@ -90,7 +94,7 @@ class Dashboard_Index extends Component{
     render() {
         let mainBody = <Spinner />;
 
-        if (this.state.totalStudents !== null){
+        if ( !(this.state.loading) ){
            // display proper UI
             mainBody = (
                 <div className="container">

@@ -1,8 +1,12 @@
 import React from 'react';
 
 const successLabel = (props) => {
+    console.log('leaderform props', props.leaderForm);
+    let extraClass = props.leaderForm !== undefined  ? '' : 'theLabel';
+    let mainClass = `alert alert-success alert-dismissible ${extraClass}`;
+
     return (
-        <div className="alert alert-success alert-dismissible theLabel" >
+        <div className={mainClass} >
             <div>
                 <p>
                     <span className="fa fa-check" style={{ paddingRight: '8px'}}></span>
