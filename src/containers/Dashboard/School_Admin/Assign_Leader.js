@@ -8,6 +8,8 @@ class Assign_Leader extends Component{
     constructor(props){
         super(props);
 
+        console.log('axios header', axios.defaults.headers.common.authorization);
+
         const user = JSON.parse(window.localStorage.getItem('user'));
 
         // initialize state

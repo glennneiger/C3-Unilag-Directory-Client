@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
 const logout = (props) => {
     const logoutHandler = () => {
@@ -41,4 +40,4 @@ const logout = (props) => {
     );
 };
 
-export default withRouter(logout);
+export default logout;

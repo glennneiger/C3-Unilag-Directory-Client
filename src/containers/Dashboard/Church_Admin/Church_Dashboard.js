@@ -10,6 +10,7 @@ import Logout from './Logout';
 
 import errorHandler from '../../../hoc/errorHandler';
 import ErrorBoundary from '../../../util/ErrorBoundary';
+import Delete_Account from "./Delete_Account";
 
 class Church_Dashboard extends Component{
     constructor(props){
@@ -120,7 +121,7 @@ class Church_Dashboard extends Component{
                     <div>
                         <header>
                             <h1>C3 Unilag <span className="dash_header">Directory</span></h1>
-                            <p>Welcome,  Mekusa
+                            <p>Welcome.
                                 {/*<span>*/}
                                 {/*{" " + this.props.student.biodata.surname} {this.props.student.biodata.firstname}*/}
                                 {/*</span>*/}
@@ -130,6 +131,7 @@ class Church_Dashboard extends Component{
                         <ErrorBoundary>
                             <Switch>
                                 <Route path="/church_admin/dashboard/view-bus-statistics" render={() => <View_Bus_Statistics parentMounted={this.state.mounted}/>}/>
+                                <Route path="/church_admin/dashboard/delete-account" component={Delete_Account}/>
                                 <Route path="/church_admin/dashboard/logout" component={Logout}/>
                                 <Route path="/church_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted}/>} exact/>
                             </Switch>

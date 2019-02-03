@@ -1,5 +1,7 @@
 import React, { Component, Suspense, lazy, StrictMode } from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom'
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
+
+import { defaults } from 'react-chartjs-2';
 
 import SchoolAdmin from './containers/Dashboard/School_Admin/School_Dashboard';
 import Student_Register from "./containers/auth/Student_Register";

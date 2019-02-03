@@ -7,6 +7,7 @@ import DashboardIndex from "./Dashboard_Index";
 import Add_Bus_Statistics from "./Add_Bus_Stats";
 import Assign_leader from './Assign_Leader';
 import Logout from './Logout';
+import Delete_Account from './Delete_Account';
 
 import axios from "../../../axios-instance";
 import errorHandler from '../../../hoc/errorHandler';
@@ -131,7 +132,7 @@ class School_Dashboard extends Component{
                   <div>
                       <header>
                           <h1>C3 Unilag <span className="dash_header">Directory</span></h1>
-                          <p>Welcome, Olorondu Chukwuemeka
+                          <p>Welcome
                               {/*<span>*/}
                               {/*{" " + this.props.student.biodata.surname} {this.props.student.biodata.firstname}*/}
                               {/*</span>*/}
@@ -141,6 +142,7 @@ class School_Dashboard extends Component{
                       <ErrorBoundary>
                           <Switch>
                               <Route path="/school_admin/dashboard/add-bus-statistics" component={Add_Bus_Statistics}/>
+                              <Route path="/school_admin/dashboard/delete-account" component={Delete_Account}/>
                               <Route path="/school_admin/dashboard/assign-leader" render={ () => <Assign_leader parentMounted={this.state.mounted}/>} />
                               <Route path="/school_admin/dashboard/logout" component={Logout} />
                               <Route path="/school_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted} />} exact/>

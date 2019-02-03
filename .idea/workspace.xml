@@ -2,14 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6793cf62-d63d-43b5-9f96-617208fbbf70" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Delete_Account.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Delete_Account.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/ErrorLabel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/ErrorLabel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UI/SuccessLabel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/SuccessLabel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Church_Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Church_Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Dashboard_Index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Dashboard_Index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Logout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/View_Bus_Statistics.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/View_Bus_Statistics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Add_Bus_Stats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Add_Bus_Stats.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Assign_Leader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Assign_Leader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Logout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/School_Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/School_Dashboard.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -25,7 +28,7 @@
     <session id="-854335841">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="53" />
+          <entry key="project.closed" value="54" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
@@ -36,7 +39,7 @@
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.33" value="2" />
           <entry key="project.open.time.38" value="2" />
-          <entry key="project.open.time.39" value="4" />
+          <entry key="project.open.time.39" value="5" />
           <entry key="project.open.time.40" value="3" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.42" value="2" />
@@ -60,7 +63,7 @@
           <entry key="project.open.time.64" value="1" />
           <entry key="project.open.time.67" value="1" />
           <entry key="project.open.time.69" value="1" />
-          <entry key="project.opened" value="55" />
+          <entry key="project.opened" value="56" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -77,7 +80,7 @@
           <entry key="CSS" value="14" />
           <entry key="HTML" value="7" />
           <entry key="JSON" value="8" />
-          <entry key="JavaScript" value="145" />
+          <entry key="JavaScript" value="156" />
           <entry key="TypeScript" value="1" />
         </counts>
       </usages-collector>
@@ -95,8 +98,8 @@
           <entry key="CSS" value="3035" />
           <entry key="HTML" value="61" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="43900" />
-          <entry key="PLAIN_TEXT" value="1657" />
+          <entry key="JavaScript" value="45197" />
+          <entry key="PLAIN_TEXT" value="1741" />
         </counts>
       </usages-collector>
     </session>
@@ -106,8 +109,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/View_Bus_Statistics.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="106" column="19" selection-start-line="106" selection-start-column="19" selection-end-line="106" selection-end-column="19" />
+            <state relative-caret-position="-68">
+              <caret line="137" column="115" selection-start-line="137" selection-start-column="115" selection-end-line="137" selection-end-column="115" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -115,22 +118,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Add_Bus_Stats.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="67" column="96" lean-forward="true" selection-start-line="67" selection-start-column="96" selection-end-line="67" selection-end-column="96" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Logout.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="43" column="33" lean-forward="true" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
+            <state relative-caret-position="255">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#69#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,8 +133,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Church_Dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="131" column="141" selection-start-line="131" selection-start-column="141" selection-end-line="131" selection-end-column="141" />
+            <state relative-caret-position="102">
+              <caret line="123" column="39" selection-start-line="123" selection-start-column="39" selection-end-line="123" selection-end-column="39" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -151,8 +145,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/School_Dashboard.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="142" column="124" lean-forward="true" selection-start-line="142" selection-start-column="124" selection-end-line="142" selection-end-column="124" />
+            <state relative-caret-position="85">
+              <caret line="134" column="36" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -161,10 +155,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/assets/css/custom.css">
+        <entry file="file://$PROJECT_DIR$/src/components/UI/ErrorLabel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="294" column="21" selection-start-line="294" selection-start-column="21" selection-end-line="294" selection-end-column="21" />
+            <state relative-caret-position="255">
+              <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -172,7 +166,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Dashboard_Index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="3">
               <caret line="82" column="19" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="19" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -182,22 +176,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Dashboard_Index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1081">
-              <caret line="93" column="58" selection-start-line="93" selection-start-column="58" selection-end-line="93" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Assign_Leader.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="479">
-              <caret line="61" column="92" selection-start-line="61" selection-start-column="92" selection-end-line="61" selection-end-column="92" />
+            <state relative-caret-position="-136">
+              <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -206,10 +188,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Delete_Account.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="44" column="54" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/UI/SuccessLabel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+            <state relative-caret-position="85">
+              <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Delete_Account.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-272">
+              <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -283,8 +289,6 @@
         <option value="$PROJECT_DIR$/src/store/actions/index.js" />
         <option value="$PROJECT_DIR$/src/util/formConfig.js" />
         <option value="$PROJECT_DIR$/src/components/UI/DismissModal.js" />
-        <option value="$PROJECT_DIR$/src/components/UI/ErrorLabel.js" />
-        <option value="$PROJECT_DIR$/src/components/UI/Sidebar.js" />
         <option value="$PROJECT_DIR$/src/util/ErrorBoundary.js" />
         <option value="$PROJECT_DIR$/src/hoc/errorHandler.js" />
         <option value="$PROJECT_DIR$/src/util/chartConfig.js" />
@@ -293,18 +297,22 @@
         <option value="$PROJECT_DIR$/src/containers/auth/Church_Admin_Register.js" />
         <option value="$PROJECT_DIR$/src/containers/auth/Student_Register.js" />
         <option value="$PROJECT_DIR$/src/hoc/formValidator.js" />
-        <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Logout.js" />
-        <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Logout.js" />
         <option value="$PROJECT_DIR$/src/containers/auth/Admin_Login.js" />
-        <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Church_Dashboard.js" />
         <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Dashboard_Index.js" />
-        <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/View_Bus_Statistics.js" />
-        <option value="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/School_Dashboard.js" />
         <option value="$PROJECT_DIR$/src/assets/css/custom.css" />
         <option value="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Add_Bus_Stats.js" />
+        <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Logout.js" />
+        <option value="$PROJECT_DIR$/src/components/UI/Sidebar.js" />
+        <option value="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Logout.js" />
         <option value="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Assign_Leader.js" />
+        <option value="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Delete_Account.js" />
+        <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Delete_Account.js" />
+        <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Church_Dashboard.js" />
+        <option value="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/School_Dashboard.js" />
+        <option value="$PROJECT_DIR$/src/components/UI/ErrorLabel.js" />
         <option value="$PROJECT_DIR$/src/components/UI/SuccessLabel.js" />
+        <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/View_Bus_Statistics.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
       </list>
     </option>
   </component>
@@ -338,7 +346,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -434,6 +441,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -445,15 +453,15 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\containers\auth" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\containers\Dashboard\Church_Admin" />
       <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\assets\css" />
       <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\public\js" />
       <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\assets\icons" />
       <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\assets" />
-      <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\assets\vendors\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\containers\auth" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -532,7 +540,8 @@
       <workItem from="1548941743747" duration="6484000" />
       <workItem from="1549021754851" duration="13069000" />
       <workItem from="1549053258239" duration="5992000" />
-      <workItem from="1549114840969" duration="13332000" />
+      <workItem from="1549114840969" duration="13519000" />
+      <workItem from="1549199304733" duration="8677000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1543095091023</created>
@@ -709,11 +718,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549059653096</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="completed the functionality of the assign-leader page in the school_admin dashboard">
+      <created>1549148880305</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1549148880305</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="340203000" />
+    <option name="totallyTimeSpent" value="349067000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -775,7 +791,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="my first commit" />
     <MESSAGE value="added registration and student dashboard pages" />
     <MESSAGE value="added school admin and church admin registrartion pages" />
     <MESSAGE value="made some changes to the admin registration pages" />
@@ -800,7 +815,8 @@
     <MESSAGE value="integrated the bar and line chart in the View_Statistics page of the Church_Admin dashboard" />
     <MESSAGE value="added logout pages and service overrides for the leader schoolAdmin" />
     <MESSAGE value="created assign-leader page skeleton, delete-account route, and readjusted the admin_login page to accommodate school_admin &amp; church_admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="created assign-leader page skeleton, delete-account route, and readjusted the admin_login page to accommodate school_admin &amp; church_admin" />
+    <MESSAGE value="completed the functionality of the assign-leader page in the school_admin dashboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="completed the functionality of the assign-leader page in the school_admin dashboard" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -926,13 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/UI/ErrorLabel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="120" selection-start-line="10" selection-start-column="120" selection-end-line="10" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store/actions/churchActions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -982,24 +991,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/UI/Sidebar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/UI/Input.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-408">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -1027,23 +1022,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Logout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/auth/Student_Register.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1056,17 +1038,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/auth/Admin_Login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
+        <state relative-caret-position="-2" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Add_Bus_Stats.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="67" column="37" selection-start-line="67" selection-start-column="37" selection-end-line="67" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4998">
+          <caret line="294" column="21" selection-start-line="294" selection-start-column="21" selection-end-line="294" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Dashboard_Index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="93" column="58" selection-start-line="93" selection-start-column="58" selection-end-line="93" selection-end-column="58" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Dashboard_Index.js">
+    <entry file="file://$PROJECT_DIR$/src/components/UI/Sidebar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1081">
-          <caret line="93" column="58" selection-start-line="93" selection-start-column="58" selection-end-line="93" selection-end-column="58" />
+        <state relative-caret-position="629">
+          <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Logout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Logout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Assign_Leader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Delete_Account.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="44" column="54" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Delete_Account.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-272">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -1075,7 +1121,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Dashboard_Index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="3">
           <caret line="82" column="19" selection-start-line="82" selection-start-column="19" selection-end-line="82" selection-end-column="19" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
@@ -1083,30 +1129,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/View_Bus_Statistics.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="106" column="19" selection-start-line="106" selection-start-column="19" selection-end-line="106" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Logout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="43" column="33" lean-forward="true" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Church_Dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="131" column="141" selection-start-line="131" selection-start-column="141" selection-end-line="131" selection-end-column="141" />
+        <state relative-caret-position="102">
+          <caret line="123" column="39" selection-start-line="123" selection-start-column="39" selection-end-line="123" selection-end-column="39" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -1115,41 +1141,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/School_Dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="142" column="124" lean-forward="true" selection-start-line="142" selection-start-column="124" selection-end-line="142" selection-end-column="124" />
+        <state relative-caret-position="85">
+          <caret line="134" column="36" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/custom.css">
+    <entry file="file://$PROJECT_DIR$/src/components/UI/ErrorLabel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="294" column="21" selection-start-line="294" selection-start-column="21" selection-end-line="294" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Add_Bus_Stats.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="67" column="96" lean-forward="true" selection-start-line="67" selection-start-column="96" selection-end-line="67" selection-end-column="96" />
+        <state relative-caret-position="255">
+          <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/UI/SuccessLabel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+        <state relative-caret-position="85">
+          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Assign_Leader.js">
+    <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/View_Bus_Statistics.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="61" column="92" selection-start-line="61" selection-start-column="92" selection-end-line="61" selection-end-column="92" />
+        <state relative-caret-position="-68">
+          <caret line="137" column="115" selection-start-line="137" selection-start-column="115" selection-end-line="137" selection-end-column="115" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#69#0" expanded="true" />
           </folding>
         </state>
       </provider>

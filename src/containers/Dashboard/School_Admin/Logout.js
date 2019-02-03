@@ -1,6 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import {Line} from "react-chartjs-2";
 
 const logout = (props) => {
     const logoutHandler = () => {
@@ -11,6 +9,7 @@ const logout = (props) => {
     };
 
     const cancelLogoutHandler = () => {
+        console.log('logout props', props);
         props.history.replace('/school_admin/dashboard');
     };
 
@@ -44,4 +43,4 @@ const logout = (props) => {
     );
 };
 
-export default withRouter(logout);
+export default logout;

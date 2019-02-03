@@ -15,6 +15,7 @@ class View_Bus_Statistics extends Component{
             monthChartData: {},
             yearChartData: {},
             cumulativeChartData: {},
+            yearsArray: [],
             loading: true
         };
 
@@ -36,7 +37,6 @@ class View_Bus_Statistics extends Component{
         let serviceLabelArray = ['First Service Total', 'Second Service Total', 'Fourth Service Total'], dateLabelsArray = [];
 
         let colorArray = ['rgba(255,99,132,0.6)', 'rgba(54,162,235,0.6)', 'rgba(75,192,192,0.6)'];
-
 
         // fill service arrays for each Sunday
         rawData.forEach(data => {
@@ -93,6 +93,8 @@ class View_Bus_Statistics extends Component{
 
                 const [ monthStats, yearStats, cumulStats ] = await Promise.all([getMonthStats, getYearStats, getCumulStats]);
 
+                const cloneYearsArray = cumulStats.data.cumulativeData.map(data => data._id);
+
                 // configure bar and line chart data
                 const monthBarChart = this.configureChartData(monthStats.data.monthData, 'bar', 'month');
                 const yearLineChart = this.configureChartData(yearStats.data.yearData, 'line', 'year');
@@ -103,6 +105,7 @@ class View_Bus_Statistics extends Component{
                     monthChartData: monthBarChart,
                     yearChartData: yearLineChart,
                     cumulativeChartData: cumulLineData,
+                    yearsArray: cloneYearsArray,
                     loading: false
                 });
             }
@@ -116,10 +119,15 @@ class View_Bus_Statistics extends Component{
 
 
     render() {
-        const currentYear = new Date().getFullYear();
+
         let mainBody = <Spinner />;
 
         if ( !(this.state.loading) ){
+            const currentYear = new Date().getFullYear();
+            const yearsArray = this.state.yearsArray;
+            const minYear = yearsArray[0];
+            const maxYear = yearsArray[yearsArray.length - 1];
+
             mainBody = (
                 <div className="container">
                     {/*Start row*/}
@@ -127,7 +135,7 @@ class View_Bus_Statistics extends Component{
                         <div className="col-12">
                             <div className="big-box">
                                 <div className="big-box-header form-header">
-                                    <h3>Bus Statistics for {this.getMonth( new Date().getMonth() + 1)} {new Date().getFullYear()}</h3>
+                                    <h3>Bus Statistics for {this.getMonth( new Date().getMonth() + 1)} {currentYear}</h3>
                                 </div>
                                 <div className="big-box-body" style={{ paddingBottom: '15px', paddingTop: '10px' }}>
                                     <Bar data={this.state.monthChartData} />
@@ -155,7 +163,7 @@ class View_Bus_Statistics extends Component{
                         <div className="col-12">
                             <div className="big-box">
                                 <div className="big-box-header form-header">
-                                    <h3>Cumulative Bus Statistics for Year ({currentYear - 4} - {currentYear})</h3>
+                                    <h3>Cumulative Bus Statistics for Year ({minYear} - {maxYear})</h3>
                                 </div>
                                 <div className="big-box-body" style={{ paddingBottom: '15px', paddingTop: '10px' }}>
                                     <Line data={this.state.cumulativeChartData} />
