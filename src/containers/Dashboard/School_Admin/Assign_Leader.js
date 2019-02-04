@@ -42,7 +42,9 @@ class Assign_Leader extends Component{
                         this.setState({ loading: false });
                         return;
                     }
-                    this.setState({ admins: theSchoolAdmins, loading: false });
+                    this.setState(prevState => {
+                        return { admins: [...prevState.admins, ...theSchoolAdmins], loading: false };
+                    });
                 })
                 .catch(error => {
                     console.log(error);

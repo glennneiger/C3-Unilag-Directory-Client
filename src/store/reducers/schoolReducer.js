@@ -1,7 +1,10 @@
 import * as actionTypes from '../actionTypes'
 
 const initialState = {
-    school_admin: {}
+    birthdaysArray: [],
+    monthChartData: {},
+    totalStudents: null,
+    finalYearStudents: null,
 };
 
 const schoolReducer = (state = initialState, action) => {
@@ -10,6 +13,11 @@ const schoolReducer = (state = initialState, action) => {
              return {
                  ...state,
                  school_admin: { ...action.schAdmin }
+             };
+         case actionTypes.INITIALIZE_DASHBOARD_DATA:
+             return {
+                 ...state,
+                 ...action.dashboardData
              };
 
          default:

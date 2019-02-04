@@ -14,6 +14,7 @@ class DashboardIndex extends Component{
         birthdaysArray: [],
         chartData: {},
         totalStudents: null,
+        finalYearStudents: null,
         loading: true,
         birthdaysToday: 0,
         parentMounted: this.props.parentMounted
@@ -104,13 +105,15 @@ class DashboardIndex extends Component{
                 });
 
 
-                this.setState({
-                    birthdaysArray: [...monthBirthdays.data.birthdays],
-                    chartData: theChartData,
-                    totalStudents: studentDetails.data.totalStudents,
-                    finalYearStudents: studentDetails.data.finalYearStudents,
-                    loading: false,
-                    birthdaysToday
+                this.setState(prevState => {
+                    return {
+                        birthdaysArray: prevState.birthdaysArray.concat(monthBirthdays.data.birthdays),
+                        chartData: {...prevState.chartData, ...theChartData},
+                        totalStudents: studentDetails.data.totalStudents,
+                        finalYearStudents: studentDetails.data.finalYearStudents,
+                        loading: false,
+                        birthdaysToday
+                    }
                 });
             }
         } catch(error){

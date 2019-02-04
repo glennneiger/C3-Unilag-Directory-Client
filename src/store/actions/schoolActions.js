@@ -6,3 +6,15 @@ export const loadSchoolAdmin = (theAdmin) => {
         schAdmin: theAdmin
     };
 };
+
+export const initializeDashboardData = (dataMap) => {
+    return {
+        type: actionTypes.INITIALIZE_DASHBOARD_DATA,
+        dashboardData: {
+            birthdaysArray: dataMap.get('birthdaysArray'),
+            monthChartData: dataMap.get('monthChartData'),
+            totalStudents: dataMap.get('totalStudents'),
+            finalYearStudents: dataMap.get('finalYearStudents')
+        }
+    }
+};

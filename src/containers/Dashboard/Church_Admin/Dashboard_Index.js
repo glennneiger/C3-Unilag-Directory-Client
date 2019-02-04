@@ -75,11 +75,13 @@ class Dashboard_Index extends Component{
                 const [ monthStats, studentDetails ] = await Promise.all([getMonthStats, getStudentDetails]);
                 const theChartData = this.configureChartData(monthStats.data.monthData);
 
-                this.setState({
-                    totalStudents: studentDetails.data.totalStudents,
-                    finalYearStudents: studentDetails.data.finalYearStudents,
-                    monthChartData: theChartData,
-                    loading: false
+                this.setState(prevState => {
+                    return {
+                        totalStudents: studentDetails.data.totalStudents,
+                        finalYearStudents: studentDetails.data.finalYearStudents,
+                        monthChartData: {...prevState.monthChartData, ...theChartData},
+                        loading: false
+                    }
                 });
             }
 
