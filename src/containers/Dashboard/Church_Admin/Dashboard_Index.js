@@ -68,20 +68,18 @@ class Dashboard_Index extends Component{
 
     async componentDidMount() {
         try{
-            if (this.props.parentMounted){
+            if (this.props.parentMounted ){
                 const getMonthStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);
                 const getStudentDetails = axios.get('/admin/students');
 
                 const [ monthStats, studentDetails ] = await Promise.all([getMonthStats, getStudentDetails]);
                 const theChartData = this.configureChartData(monthStats.data.monthData);
 
-                this.setState(prevState => {
-                    return {
-                        totalStudents: studentDetails.data.totalStudents,
-                        finalYearStudents: studentDetails.data.finalYearStudents,
-                        monthChartData: {...prevState.monthChartData, ...theChartData},
-                        loading: false
-                    }
+                this.setState({
+                    totalStudents: studentDetails.data.totalStudents,
+                    finalYearStudents: studentDetails.data.finalYearStudents,
+                    monthChartData: theChartData,
+                    loading: false
                 });
             }
 

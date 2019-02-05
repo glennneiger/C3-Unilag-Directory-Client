@@ -8,15 +8,16 @@ import { returnData, returnDataSet } from '../../../util/chartConfig';
 import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
 import errorHandler from '../../../hoc/errorHandler';
+import * as actions from '../../../store/actions/index';
 
 class DashboardIndex extends Component{
     state = {
-        birthdaysArray: [],
-        chartData: {},
-        totalStudents: null,
-        finalYearStudents: null,
-        loading: true,
-        birthdaysToday: 0,
+        birthdaysArray: this.props.birthdaysArray,
+        chartData: this.props.monthChartData,
+        totalStudents: this.props.totalStudents,
+        finalYearStudents: this.props.finalYearStudents,
+        loading: this.props.busStatsChanged,
+        birthdaysToday: this.props.birthdaysToday,
         parentMounted: this.props.parentMounted
     } ;
 
@@ -84,7 +85,7 @@ class DashboardIndex extends Component{
     async componentDidMount(){
         console.log('child component did mount');
         try{
-            if (this.props.parentMounted){
+            if (this.props.parentMounted && this.props.busStatsChanged ){
                 console.log('church dashboard index', this.props.parentMounted);
                 // make request
                 let getBirthdays = axios.get(`/admin/birthdays?month=${new Date().getMonth() + 1}`);          // get all the birthdays for the current month
@@ -105,16 +106,26 @@ class DashboardIndex extends Component{
                 });
 
 
-                this.setState(prevState => {
-                    return {
-                        birthdaysArray: prevState.birthdaysArray.concat(monthBirthdays.data.birthdays),
-                        chartData: {...prevState.chartData, ...theChartData},
-                        totalStudents: studentDetails.data.totalStudents,
-                        finalYearStudents: studentDetails.data.finalYearStudents,
-                        loading: false,
-                        birthdaysToday
-                    }
+                this.setState({
+                    birthdaysArray: monthBirthdays.data.birthdays,
+                    chartData: theChartData,
+                    totalStudents: studentDetails.data.totalStudents,
+                    finalYearStudents: studentDetails.data.finalYearStudents,
+                    loading: false,
+                    birthdaysToday
                 });
+
+                //  initialize dashboard data in the redux store
+                const dashboardMap = new Map();
+
+                dashboardMap.set('birthdaysArray', monthBirthdays.data.birthdays);
+                dashboardMap.set('monthChartData', theChartData);
+                dashboardMap.set('totalStudents', studentDetails.data.totalStudents);
+                dashboardMap.set('finalYearStudents', studentDetails.data.finalYearStudents);
+                dashboardMap.set('birthdaysToday', birthdaysToday);
+
+                this.props.initializeDashboardData(dashboardMap);
+
             }
         } catch(error){
             console.log('the error', error);
@@ -292,10 +303,22 @@ class DashboardIndex extends Component{
     }
 }
 
-// const mapDispatchTProps = dispatch => {
-//   return {
-//
-//   }
-// };
 
-export default errorHandler(DashboardIndex) ;
+const mapStateToProps = state => {
+    return {
+        birthdaysArray: state.school.birthdaysArray,
+        monthChartData: state.school.monthChartData,
+        totalStudents: state.school.totalStudents,
+        finalYearStudents:state.school.finalYearStudents,
+        busStatsChanged: state.school.busStatsChanged,
+        birthdaysToday: state.school.birthdaysToday
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+     initializeDashboardData: (dataMap) => dispatch(actions.initializeDashboardData(dataMap))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)( errorHandler(DashboardIndex) ) ;

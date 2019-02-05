@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
 import axios from '../../../axios-instance';
 import Spinner from "../../../components/UI/Spinner";
 import SuccessLabel from '../../../components/UI/SuccessLabel';
+import * as actions from '../../../store/actions/index';
 
 
 class Add_Bus_Stats extends Component{
@@ -12,8 +14,8 @@ class Add_Bus_Stats extends Component{
 
         this.state = {
             formData: {
-                going: null,
-                returning: null
+                going: '',
+                returning: ''
             },
             service: '',
             loading: false,
@@ -47,6 +49,9 @@ class Add_Bus_Stats extends Component{
                 cloneFormData.returning = '';
 
                 this.setState({ loading: false, submitMessage: successMsg, formData: cloneFormData, service: '' });
+
+                // let redux store know that bus stats has changed
+                this.props.busStatsChanged();
             })
             .catch();
     };
@@ -74,7 +79,7 @@ class Add_Bus_Stats extends Component{
             <Fragment>
                 <label>Service</label>
                 <select className="custom-select" value={this.state.service} onChange={this.handleDropdownChange} required>
-                    <option value="" selected="selected">Select a service</option>
+                    <option value="" >Select a service</option>
                     <option value="first">First Service</option>
                     <option value="second">Second Service</option>
                     <option value="fourth">Fourth Service</option>
@@ -109,4 +114,11 @@ class Add_Bus_Stats extends Component{
     }
 }
 
-export default Add_Bus_Stats;
+
+const mapDispatchToProps = dispatch => {
+    return {
+        busStatsChanged: () => dispatch(actions.busStatsChanged())
+    }
+};
+
+export default connect(null, mapDispatchToProps)(Add_Bus_Stats);

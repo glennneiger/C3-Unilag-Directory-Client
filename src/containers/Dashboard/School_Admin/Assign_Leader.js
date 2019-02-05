@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
 import SuccessLabel from '../../../components/UI/SuccessLabel';
+import * as actions from '../../../store/actions/index';
 
 class Assign_Leader extends Component{
     constructor(props){
@@ -15,8 +17,8 @@ class Assign_Leader extends Component{
         // initialize state
         this.state = {
             user: user,
-            admins: [],
-            loading: true,
+            admins: this.props.schoolAdmins,
+            loading: this.props.schoolAdminsLoading,
             selectedAdminEmail: '',
             disabled: true,
             responseMsg: ''
@@ -33,18 +35,21 @@ class Assign_Leader extends Component{
     }
 
     componentDidMount(){
-        if (this.props.parentMounted){
+        if (this.props.parentMounted && this.props.schoolAdminsLoading){
             axios.get('/admin/school_admin')
                 .then(result => {
+                    console.log('assign_leader axios fetch');
                     const theSchoolAdmins = result.data.schoolAdmins;
 
                     if (theSchoolAdmins.length === 0){
                         this.setState({ loading: false });
                         return;
                     }
-                    this.setState(prevState => {
-                        return { admins: [...prevState.admins, ...theSchoolAdmins], loading: false };
-                    });
+
+                    this.setState({ admins: theSchoolAdmins, loading: false });
+
+                    // set schoolAdmins in the redux store
+                    this.props.loadSchoolAdmins(theSchoolAdmins);
                 })
                 .catch(error => {
                     console.log(error);
@@ -67,6 +72,9 @@ class Assign_Leader extends Component{
                 const disabledStatus = theSchoolAdmins.length === 0;
                 
                 this.setState({ admins: theSchoolAdmins, responseMsg: message, disabled: disabledStatus });
+
+                // update schoolAdmins in redux store
+                this.props.loadSchoolAdmins(theSchoolAdmins);
             })
             .catch(error => {
                 console.log(error);
@@ -131,4 +139,18 @@ class Assign_Leader extends Component{
     }
 }
 
-export default Assign_Leader;
+
+const mapStateToProps = state => {
+   return {
+       schoolAdmins: state.school.schoolAdmins,
+       schoolAdminsLoading: state.school.schoolAdminsLoading
+   }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        loadSchoolAdmins: (theAdmins) => dispatch(actions.loadSchoolAdmins(theAdmins))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Assign_Leader);

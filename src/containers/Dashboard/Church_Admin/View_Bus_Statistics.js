@@ -101,14 +101,12 @@ class View_Bus_Statistics extends Component{
                 const cumulLineData = this.configureChartData(cumulStats.data.cumulativeData, 'line', 'cumulative');
 
                 // set the state
-                this.setState(prevState => {
-                    return {
-                        monthChartData: {...prevState.monthChartData, ...monthBarChart},
-                        yearChartData: {...prevState.yearChartData, ...yearLineChart},
-                        cumulativeChartData: {...prevState.cumulativeChartData, ...cumulLineData},
-                        yearsArray: [...prevState.yearsArray, ...cloneYearsArray],
-                        loading: false
-                    }
+                this.setState({
+                    monthChartData: monthBarChart,
+                    yearChartData: yearLineChart,
+                    cumulativeChartData: cumulLineData,
+                    yearsArray: cloneYearsArray,
+                    loading: false
                 });
             }
 

@@ -5,6 +5,10 @@ const initialState = {
     monthChartData: {},
     totalStudents: null,
     finalYearStudents: null,
+    birthdaysToday: 0,
+    busStatsChanged: true,
+    schoolAdmins: [],
+    schoolAdminsLoading: true
 };
 
 const schoolReducer = (state = initialState, action) => {
@@ -17,7 +21,21 @@ const schoolReducer = (state = initialState, action) => {
          case actionTypes.INITIALIZE_DASHBOARD_DATA:
              return {
                  ...state,
-                 ...action.dashboardData
+                 ...action.dashboardData,
+                 busStatsChanged: action.busStatsChanged
+             };
+
+         case actionTypes.BUS_STATS_CHANGED:
+             return {
+                 ...state,
+                 busStatsChanged: action.busStatsChanged
+             };
+
+         case actionTypes.LOAD_SCHOOL_ADMINS:
+             return {
+                 ...state,
+                 schoolAdmins: action.schoolAdmins,
+                 schoolAdminsLoading: action.schoolAdminsLoading
              };
 
          default:

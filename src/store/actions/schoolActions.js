@@ -14,7 +14,24 @@ export const initializeDashboardData = (dataMap) => {
             birthdaysArray: dataMap.get('birthdaysArray'),
             monthChartData: dataMap.get('monthChartData'),
             totalStudents: dataMap.get('totalStudents'),
-            finalYearStudents: dataMap.get('finalYearStudents')
-        }
+            finalYearStudents: dataMap.get('finalYearStudents'),
+            birthdaysToday: dataMap.get('birthdaysToday')
+        },
+        busStatsChanged: false
+    }
+};
+
+export const busStatsChanged = () => {
+   return {
+       type: actionTypes.BUS_STATS_CHANGED,
+       busStatsChanged: true
+   }
+};
+
+export const loadSchoolAdmins = (theAdmins) => {
+    return {
+        type: actionTypes.LOAD_SCHOOL_ADMINS,
+        schoolAdmins: theAdmins,
+        schoolAdminsLoading: false
     }
 };
