@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link, Switch, Route, NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 
 import Sidebar from "../../../components/UI/Sidebar";
 import DashboardIndex from "./Dashboard_Index";
@@ -61,7 +60,11 @@ class Church_Dashboard extends Component{
             this.props.history.replace('/login');
         }
 
-        console.log('parent component did update');
+        console.log('church dashboard component did update');
+    }
+
+    componentWillUnmount(){
+        console.log('church parent will unmount')
     }
 
     setTokenInHeader (token) {
@@ -145,10 +148,4 @@ class Church_Dashboard extends Component{
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        user: state.school.school_admin
-    }
-};
-
-export default connect(mapStateToProps)( errorHandler(Church_Dashboard) );
+export default  errorHandler(Church_Dashboard) ;

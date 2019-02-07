@@ -4,6 +4,7 @@ import Wrapper from './Wrapper';
 import DismissModal from '../components/UI/DismissModal';
 import axios from '../axios-instance';
 
+
 const errorHandler = (WrappedComponent) => {
     return class errorHandler extends Component {
         state = {
@@ -29,7 +30,9 @@ const errorHandler = (WrappedComponent) => {
             console.log('error handler component updated');
         }
 
-
+        componentWillUnmount(){
+            console.log('error handler will unmount');
+        }
         
        render() {
             // check if error is present;

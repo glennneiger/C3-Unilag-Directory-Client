@@ -7,6 +7,7 @@ import { returnData, returnDataSet } from '../../../util/chartConfig';
 
 import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
+import DismissModal from '../../../components/UI/Spinner';
 import errorHandler from '../../../hoc/errorHandler';
 import * as actions from '../../../store/actions/index';
 
@@ -19,6 +20,7 @@ class DashboardIndex extends Component{
         loading: this.props.busStatsChanged,
         birthdaysToday: this.props.birthdaysToday,
         parentMounted: this.props.parentMounted
+
     } ;
 
     // componentWillUpdate() {
@@ -126,7 +128,7 @@ class DashboardIndex extends Component{
 
                 this.props.initializeDashboardData(dashboardMap);
 
-            }
+            } // end if statement
         } catch(error){
             console.log('the error', error);
         }
@@ -193,6 +195,7 @@ class DashboardIndex extends Component{
 
             mainBody = (
                 <div className="container">
+
                     {/*start row */}
                     <div className="row">
                         <div className="col-lg-3 col-sm-12">
@@ -321,4 +324,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)( errorHandler(DashboardIndex) ) ;
+export default connect(mapStateToProps, mapDispatchToProps)( DashboardIndex ) ;

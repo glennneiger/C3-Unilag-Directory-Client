@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
+import * as actions from '../../../store/actions/index';
 import { Bar, Line } from "react-chartjs-2";
-import {returnData, returnDataSet} from "../../../util/chartConfig";
+import { returnData, returnDataSet } from "../../../util/chartConfig";
 
 
 class View_Bus_Statistics extends Component{
@@ -12,11 +14,11 @@ class View_Bus_Statistics extends Component{
 
         // initialize state
         this.state = {
-            monthChartData: {},
-            yearChartData: {},
-            cumulativeChartData: {},
-            yearsArray: [],
-            loading: true
+            monthChartData: this.props.monthChartData,
+            yearChartData: this.props.yearChartData,
+            cumulativeChartData: this.props.cumulChartData,
+            yearsArray: this.props.yearsArray,
+            loading: this.props.busContentLoading
         };
 
         window.scrollTo(0, 0);
@@ -86,7 +88,7 @@ class View_Bus_Statistics extends Component{
 
     async componentDidMount(){
         try{
-            if (this.props.parentMounted){
+            if (this.props.parentMounted && this.props.busContentLoading){
                 const getMonthStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);
                 const getYearStats = axios.get(`/admin/bus_stats/year?year=${new Date().getFullYear()}`);
                 const getCumulStats = axios.get('/admin/bus_stats/cumulative');
@@ -108,7 +110,20 @@ class View_Bus_Statistics extends Component{
                     yearsArray: cloneYearsArray,
                     loading: false
                 });
-            }
+
+                // load bus data in the redux store
+                const dataMap = new Map();
+
+                dataMap.set('monthChartData', monthBarChart);
+                dataMap.set('yearChartData', yearLineChart);
+                dataMap.set('cumulChartData', cumulLineData);
+                dataMap.set('yearsArray', cloneYearsArray);
+
+                this.props.loadBusData(dataMap);
+
+                console.log('view bus stats axios fetch');
+
+            } // end if statement
 
 
         }  catch(error){
@@ -181,6 +196,25 @@ class View_Bus_Statistics extends Component{
             </section>
         );
     }
-}
+} // end class
 
-export default View_Bus_Statistics;
+
+// redux variables
+
+const mapStateToProps = state => {
+    return {
+       monthChartData: state.church.monthChartData,
+        yearChartData: state.church.yearChartData,
+        cumulChartData: state.church.cumulChartData,
+        yearsArray: state.church.yearsArray,
+        busContentLoading: state.church.busContentLoading
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+       loadBusData: (dataMap) => dispatch(actions.loadBusData(dataMap))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(View_Bus_Statistics);

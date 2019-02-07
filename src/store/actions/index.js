@@ -11,5 +11,8 @@ export {
 
 // export all church admin actions
 export {
-    loadChurchAdmin
+    loadChurchAdmin,
+    initializeChurchData,
+    loadBusData
+
 } from './churchActions';

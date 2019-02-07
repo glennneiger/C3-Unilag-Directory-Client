@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { returnData, returnDataSet } from "../../../util/chartConfig";
+import { connect } from 'react-redux';
+import { Bar } from "react-chartjs-2";
 import CountUp from 'react-countup';
 
 import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
-import { Bar } from "react-chartjs-2";
+import * as actions from '../../../store/actions/index';
 
 class Dashboard_Index extends Component{
     constructor(props){
@@ -12,10 +14,10 @@ class Dashboard_Index extends Component{
 
         // initialize state
         this.state = {
-            totalStudents: null,
-            finalYearStudents: null,
-            monthChartData: {},
-            loading: true
+            totalStudents: this.props.totalStudents,
+            finalYearStudents: this.props.finalYearStudents,
+            monthChartData: this.props.monthChartData,
+            loading: this.props.totalStudents === null
         };
 
         // scroll to the top of screen
@@ -68,7 +70,7 @@ class Dashboard_Index extends Component{
 
     async componentDidMount() {
         try{
-            if (this.props.parentMounted ){
+            if (this.props.parentMounted && this.props.totalStudents === null){
                 const getMonthStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);
                 const getStudentDetails = axios.get('/admin/students');
 
@@ -81,6 +83,18 @@ class Dashboard_Index extends Component{
                     monthChartData: theChartData,
                     loading: false
                 });
+
+                // store dashboard data in the redux store
+                const dataMap = new Map();
+
+                dataMap.set('totalStudents', studentDetails.data.totalStudents);
+                dataMap.set('finalYearStudents', studentDetails.data.finalYearStudents);
+                dataMap.set('monthChartData', theChartData);
+
+                this.props.initializeDashboardData(dataMap);
+
+                console.log('church dashboard fetched data');
+
             }
 
             window.scrollTo(0, 0);
@@ -153,4 +167,18 @@ class Dashboard_Index extends Component{
      }
 }
 
-export default Dashboard_Index;
+const mapStateToProps = state => {
+    return {
+        totalStudents: state.church.totalStudents,
+        finalYearStudents: state.church.finalYearStudents,
+        monthChartData: state.church.monthChartData
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        initializeDashboardData: (dataMap) => dispatch(actions.initializeChurchData(dataMap))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard_Index);
