@@ -93,18 +93,19 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
         // handler for submitting form
         submitForm = (event) => {
             event.preventDefault();
-            var formValues ={};
-
+            let formValues = {};
 
             for (let formKeys in this.state.registerForm){
                 formValues[formKeys] = this.state.registerForm[formKeys].value;
             }
 
+            console.log('form validator values', formValues);
 
             console.log('the path', this.props);
             // submit the form
             let thePath = this.props.match.url === '/' ? this.props.match.url + 'register_student' : this.props.match.url;
 
+            // axios post request
             axios.post(thePath, formValues)
                 .then(result => {
                     window.scroll(0,0);

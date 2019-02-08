@@ -12,7 +12,7 @@ const sidebar= (props) => {
         let link = (key === 'Dashboard') ? theUrl : `${theUrl}/${ slugify(key, { lower: true }) }`;
 
       let navlink = (
-          <NavLink to={link} exact activeClassName={value.activeClass} key={key}>
+          <NavLink to={link} exact activeClassName={value.activeClass} key={key} >
              <span><i className={value.iconClass}></i></span>
               {key} 
           </NavLink>

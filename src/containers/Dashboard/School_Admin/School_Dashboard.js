@@ -6,6 +6,7 @@ import Sidebar from "../../../components/UI/Sidebar";
 import DashboardIndex from "./Dashboard_Index";
 import Add_Bus_Statistics from "./Add_Bus_Stats";
 import Assign_leader from './Assign_Leader';
+import Student_Search from './Student_Search';
 import Logout from './Logout';
 import Delete_Account from './Delete_Account';
 
@@ -95,7 +96,7 @@ class School_Dashboard extends Component{
         // configure elements
         sidebarMap.set('Dashboard', this.setSidebarObject('active', 'glyphicon glyphicon-dashboard'));
         sidebarMap.set('Add Bus Statistics', this.setSidebarObject('active', 'glyphicon glyphicon-stats'));
-        sidebarMap.set('View Students', this.setSidebarObject('active', 'glyphicon glyphicon-user'));
+        sidebarMap.set('Student Search', this.setSidebarObject('active', 'glyphicon glyphicon-search'));
 
         // if user is a leader and user exists, assign an additional link
         if ( (this.state.user !== null) && this.state.user.leader ){
@@ -143,9 +144,10 @@ class School_Dashboard extends Component{
                           <Switch>
                               <Route path="/school_admin/dashboard/add-bus-statistics" component={Add_Bus_Statistics}/>
                               <Route path="/school_admin/dashboard/delete-account" component={Delete_Account}/>
-                              <Route path="/school_admin/dashboard/assign-leader" render={ () => <Assign_leader parentMounted={this.state.mounted}/>} />
+                              <Route path="/school_admin/dashboard/assign-leader" render={ (props) => <Assign_leader {...props} parentMounted={this.state.mounted}/>} />
+                              <Route path="/school_admin/dashboard/student-search" component={Student_Search} />
                               <Route path="/school_admin/dashboard/logout" component={Logout} />
-                              <Route path="/school_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted} />} exact/>
+                              <Route path="/school_admin/dashboard" render={(props) => <DashboardIndex {...props} parentMounted={this.state.mounted} />} exact/>
                           </Switch>
                       </ErrorBoundary>
 

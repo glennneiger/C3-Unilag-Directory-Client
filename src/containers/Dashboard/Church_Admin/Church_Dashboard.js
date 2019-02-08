@@ -136,7 +136,7 @@ class Church_Dashboard extends Component{
                                 <Route path="/church_admin/dashboard/view-bus-statistics" render={() => <View_Bus_Statistics parentMounted={this.state.mounted}/>}/>
                                 <Route path="/church_admin/dashboard/delete-account" component={Delete_Account}/>
                                 <Route path="/church_admin/dashboard/logout" component={Logout}/>
-                                <Route path="/church_admin/dashboard" render={() => <DashboardIndex parentMounted={this.state.mounted}/>} exact/>
+                                <Route path="/church_admin/dashboard" render={(props) => <DashboardIndex {...props} parentMounted={this.state.mounted}/>} exact/>
                             </Switch>
                         </ErrorBoundary>
 

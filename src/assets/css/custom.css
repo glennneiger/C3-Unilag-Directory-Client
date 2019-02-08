@@ -295,6 +295,11 @@ input[type=submit], .register button {
     font-weight: bold;
 }
 
+.table td{
+    text-transform: capitalize;
+}
+
+
 
 
 /******* STUDENT REGISTRATION AND LOGIN ******/
