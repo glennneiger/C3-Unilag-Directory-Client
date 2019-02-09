@@ -40,6 +40,9 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
 
             if (validationRule.phoneNo){
                 // write a Regular Expression that allows only 11 digit phone numbers
+                // eg 08012345678
+                let regex = /^\d{11}$/;
+                isValid = regex.test(value) && isValid;
             }
 
             return isValid;

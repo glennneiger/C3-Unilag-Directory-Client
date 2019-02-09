@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6793cf62-d63d-43b5-9f96-617208fbbf70" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Input.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Student_Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Student_Search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/auth/Church_Admin_Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/auth/Church_Admin_Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/auth/School_Admin_Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/auth/School_Admin_Register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/auth/Student_Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/auth/Student_Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hoc/formValidator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hoc/formValidator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/util/formConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/formConfig.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -98,8 +92,8 @@
           <entry key="CSS" value="3285" />
           <entry key="HTML" value="61" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="53866" />
-          <entry key="PLAIN_TEXT" value="2162" />
+          <entry key="JavaScript" value="53949" />
+          <entry key="PLAIN_TEXT" value="2244" />
         </counts>
       </usages-collector>
     </session>
@@ -151,11 +145,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/util/formConfig.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+            <state relative-caret-position="170">
+              <caret line="90" column="54" lean-forward="true" selection-start-line="90" selection-start-column="54" selection-end-line="90" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -163,8 +157,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hoc/formValidator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1604">
-              <caret line="107" column="33" selection-start-line="107" selection-start-column="33" selection-end-line="107" selection-end-column="33" />
+            <state relative-caret-position="244">
+              <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -202,7 +196,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/auth/Church_Admin_Register.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
@@ -296,17 +290,17 @@
         <option value="$PROJECT_DIR$/src/store/reducers/churchReducer.js" />
         <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/View_Bus_Statistics.js" />
         <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Church_Dashboard.js" />
-        <option value="$PROJECT_DIR$/src/hoc/formValidator.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/UI/Sidebar.js" />
         <option value="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/School_Dashboard.js" />
         <option value="$PROJECT_DIR$/src/assets/css/custom.css" />
-        <option value="$PROJECT_DIR$/src/util/formConfig.js" />
         <option value="$PROJECT_DIR$/src/components/UI/Input.js" />
         <option value="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Student_Search.js" />
         <option value="$PROJECT_DIR$/src/containers/auth/Student_Register.js" />
         <option value="$PROJECT_DIR$/src/containers/auth/School_Admin_Register.js" />
         <option value="$PROJECT_DIR$/src/containers/auth/Church_Admin_Register.js" />
+        <option value="$PROJECT_DIR$/src/hoc/formValidator.js" />
+        <option value="$PROJECT_DIR$/src/util/formConfig.js" />
       </list>
     </option>
   </component>
@@ -565,7 +559,7 @@
       <workItem from="1549584766400" duration="800000" />
       <workItem from="1549586922276" duration="1549000" />
       <workItem from="1549637282507" duration="8260000" />
-      <workItem from="1549741692877" duration="5378000" />
+      <workItem from="1549741692877" duration="6637000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1543095091023</created>
@@ -784,11 +778,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549648320385</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="added error messages to all registration forms to handle case of failed validation">
+      <created>1549748072564</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1549748072564</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="392611000" />
+    <option name="totallyTimeSpent" value="393870000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -850,7 +851,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added form config" />
     <MESSAGE value="made some changes to the form config file" />
     <MESSAGE value="added more UI component and worked on church admin registration" />
     <MESSAGE value="handled form submission for registration forms" />
@@ -875,7 +875,8 @@
     <MESSAGE value="implemented redux for handling data in the school_admin dashboard" />
     <MESSAGE value="implemented redux for handling dashboard data in the church_admin dashboard" />
     <MESSAGE value="added a page for student search in the school_admin dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a page for student search in the school_admin dashboard" />
+    <MESSAGE value="added error messages to all registration forms to handle case of failed validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="added error messages to all registration forms to handle case of failed validation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1180,23 +1181,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/util/formConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hoc/formValidator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1604">
-          <caret line="107" column="33" selection-start-line="107" selection-start-column="33" selection-end-line="107" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Dashboard_Index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1354">
@@ -1238,6 +1222,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="49" column="98" lean-forward="true" selection-start-line="49" selection-start-column="98" selection-end-line="49" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hoc/formValidator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="42" column="33" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/util/formConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="90" column="54" lean-forward="true" selection-start-line="90" selection-start-column="54" selection-end-line="90" selection-end-column="54" />
         </state>
       </provider>
     </entry>
