@@ -6,11 +6,12 @@ export let plainTextInput = (theLabel, theType) => {
         },
         validation: {
             required: true,
+            message: `Please supply your ${theLabel}`
         },
         valid: false,
-        wasTouched: false,
         value: '',
-        label: theLabel
+        label: theLabel,
+        wasTouched: false
     }
 };
 
@@ -20,12 +21,14 @@ export let configureDropdown = (label, options) => {
         elementConfig: {
             optionValues: options
         },
-        label: label,
         validation: {
             required: true,
+            message: 'Please select an option'
         },
         valid: false,
-        value: ''
+        value: '',
+        label: label,
+        wasTouched: false
     }
 };
 
@@ -36,12 +39,13 @@ export let email = {
     },
     validation: {
         required: true,
-        email: true
+        email: true,
+        message: 'Please enter a valid email'
     },
     valid: false,
-    wasTouched: false,
     value: '',
-    label: 'Email'
+    label: 'Email',
+    wasTouched: false
 };
 
 export let password = {
@@ -49,14 +53,15 @@ export let password = {
     elementConfig: {
         type: 'password'
     },
-    value: '',
     validation: {
         required: true,
-        minLength: 1
+        minLength: 1,
+        message: 'Please supply a password'
     },
     valid: false,
-    wasTouched: false,
-    label: 'Password'
+    value: '',
+    label: 'Password',
+    wasTouched: false
 };
 
 export let passwordConfirm = {
@@ -64,15 +69,16 @@ export let passwordConfirm = {
     elementConfig: {
         type: 'password'
     },
-    value: '',
     validation: {
         required: true,
         passwordMatcher: true,
-        minLength: 1
+        minLength: 1,
+        message: 'The passwords do not match'
     },
     valid: false,
-    wasTouched: false,
-    label: 'Confirm Password'
+    value: '',
+    label: 'Confirm Password',
+    wasTouched: false
 };
 
 export let phoneNo = {
@@ -84,12 +90,13 @@ export let phoneNo = {
         required: true,
         minLength: 11,
         maxLength: 11,
-        phoneNo: true
+        phoneNo: true,
+        message: 'Please enter a valid phone number e.g 08012345678'
     },
     valid: false,
-    wasTouched: false,
     value: '',
     label: 'Phone Number',
+    wasTouched: false,
     placeholder: 'e.g.  08012345678'
 };
 

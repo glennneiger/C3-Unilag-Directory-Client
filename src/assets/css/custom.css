@@ -10,6 +10,19 @@ input[type=submit], .register button {
     margin-top: 25px;
 }
 
+.input-wrapper{
+    position: relative
+}
+
+.input-wrapper small{
+    position: relative;
+    display: block;
+    bottom: 10px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    
+}
+
 /*.modal-dialog{*/
     /*display: flex;*/
     /**/
@@ -29,6 +42,8 @@ input[type=submit], .register button {
     background: #fff;
     position: fixed;
     top: 0;
+    left: 0;
+    z-index: 100;
     box-shadow: 0px 1px 3px rgba(198, 198, 198, 0.6);
 
 }

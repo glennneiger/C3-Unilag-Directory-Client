@@ -47,6 +47,7 @@ class Student_Register extends Component{
                     wasTouched={formElement.config.wasTouched}
                     handleBlur={() => this.props.onBlurHandler(formElement.id)}
                     placeholder={formElement.config.placeholder}
+                    validationMessage={formElement.config.validation.message}
                 />
             );
         });
@@ -58,7 +59,7 @@ class Student_Register extends Component{
             <section>
                 <HomeHeader/>
                 {this.props.responseMsg}
-                <div className={tempClass}>
+                <div className={tempClass} id="student_register">
                     <div className="form-header">
                         <h1 style={{ marginBottom: '0px' }}>Student Registration</h1>
                     </div>

@@ -63,7 +63,7 @@ class Student_Search extends Component{
        }
 
        let showTable = this.state.showTable ? '' : 'd-none';
-       let tableClass = `table table-bordered ${showTable}`;
+       let tableClass = `table table-bordered table-responsive ${showTable}`;
 
 
 

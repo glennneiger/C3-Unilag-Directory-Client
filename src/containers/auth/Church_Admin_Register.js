@@ -36,6 +36,7 @@ class Church_Admin_Register extends Component{
                     isValid={formElement.config.valid}
                     wasTouched={formElement.config.wasTouched}
                     handleBlur={() => this.props.onBlurHandler(formElement.id)}
+                    validationMessage={formElement.config.validation.message}
                 />
             );
         });
@@ -47,7 +48,7 @@ class Church_Admin_Register extends Component{
             <section>
                 <HomeHeader/>
                 {this.props.responseMsg}
-                <div className={tempClass}>
+                <div className={tempClass} id="church_admin_register">
                     <div className="form-header">
                         <h1 style={{ marginBottom: '0px' }}>Church Admin Registration</h1>
                     </div>

@@ -3,6 +3,7 @@ import Wrapper from '../../hoc/Wrapper';
 
 const input = (props) => {
     let inputElement = '';
+    let smallClass = 'd-none';
 
 
     switch(props['input_type']){
@@ -10,6 +11,7 @@ const input = (props) => {
             let theClass = '';
              if (props.wasTouched){
                  theClass = props.isValid ? '' : 'invalid';
+                 smallClass = `text-danger ${props.isValid ? 'd-none' : ''}`;
              }
 
             inputElement =
@@ -25,9 +27,14 @@ const input = (props) => {
             break;
 
         case 'select':
+            let dropdownClass = 'custom-select';
+            if (props.wasTouched){
+                dropdownClass = props.isValid ? 'custom-select' : 'custom-select invalid';
+                smallClass = `text-danger ${props.isValid ? 'd-none' : ''}`;
+            }
             inputElement =
                 <select
-                    className="custom-select"
+                    className={dropdownClass}
                     value={props.theValue}
                     onChange={props.changed}
                     required>
@@ -46,10 +53,11 @@ const input = (props) => {
 
 
    return (
-        <Wrapper>
+        <div className="input-wrapper">
             <label> {props.label} <span className="text-danger"> <b>*</b> </span> </label>
             {inputElement}
-        </Wrapper>
+            <small className={smallClass}>{props.validationMessage}</small>
+        </div>
    );
 };
 
