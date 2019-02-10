@@ -3,16 +3,20 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 import { defaults } from 'react-chartjs-2';
 
-import SchoolAdmin from './containers/Dashboard/School_Admin/School_Dashboard';
-import Student_Register from "./containers/auth/Student_Register";
-import AdminLogin from "./containers/auth/Admin_Login";
-import School_Admin_Register from "./containers/auth/School_Admin_Register";
-import Church_Admin_Register from "./containers/auth/Church_Admin_Register";
-import Church_Admin_Dashboard from './containers/Dashboard/Church_Admin/Church_Dashboard';
+// import SchoolAdmin from './containers/Dashboard/School_Admin/School_Dashboard';
+// import Student_Register from "./containers/auth/Student_Register";
+// import AdminLogin from "./containers/auth/Admin_Login";
+// import School_Admin_Register from "./containers/auth/School_Admin_Register";
+// import Church_Admin_Register from "./containers/auth/Church_Admin_Register";
+// import Church_Admin_Dashboard from './containers/Dashboard/Church_Admin/Church_Dashboard';
 import Spinner from './components/UI/Spinner';
 
-// const Student_Register = lazy( () => import('./containers/auth/Student_Register') );
-//   const ChurchAdminRegister = lazy( () => import('./containers/auth/Church_Admin_Register') );
+const StudentRegister = lazy( () => import('./containers/auth/Student_Register') );
+const SchoolAdminRegister = lazy( () => import('./containers/auth/School_Admin_Register') );
+const SchoolAdminDashboard = lazy( () => import('./containers/Dashboard/School_Admin/School_Dashboard') );
+const ChurchAdminRegister = lazy( () => import('./containers/auth/Church_Admin_Register') );
+const ChurchAdminDashboard = lazy( () => import('./containers/Dashboard/Church_Admin/Church_Dashboard') );
+const AdminLogin = lazy( () => import('./containers/auth/Admin_Login') );
 
 class App extends Component {
   render() {
@@ -22,13 +26,12 @@ class App extends Component {
                 <StrictMode>
                     <Suspense fallback={<Spinner />}>
                         <Switch>
-                            <Route path="/school_admin/dashboard" component={SchoolAdmin}/>
-                            <Route path="/school_admin/register" component={School_Admin_Register}/>
-                            <Route path="/church_admin/dashboard" component={Church_Admin_Dashboard}/>
-                            {/*<Route path="/church_admin/register" render={(props) => <ChurchAdminRegister {...props}/>}/>*/}
-                            <Route path="/church_admin/register" component={Church_Admin_Register}/>
-                            <Route path="/login" component={AdminLogin}/>
-                            <Route path="/"  component={Student_Register}/>
+                            <Route path="/school_admin/dashboard" render={(props) => <SchoolAdminDashboard {...props}/>} />
+                            <Route path="/school_admin/register" render={(props) => <SchoolAdminRegister {...props}/>} />
+                            <Route path="/church_admin/dashboard" render={(props) => <ChurchAdminDashboard {...props}/>} />
+                            <Route path="/church_admin/register" render={(props) => <ChurchAdminRegister {...props}/>} />
+                            <Route path="/login" render={(props) => <AdminLogin {...props}/>} />
+                            <Route path="/"  render={(props) => <StudentRegister {...props}/>} />
                         </Switch>
                     </Suspense>
                 </StrictMode>

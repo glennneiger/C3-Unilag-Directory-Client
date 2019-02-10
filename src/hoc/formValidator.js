@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from '../axios-instance';
 import SuccessLabel from "../components/UI/SuccessLabel";
 import ErrorLabel from "../components/UI/ErrorLabel";
+import Spinner from '../components/UI/Spinner';
 
 const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
     return class extends Component{
@@ -96,7 +97,12 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
         // handler for submitting form
         submitForm = (event) => {
             event.preventDefault();
+            window.scroll(0,0);
             let formValues = {};
+
+            // show a spinner
+            let theSpinner = <Spinner/>;
+            this.setState({ responseMsg: theSpinner });
 
             for (let formKeys in this.state.registerForm){
                 formValues[formKeys] = this.state.registerForm[formKeys].value;
@@ -111,7 +117,7 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
             // axios post request
             axios.post(thePath, formValues)
                 .then(result => {
-                    window.scroll(0,0);
+
                     let registerFormClone = { ...this.state.registerForm };
                     let registerFormCloneKeys = [];
 

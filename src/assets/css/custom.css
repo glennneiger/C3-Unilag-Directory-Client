@@ -320,6 +320,7 @@ input[type=submit], .register button {
 /******* STUDENT REGISTRATION AND LOGIN ******/
 .register{
     width: 50%;
+    max-width: 803px;
     background: #fff;
     border: 1px solid #d2dfd8;
     margin: 100px auto 70px;
@@ -532,4 +533,57 @@ input[type="submit"]:disabled, button:disabled{
     height: 76px !important;
     -webkit-transform: translate(-38px, -38px) scale(0.38) translate(38px, 38px);
     transform: translate(-38px, -38px) scale(0.38) translate(38px, 38px);
+}
+
+
+
+
+
+/*
+*   MEDIA QUERIES
+ */
+
+/*  Student Registration form*/
+@media (max-width: 1000px) {
+    #student_register,
+    #school_admin_register,
+    #church_admin_register{
+        width: 90%;
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+        margin-top: 80px;
+        line-height: 1.5;
+    }
+
+    .input-wrapper{
+        margin-bottom: 30px;
+    }
+
+    .alert-success, .alert-danger, .theLabel{
+        width: 90%;
+    }
+}
+
+@media (max-width: 420px){
+    #school_admin_register h1,
+    #church_admin_register h1{
+        font-size: 21px;
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 350px){
+    .Nav{
+        display: block;
+        text-align: center;
+    }
+    
+    .logo{
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .register h1{
+        font-size: 25px;
+    }
 }
