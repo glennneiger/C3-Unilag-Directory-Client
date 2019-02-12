@@ -70,13 +70,30 @@ input[type=submit], .register button {
 
 
 /**** SIDEBAR *****/
-.sidebar{
+.sidebar-normal, .sidebar-responsive{
     z-index: 1;
     position: fixed;
     height: 100%;
     width: 18%;
     background: #5b6577;
+    top: 0;
+    left: 0;
+}
 
+.sidebar{
+    height: 100%;
+}
+
+.sidebar-responsive{
+    z-index: 200;
+    width: 65%;
+    max-width: 260px;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease-out;
+}
+
+.sidebar-responsive.show{
+    transform: translateX(0);
 }
 
 .sidebar a{
@@ -114,6 +131,21 @@ input[type=submit], .register button {
 
 .sidebar ul{
     padding-left: 0px;
+}
+
+.backdrop{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    z-index: 100;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.show{
+    display: block;
 }
 
 
@@ -172,6 +204,34 @@ input[type=submit], .register button {
     position: relative;
     background: transparent;
     color: #333;
+}
+
+.menu-button{
+    background: transparent;
+    border: none;
+    width: 30px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+
+}
+
+.toggle-button{
+    display: none;
+}
+
+.menu-button:focus{
+    outline: none;
+}
+
+.menu-button-line{
+    width: 30px;
+    background: #555;
+    height: 2px;
 }
 
 /*.header-wrapper p{*/
@@ -484,6 +544,14 @@ input[type="submit"]:disabled, button:disabled{
     color: #fff;
 }
 
+#student_search,
+#school_logout,
+.delete-account
+{
+    width: 50%;
+    margin: 0px auto !important;
+}
+
 
 /****** SPINNER CSS ******/
 @keyframes lds-rolling {
@@ -547,11 +615,16 @@ input[type="submit"]:disabled, button:disabled{
 @media (max-width: 1000px) {
     #student_register,
     #school_admin_register,
-    #church_admin_register{
-        width: 90%;
-        font-size: 1.3rem;
+    #church_admin_register,
+    #login,
+    #add_bus_stats,
+    #student_search,
+    #school_logout,
+    .delete-account{
+        width: 87%;
+        font-size: 1.2rem;
         margin-bottom: 30px;
-        margin-top: 80px;
+        margin-top: 95px;
         line-height: 1.5;
     }
 
@@ -561,6 +634,10 @@ input[type="submit"]:disabled, button:disabled{
 
     .alert-success, .alert-danger, .theLabel{
         width: 90%;
+    }
+
+    .btn-success{
+        width: 100% !important;
     }
 }
 
@@ -585,5 +662,47 @@ input[type="submit"]:disabled, button:disabled{
 
     .register h1{
         font-size: 25px;
+    }
+}
+
+
+/* School Dashboard*/
+@media (max-width: 1100px){
+    .toggle-button{
+        display: block;
+    }  
+    
+    .sidebar-normal{
+        display: none;
+    }
+
+    .dashboard{
+        display: block
+    }
+
+    .dashboard_body{
+        left: 0;
+        width: 100%;
+    }
+    
+
+    .dashboard_body header h1{
+        width: 90%;
+    }
+    
+    .dashboard_body header button{
+        margin-right: 20px;
+    }
+
+    
+
+    
+}
+
+@media (max-width: 400px){
+    .dashboard_body header h1,
+    .dashboard_body header span{
+        font-size: 24px !important;
+        line-height: 1.6;
     }
 }

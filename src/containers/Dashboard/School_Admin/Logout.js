@@ -15,12 +15,12 @@ const logout = (props) => {
 
 
     return (
-        <section className="dashindex" style={{ width: '50%' }}>
+        <section className="dashindex" >
             <div className="container">
                 {/*Start row*/}
                 <div className="row">
                     <div className="col-12">
-                        <div className="big-box">
+                        <div className="big-box" id="school_logout">
                             <div className="big-box-header form-header">
                                 <h3>Logout</h3>
                             </div>

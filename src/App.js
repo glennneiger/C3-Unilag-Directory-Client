@@ -3,12 +3,6 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 
 import { defaults } from 'react-chartjs-2';
 
-// import SchoolAdmin from './containers/Dashboard/School_Admin/School_Dashboard';
-// import Student_Register from "./containers/auth/Student_Register";
-// import AdminLogin from "./containers/auth/Admin_Login";
-// import School_Admin_Register from "./containers/auth/School_Admin_Register";
-// import Church_Admin_Register from "./containers/auth/Church_Admin_Register";
-// import Church_Admin_Dashboard from './containers/Dashboard/Church_Admin/Church_Dashboard';
 import Spinner from './components/UI/Spinner';
 
 const StudentRegister = lazy( () => import('./containers/auth/Student_Register') );

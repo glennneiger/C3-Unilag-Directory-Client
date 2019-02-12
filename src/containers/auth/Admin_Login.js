@@ -74,7 +74,7 @@ class AdminLogin extends Component{
            <section className="login">
                <Header />
                {this.state.loginMessage}
-               <div className={tempClass}>
+               <div className={tempClass} id="login">
                    <div className="form-header">
                        <h1 style={{ marginBottom: '0px' }}>Login</h1>
                    </div>

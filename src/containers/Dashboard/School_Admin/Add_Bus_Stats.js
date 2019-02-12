@@ -92,7 +92,7 @@ class Add_Bus_Stats extends Component{
 
                 {this.state.submitMessage}
 
-                <div className={tempClass} >
+                <div className={tempClass} id="add_bus_stats">
                     <div className="form-header">
                         <h1 style={{ marginBottom: '0px' }}>Add Bus Statistics</h1>
                     </div>

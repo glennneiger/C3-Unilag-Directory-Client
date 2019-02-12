@@ -68,12 +68,12 @@ class Student_Search extends Component{
 
 
        return (
-           <section className="dashindex">
+           <section className="dashindex" >
                <div className="container">
                    {/*Start row*/}
                    <div className="row">
                        <div className="col-12">
-                           <div className="big-box" style={{ width: '50%', margin: '0px auto' }}>
+                           <div className="big-box"  id="student_search">
                                <div className="big-box-header form-header">
                                    <h3>Search for a student</h3>
                                </div>

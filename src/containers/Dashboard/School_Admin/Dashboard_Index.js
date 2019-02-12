@@ -198,7 +198,7 @@ class DashboardIndex extends Component{
 
                     {/*start row */}
                     <div className="row">
-                        <div className="col-lg-3 col-sm-12">
+                        <div className="col-lg-3 col-md-6 col-sm-12">
                             <div className="box">
                                 <div className="box-icon" style={{ background: 'rgb(255,99,132)'}}>
                                    <span>
@@ -211,7 +211,7 @@ class DashboardIndex extends Component{
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-sm-12">
+                        <div className="col-lg-3 col-md-6 col-sm-12">
                             <div className="box">
                                 <div className="box-icon" style={{ background: 'rgb(255,99,132)'}}>
                                    <span>
@@ -224,7 +224,7 @@ class DashboardIndex extends Component{
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-sm-12">
+                        <div className="col-lg-3 col-md-6 col-sm-12">
                             <div className="box">
                                 <div className="box-icon" style={{ background: 'rgb(75,192,192)'}}>
                                    <span>
@@ -237,7 +237,7 @@ class DashboardIndex extends Component{
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-sm-12">
+                        <div className="col-lg-3 col-md-6 col-sm-12">
                             <div className="box">
                                 <div className="box-icon" style={{ background: 'rgb(54,162,235)'}}>
                                    <span>
