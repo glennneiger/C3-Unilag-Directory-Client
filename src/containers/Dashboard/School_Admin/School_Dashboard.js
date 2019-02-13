@@ -11,7 +11,6 @@ import Logout from './Logout';
 import Delete_Account from './Delete_Account';
 
 import axios from "../../../axios-instance";
-import errorHandler from '../../../hoc/errorHandler';
 import ErrorBoundary from '../../../util/ErrorBoundary';
 import MenuButton from '../../../components/UI/MenuButton';
 import Backdrop from '../../../components/UI/Backdrop';
@@ -186,4 +185,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)( errorHandler(School_Dashboard) );
+export default connect(mapStateToProps)( School_Dashboard );

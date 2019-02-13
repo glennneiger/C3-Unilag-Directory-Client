@@ -8,7 +8,8 @@ import axios from '../axios-instance';
 const errorHandler = (WrappedComponent) => {
     return class errorHandler extends Component {
         state = {
-           error: null
+           error: null,
+            errorPresent: false
         };
 
         componentDidMount(){
@@ -22,7 +23,7 @@ const errorHandler = (WrappedComponent) => {
             // intercept the response for the error
             axios.interceptors.response.use(response => response, error => {
 
-                this.setState({ error: error.message });
+                this.setState({ error: error.message, errorPresent: true });
             });
         }
 

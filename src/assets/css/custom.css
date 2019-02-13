@@ -10,6 +10,19 @@ input[type=submit], .register button {
     margin-top: 25px;
 }
 
+input.invalid:focus{
+    outline: #dc3545;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="text"]:active{
+    outline: blue !important;
+    border-color: mediumseagreen !important;
+    border-width: 2px;
+}
+
 .input-wrapper{
     position: relative
 }
@@ -21,6 +34,11 @@ input[type=submit], .register button {
     font-weight: bold;
     margin-bottom: 8px;
     
+}
+
+canvas{
+    height: 100% !important;
+    /*max-width: 100% !important;*/
 }
 
 /*.modal-dialog{*/
@@ -200,10 +218,18 @@ input[type=submit], .register button {
     width: 82%;
     height: 100%;
     left: 18%;
-    /*padding: 20px 25px;*/
     position: relative;
     background: transparent;
     color: #333;
+}
+
+.graph-box{
+    height: 530px;
+    overflow: scroll;
+}
+
+.graph-box .big-box-body{
+    height: 100%;
 }
 
 .menu-button{
@@ -663,6 +689,11 @@ input[type="submit"]:disabled, button:disabled{
         font-size: 21px;
         line-height: 1.6;
     }
+
+    .big-box h3{
+        text-align: center;
+        font-size: 1.45rem;
+    }
 }
 
 @media (max-width: 350px){
@@ -684,6 +715,11 @@ input[type="submit"]:disabled, button:disabled{
 
 /* School Dashboard*/
 @media (max-width: 1100px){
+
+    .big-box{
+        border-radius: 0;
+    }
+    
     .toggle-button{
         display: block;
     }  
@@ -710,9 +746,31 @@ input[type="submit"]:disabled, button:disabled{
         margin-right: 20px;
     }
 
-    
+    .radio-options{
+        margin-left: 17px;
+    }
+}
 
-    
+@media (max-width: 1000px){
+    html{
+        font-size: 14px;
+    }
+
+    .register h1{
+        font-size: 24px;
+    }
+
+    .logo{
+        font-size: 26px;
+    }
+
+    .number-title{
+        font-size: 1.25rem;
+    }
+
+    .graph-box{
+        height: 430px;
+    }
 }
 
 @media (max-width: 400px){
@@ -724,6 +782,7 @@ input[type="submit"]:disabled, button:disabled{
 
     #student_search h3{
         font-size: 1.4rem;
+        line-height: 1.6;
     }
 }
 

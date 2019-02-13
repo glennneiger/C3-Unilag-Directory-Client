@@ -148,7 +148,7 @@ class View_Bus_Statistics extends Component{
                     {/*Start row*/}
                     <div className="row">
                         <div className="col-12">
-                            <div className="big-box">
+                            <div className="big-box graph-box">
                                 <div className="big-box-header form-header">
                                     <h3>Bus Statistics for {this.getMonth( new Date().getMonth() + 1)} {currentYear}</h3>
                                 </div>
@@ -162,7 +162,7 @@ class View_Bus_Statistics extends Component{
                     {/*Start row*/}
                     <div className="row">
                         <div className="col-12">
-                            <div className="big-box">
+                            <div className="big-box graph-box">
                                 <div className="big-box-header form-header">
                                     <h3>Bus Statistics for Year {currentYear}</h3>
                                 </div>
@@ -176,7 +176,7 @@ class View_Bus_Statistics extends Component{
                     {/*Start row*/}
                     <div className="row">
                         <div className="col-12">
-                            <div className="big-box">
+                            <div className="big-box graph-box">
                                 <div className="big-box-header form-header">
                                     <h3>Cumulative Bus Statistics for Year ({minYear} - {maxYear})</h3>
                                 </div>

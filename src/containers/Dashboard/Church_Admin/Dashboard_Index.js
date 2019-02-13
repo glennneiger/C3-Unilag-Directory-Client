@@ -6,7 +6,10 @@ import CountUp from 'react-countup';
 
 import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
+import errorHandler from '../../../hoc/errorHandler';
 import * as actions from '../../../store/actions/index';
+import DismissModal from "../../../components/UI/DismissModal";
+import Wrapper from "../../../hoc/Wrapper";
 
 class Dashboard_Index extends Component{
     constructor(props){
@@ -17,7 +20,9 @@ class Dashboard_Index extends Component{
             totalStudents: this.props.totalStudents,
             finalYearStudents: this.props.finalYearStudents,
             monthChartData: this.props.monthChartData,
-            loading: this.props.totalStudents === null
+            loading: this.props.totalStudents === null,
+            hasError: false,
+            errorMsg: null
         };
 
         // scroll to the top of screen
@@ -100,7 +105,7 @@ class Dashboard_Index extends Component{
             window.scrollTo(0, 0);
 
         }  catch (error) {
-            console.log('error');
+            this.setState({ hasError: true, errorMsg: error.message});
         }
     };
 
@@ -144,7 +149,7 @@ class Dashboard_Index extends Component{
                     {/*Start row*/}
                     <div className="row">
                         <div className="col-12">
-                            <div className="big-box">
+                            <div className="big-box graph-box">
                                 <div className="big-box-header form-header">
                                     <h3>Bus Statistics for {this.getMonth( new Date().getMonth() + 1)} {new Date().getFullYear()}</h3>
                                 </div>
@@ -161,6 +166,8 @@ class Dashboard_Index extends Component{
 
          return (
              <section className="dashindex">
+                 <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+
                  {mainBody}
              </section>
          );
@@ -181,4 +188,4 @@ const mapDispatchToProps = dispatch => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard_Index);
+export default connect(mapStateToProps, mapDispatchToProps)( Dashboard_Index );

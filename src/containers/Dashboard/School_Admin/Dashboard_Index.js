@@ -283,7 +283,7 @@ class DashboardIndex extends Component{
                     {/*Start row*/}
                     <div className="row">
                        <div className="col-12">
-                           <div className="big-box">
+                           <div className="big-box graph-box">
                                <div className="big-box-header form-header">
                                    <h3>Bus Statistics for {this.getMonth( new Date().getMonth() + 1)} {new Date().getFullYear()}</h3>
                                </div>

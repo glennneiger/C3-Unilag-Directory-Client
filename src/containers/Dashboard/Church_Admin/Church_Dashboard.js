@@ -7,7 +7,6 @@ import axios from "../../../axios-instance";
 import View_Bus_Statistics from "./View_Bus_Statistics";
 import Logout from './Logout';
 
-import errorHandler from '../../../hoc/errorHandler';
 import ErrorBoundary from '../../../util/ErrorBoundary';
 import Delete_Account from "./Delete_Account";
 import MenuButton from "../../../components/UI/MenuButton";
@@ -171,4 +170,4 @@ class Church_Dashboard extends Component{
     }
 }
 
-export default  errorHandler(Church_Dashboard) ;
+export default  Church_Dashboard ;

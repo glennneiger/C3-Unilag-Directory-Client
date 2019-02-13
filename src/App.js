@@ -12,6 +12,9 @@ const ChurchAdminRegister = lazy( () => import('./containers/auth/Church_Admin_R
 const ChurchAdminDashboard = lazy( () => import('./containers/Dashboard/Church_Admin/Church_Dashboard') );
 const AdminLogin = lazy( () => import('./containers/auth/Admin_Login') );
 
+// to make chartjs responsive
+defaults.global.maintainAspectRatio = false;
+
 class App extends Component {
   render() {
     return (
