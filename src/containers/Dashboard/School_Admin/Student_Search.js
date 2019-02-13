@@ -63,7 +63,7 @@ class Student_Search extends Component{
        }
 
        let showTable = this.state.showTable ? '' : 'd-none';
-       let tableClass = `table table-bordered table-responsive ${showTable}`;
+       let tableClass = `table table-bordered ${showTable}`;
 
 
 
@@ -96,7 +96,7 @@ class Student_Search extends Component{
                    {this.state.spinner}
 
                    <div className="row">
-                       <div className="col-12">
+                       <div className="col-12 table-responsive">
                            <table className={tableClass} style={{ background: '#fff', marginTop: '40px' }}>
                                <thead>
                                    <tr>

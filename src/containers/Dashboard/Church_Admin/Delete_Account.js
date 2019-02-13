@@ -35,12 +35,12 @@ class Delete_Account extends Component {
 
     render(){
         return (
-            <section className="dashindex" style={{ width: '50%' }}>
+            <section className="dashindex">
                 <div className="container">
                     {/*Start row*/}
                     <div className="row">
                         <div className="col-12">
-                            <div className="big-box">
+                            <div className="big-box delete-account">
                                 <div className="big-box-header form-header">
                                     <h3>Delete Account</h3>
                                 </div>

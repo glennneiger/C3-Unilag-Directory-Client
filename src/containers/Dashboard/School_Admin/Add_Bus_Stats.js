@@ -10,14 +10,15 @@ import * as actions from '../../../store/actions/index';
 class Add_Bus_Stats extends Component{
     constructor(props){
         super(props);
-        // const theUser = JSON.parse(localStorage.getItem('user'));
+        const theUser = JSON.parse(localStorage.getItem('user'));
+        const theService = theUser.leader ? '' : theUser.service;
 
         this.state = {
             formData: {
                 going: '',
                 returning: ''
             },
-            service: '',
+            service: theService,
             loading: false,
             submitMessage: ''
         };

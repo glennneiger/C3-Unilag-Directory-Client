@@ -254,13 +254,13 @@ class DashboardIndex extends Component{
 
                     {/*start row*/}
                     <div className="row">
-                        <div className="col-12">
-                            <div className="big-box">
+                        <div className="col-12" >
+                            <div className="big-box" id="birthday_box">
                                 <div className="big-box-header form-header">
                                     <h3>Birthdays this Month</h3>
                                 </div>
                                 <div className="big-box-body table-responsive">
-                                    <table className="table ">
+                                    <table className="table">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>

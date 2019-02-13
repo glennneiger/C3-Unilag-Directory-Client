@@ -258,6 +258,14 @@ input[type=submit], .register button {
     width: 97%;
 }
 
+.dashindex .table{
+    margin-top: 25px;
+}
+
+.table{
+    max-height: 200px;
+}
+
 .box{
     background: #fff;
     box-shadow: 0 1px 15px 1px rgba(69,65,78,.08);
@@ -322,7 +330,7 @@ input[type=submit], .register button {
 
 .logout button{
     padding: 10px 5px;
-    width: 35%;
+    width: 43%;
     border: none;
     background-color: tomato;
     cursor: pointer;
@@ -540,12 +548,19 @@ input[type="submit"]:disabled, button:disabled{
     font-weight: bold;
 }
 
+.today .btn-success{
+    background: #fff;
+    color: mediumseagreen;
+    font-weight: bold;
+}
+
 .box-icon i{
     color: #fff;
 }
 
 #student_search,
 #school_logout,
+#church_logout,
 .delete-account
 {
     width: 50%;
@@ -620,6 +635,7 @@ input[type="submit"]:disabled, button:disabled{
     #add_bus_stats,
     #student_search,
     #school_logout,
+    #church_logout,
     .delete-account{
         width: 87%;
         font-size: 1.2rem;
@@ -704,5 +720,17 @@ input[type="submit"]:disabled, button:disabled{
     .dashboard_body header span{
         font-size: 24px !important;
         line-height: 1.6;
+    }
+
+    #student_search h3{
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 350px){
+    #birthday_box{
+        max-height: 400px;
+        overflow-y: scroll;
+        border-radius: 0px;
     }
 }

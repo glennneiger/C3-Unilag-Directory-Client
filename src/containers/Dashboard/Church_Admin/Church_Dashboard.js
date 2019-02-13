@@ -10,6 +10,8 @@ import Logout from './Logout';
 import errorHandler from '../../../hoc/errorHandler';
 import ErrorBoundary from '../../../util/ErrorBoundary';
 import Delete_Account from "./Delete_Account";
+import MenuButton from "../../../components/UI/MenuButton";
+import Backdrop from "../../../components/UI/Backdrop";
 
 class Church_Dashboard extends Component{
     constructor(props){
@@ -21,7 +23,8 @@ class Church_Dashboard extends Component{
 
         //initialize state
         this.state = {
-            mounted: !(currentTime > expireTime)
+            mounted: !(currentTime > expireTime),
+            open: false
         };
 
         // check for token time validity
@@ -100,6 +103,17 @@ class Church_Dashboard extends Component{
 
         return sidebarMap;
     };
+
+    toggleSidebar = () => {
+        this.setState(prevState => {
+            return { open: !(prevState.open) }
+        })
+    };
+
+    removeBackdrop = () => {
+        console.log('backdrop removed');
+        this.setState({ open: false });
+    };
     
 
     componentDidMount(){
@@ -114,21 +128,30 @@ class Church_Dashboard extends Component{
 
     render(){
         const sidebarLinks = this.configureSidebar();
+        let mobileSidebarClass = this.state.open ? 'sidebar-responsive show' : 'sidebar-responsive';
+
         console.log('render in parent', this.state.mounted);
 
         return (
             <section className="dashboard">
-                <Sidebar navlinks={sidebarLinks}/>
+                <div className="sidebar-normal">
+                    <Sidebar navlinks={sidebarLinks} responsive={false}/>
+                </div>
+
+                <div className={mobileSidebarClass}>
+                    <Sidebar navlinks={sidebarLinks} responsive={true} removeSidebar={this.removeBackdrop}/>
+                </div>
+
+                <Backdrop removeBackdrop={this.removeBackdrop} open={this.state.open}/>
 
                 <div className="dashboard_body fa-line">
                     <div>
                         <header>
+                            <div className="toggle-button">
+                                <MenuButton toggleSidebar={this.toggleSidebar}/>
+                            </div>
                             <h1>C3 Unilag <span className="dash_header">Directory</span></h1>
-                            <p>Welcome.
-                                {/*<span>*/}
-                                {/*{" " + this.props.student.biodata.surname} {this.props.student.biodata.firstname}*/}
-                                {/*</span>*/}
-                            </p>
+
                         </header>
 
                         <ErrorBoundary>
