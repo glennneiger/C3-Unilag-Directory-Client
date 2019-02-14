@@ -3,6 +3,7 @@ import axios from '../axios-instance';
 import SuccessLabel from "../components/UI/SuccessLabel";
 import ErrorLabel from "../components/UI/ErrorLabel";
 import Spinner from '../components/UI/Spinner';
+import DismissModal from "../components/UI/DismissModal";
 
 const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
     return class extends Component{
@@ -10,7 +11,9 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
         state = {
             registerForm: {...appState},
             formIsValid: false,
-            responseMsg: ''
+            responseMsg: '',
+            hasError: false,
+            errorMsg: null
         };
 
 
@@ -185,24 +188,29 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
 
                 })
                 .catch(error => {
-                    console.log(error.message);
+                    this.setState({ hasError: true, errorMsg: error.message, responseMsg: '' });
                 });
 
         };  // end submit form
 
 
         render() {
-            var theForm = this.state.registerForm;
+            let theForm = this.state.registerForm;
             return (
-                <WrappedComponent
-                registerForm={theForm}
-                inputChangedHandler={this.inputChangedHandler}
-                onBlurHandler={this.onBlurHandler}
-                formIsValid={this.state.formIsValid}
-                submitForm={this.submitForm}
-                responseMsg={this.state.responseMsg}
-                {...this.props}
-                />
+                <React.Fragment>
+                    <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+
+                    <WrappedComponent
+                        registerForm={theForm}
+                        inputChangedHandler={this.inputChangedHandler}
+                        onBlurHandler={this.onBlurHandler}
+                        formIsValid={this.state.formIsValid}
+                        submitForm={this.submitForm}
+                        responseMsg={this.state.responseMsg}
+                        {...this.props}
+                    />
+                </React.Fragment>
+
                 
             );
         }

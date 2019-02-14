@@ -6,6 +6,7 @@ import Spinner from '../../../components/UI/Spinner';
 import * as actions from '../../../store/actions/index';
 import { Bar, Line } from "react-chartjs-2";
 import { returnData, returnDataSet } from "../../../util/chartConfig";
+import DismissModal from "../../../components/UI/DismissModal";
 
 
 class View_Bus_Statistics extends Component{
@@ -18,7 +19,9 @@ class View_Bus_Statistics extends Component{
             yearChartData: this.props.yearChartData,
             cumulativeChartData: this.props.cumulChartData,
             yearsArray: this.props.yearsArray,
-            loading: this.props.busContentLoading
+            loading: this.props.busContentLoading,
+            hasError: false,
+            errorMsg: null
         };
 
         window.scrollTo(0, 0);
@@ -127,7 +130,7 @@ class View_Bus_Statistics extends Component{
 
 
         }  catch(error){
-            console.log('error');
+            this.setState({ hasError: true, errorMsg: error.message });
         }
 
     }
@@ -145,6 +148,8 @@ class View_Bus_Statistics extends Component{
 
             mainBody = (
                 <div className="container">
+                    <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+
                     {/*Start row*/}
                     <div className="row">
                         <div className="col-12">

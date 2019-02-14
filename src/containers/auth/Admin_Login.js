@@ -7,6 +7,7 @@ import ErrorLabel from '../../components/UI/ErrorLabel';
 import Spinner from '../../components/UI/Spinner';
 import errorHandler from '../../hoc/errorHandler';
 import * as actions from '../../store/actions/index';
+import DismissModal from "../../components/UI/DismissModal";
 
 class AdminLogin extends Component{
    state = {
@@ -16,7 +17,9 @@ class AdminLogin extends Component{
       },
        admin: 'school',
       loading: false,
-       loginMessage: ''
+       loginMessage: '',
+       hasError: false,
+       errorMsg: null
    };
 
    handleChange = (event) => {
@@ -58,6 +61,7 @@ class AdminLogin extends Component{
               }
            })
            .catch(error => {
+               this.setState({ hasError: true, errorMsg: error.message, loginMessage: '', loading: false });
 
            });
       console.log('the login state', this.state.loginForm);
@@ -72,6 +76,8 @@ class AdminLogin extends Component{
 
        return (
            <section className="login">
+               <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+
                <Header />
                {this.state.loginMessage}
                <div className={tempClass} id="login">

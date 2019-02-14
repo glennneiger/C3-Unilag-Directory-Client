@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import axios from '../../../axios-instance';
+import DismissModal from "../../../components/UI/DismissModal";
 
 class Delete_Account extends Component {
     constructor(props){
@@ -10,7 +11,9 @@ class Delete_Account extends Component {
 
         // initialize state
         this.state = {
-            user: user
+            user: user,
+            hasError: false,
+            errorMsg: null
         }
     }
 
@@ -24,7 +27,7 @@ class Delete_Account extends Component {
                this.props.history.replace('/login');
            })
            .catch(error => {
-               console.log(error);
+               this.setState({ hasError: true, errorMsg: error.message });
            });
     };
 
@@ -36,6 +39,8 @@ class Delete_Account extends Component {
     render(){
         return (
             <section className="dashindex">
+                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+
                 <div className="container">
                     {/*Start row*/}
                     <div className="row">

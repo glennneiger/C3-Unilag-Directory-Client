@@ -17,6 +17,7 @@ input.invalid:focus{
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="tel"]:focus,
+input[type="password"]:focus,
 input[type="text"]:active{
     outline: blue !important;
     border-color: mediumseagreen !important;
@@ -38,7 +39,18 @@ input[type="text"]:active{
 
 canvas{
     height: 100% !important;
-    /*max-width: 100% !important;*/
+}
+
+.modal-header .close{
+    margin-right: 5px;
+}
+
+.modal{
+    z-index: 200 !important;
+}
+
+.modal-backdrop.show{
+    z-index: 100 !important;
 }
 
 /*.modal-dialog{*/
@@ -593,6 +605,10 @@ input[type="submit"]:disabled, button:disabled{
     margin: 0px auto !important;
 }
 
+.lds-css.theLabel{
+    margin-top: 75px;
+}
+
 
 /****** SPINNER CSS ******/
 @keyframes lds-rolling {
@@ -623,7 +639,7 @@ input[type="submit"]:disabled, button:disabled{
     position: absolute;
     width: 160px;
     height: 160px;
-    border: 20px solid #4246ff;
+    border: 17px solid #4246ff;
     border-top-color: transparent;
     border-radius: 50%;
 }
@@ -772,6 +788,8 @@ input[type="submit"]:disabled, button:disabled{
         height: 430px;
     }
 }
+
+
 
 @media (max-width: 400px){
     .dashboard_body header h1,

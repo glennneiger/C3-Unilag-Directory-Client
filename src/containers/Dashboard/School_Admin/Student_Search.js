@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
+import DismissModal from "../../../components/UI/DismissModal";
 
 class Student_Search extends Component{
     state = {
@@ -9,7 +10,9 @@ class Student_Search extends Component{
         searchResult: [],
         isEmpty: true,
         showTable: false,
-        spinner: ''
+        spinner: '',
+        hasError: false,
+        errorMsg: null
     };
 
     handleChange = (event) => {
@@ -37,7 +40,7 @@ class Student_Search extends Component{
 
             }) // end then
             .catch(error => {
-                console.log('error')
+                this.setState({ hasError: true, errorMsg: error.message, spinner: '' });
             });
 
     };
@@ -69,6 +72,8 @@ class Student_Search extends Component{
 
        return (
            <section className="dashindex" >
+               <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+
                <div className="container">
                    {/*Start row*/}
                    <div className="row">

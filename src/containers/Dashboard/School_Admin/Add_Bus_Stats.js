@@ -5,6 +5,7 @@ import axios from '../../../axios-instance';
 import Spinner from "../../../components/UI/Spinner";
 import SuccessLabel from '../../../components/UI/SuccessLabel';
 import * as actions from '../../../store/actions/index';
+import DismissModal from "../../../components/UI/DismissModal";
 
 
 class Add_Bus_Stats extends Component{
@@ -20,7 +21,9 @@ class Add_Bus_Stats extends Component{
             },
             service: theService,
             loading: false,
-            submitMessage: ''
+            submitMessage: '',
+            hasError: false,
+            errorMsg: null
         };
     }
 
@@ -54,7 +57,9 @@ class Add_Bus_Stats extends Component{
                 // let redux store know that bus stats has changed
                 this.props.busStatsChanged();
             })
-            .catch();
+            .catch(error => {
+                this.setState({ hasError: true, errorMsg: error.message });
+            });
     };
 
     handleChange = (event) => {
@@ -90,6 +95,7 @@ class Add_Bus_Stats extends Component{
 
         return (
             <section >
+                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
 
                 {this.state.submitMessage}
 

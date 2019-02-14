@@ -4,11 +4,15 @@ import { plainTextInput, email, configureDropdown, phoneNo } from '../../util/fo
 import HomeHeader from '../../components/UI/Home_Header';
 import Input from "../../components/UI/Input";
 import formValidator from '../../hoc/formValidator';
+import DismissModal from '../../components/UI/DismissModal';
 
 class Student_Register extends Component{
 
     constructor(props){
         super(props);
+        this.state = {
+
+        };
 
         window.scrollTo(0, 0);
     }
@@ -58,6 +62,7 @@ class Student_Register extends Component{
         return (
             <section>
                 <HomeHeader/>
+
                 {this.props.responseMsg}
                 <div className={tempClass} id="student_register">
                     <div className="form-header">

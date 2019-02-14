@@ -5,6 +5,7 @@ import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
 import SuccessLabel from '../../../components/UI/SuccessLabel';
 import * as actions from '../../../store/actions/index';
+import DismissModal from "../../../components/UI/DismissModal";
 
 class Assign_Leader extends Component{
     constructor(props){
@@ -21,7 +22,9 @@ class Assign_Leader extends Component{
             loading: this.props.schoolAdminsLoading,
             selectedAdminEmail: '',
             disabled: true,
-            responseMsg: ''
+            responseMsg: '',
+            hasError: false,
+            errorMsg: null
         };
 
         // if the user is not the transport unit leader, redirect to school_admin dashboard
@@ -52,7 +55,7 @@ class Assign_Leader extends Component{
                     this.props.loadSchoolAdmins(theSchoolAdmins);
                 })
                 .catch(error => {
-                    console.log(error);
+                    this.setState({ hasError: true, errorMsg: error.message, responseMsg: ''})
                 });
         }
     }
@@ -64,6 +67,9 @@ class Assign_Leader extends Component{
     submitForm = (event) => {
         event.preventDefault();
         const theAdminEmail = this.state.selectedAdminEmail;
+        const spinner = <Spinner/>;
+
+        this.setState({ responseMsg: spinner });
 
         axios.post('/admin/assign-leader', { selectedAdminEmail: theAdminEmail })
             .then(result => {
@@ -77,7 +83,7 @@ class Assign_Leader extends Component{
                 this.props.loadSchoolAdmins(theSchoolAdmins);
             })
             .catch(error => {
-                console.log(error);
+                this.setState({ hasError: true, errorMsg: error.message });
             });
     };
 
@@ -106,6 +112,7 @@ class Assign_Leader extends Component{
 
             mainBody = (
                 <div className="container">
+
                     {/*Start row*/}
                     <div className="row">
                         <div className="col-12">
@@ -132,6 +139,8 @@ class Assign_Leader extends Component{
 
         return (
            <section className="dashindex">
+               <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+
                {this.state.responseMsg}
                {mainBody}
            </section>

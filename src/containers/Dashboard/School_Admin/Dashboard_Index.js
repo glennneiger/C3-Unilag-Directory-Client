@@ -7,7 +7,7 @@ import { returnData, returnDataSet } from '../../../util/chartConfig';
 
 import axios from '../../../axios-instance';
 import Spinner from '../../../components/UI/Spinner';
-import DismissModal from '../../../components/UI/Spinner';
+import DismissModal from '../../../components/UI/DismissModal';
 import errorHandler from '../../../hoc/errorHandler';
 import * as actions from '../../../store/actions/index';
 
@@ -19,7 +19,9 @@ class DashboardIndex extends Component{
         finalYearStudents: this.props.finalYearStudents,
         loading: this.props.busStatsChanged,
         birthdaysToday: this.props.birthdaysToday,
-        parentMounted: this.props.parentMounted
+        parentMounted: this.props.parentMounted,
+        hasError: false,
+        errorMsg: null
 
     } ;
 
@@ -130,7 +132,7 @@ class DashboardIndex extends Component{
 
             } // end if statement
         } catch(error){
-            console.log('the error', error);
+            this.setState({ hasError: true, errorMsg: error.message });
         }
 
     }  //   end componentDidMount
@@ -300,6 +302,8 @@ class DashboardIndex extends Component{
 
         return (
             <section className="dashindex">
+                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+
                 {mainBody}
             </section>
         );
