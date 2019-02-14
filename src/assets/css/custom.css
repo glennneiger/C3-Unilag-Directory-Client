@@ -726,6 +726,14 @@ input[type="submit"]:disabled, button:disabled{
     .register h1{
         font-size: 25px;
     }
+
+    #school_admin_register h1 {
+        font-size: 20px;
+    }
+
+    #church_admin_register h1{
+        font-size: 19px;
+    }
 }
 
 

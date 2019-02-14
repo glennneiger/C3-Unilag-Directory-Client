@@ -69,7 +69,7 @@ class Assign_Leader extends Component{
         const theAdminEmail = this.state.selectedAdminEmail;
         const spinner = <Spinner/>;
 
-        this.setState({ responseMsg: spinner });
+        this.setState({ responseMsg: spinner, hasError: false, errorMsg: null });
 
         axios.post('/admin/assign-leader', { selectedAdminEmail: theAdminEmail })
             .then(result => {

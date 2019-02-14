@@ -40,7 +40,7 @@ class Add_Bus_Stats extends Component{
         console.log('service numbs', this.state.formData.going + this.state.formData.returning);
 
         // set a spinner on submit to depict loading state
-        this.setState({ loading: true, submitMessage: theSpinner });
+        this.setState({ loading: true, submitMessage: theSpinner, hasError: false, errorMsg: null });
 
         // submit the form
         axios.post(`/admin/bus_stats?service=${this.state.service}`, this.state.formData)

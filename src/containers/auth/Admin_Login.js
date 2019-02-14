@@ -40,7 +40,7 @@ class AdminLogin extends Component{
        window.scrollTo(0, 0);
 
       let theSpinner = <Spinner />;
-      this.setState({ loading: true, loginMessage: theSpinner });
+      this.setState({ loading: true, loginMessage: theSpinner, hasError: false, errorMsg: null });
 
        axios.post(`/admin/login?admin=${this.state.admin}`, this.state.loginForm)
            .then(result => {

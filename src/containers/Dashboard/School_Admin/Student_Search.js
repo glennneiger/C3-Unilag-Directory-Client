@@ -26,7 +26,7 @@ class Student_Search extends Component{
         event.preventDefault();
         const theSpinner = <Spinner/>;
 
-        this.setState({ spinner: theSpinner, showTable: false });
+        this.setState({ spinner: theSpinner, showTable: false, hasError: false, errorMsg: null });
 
         axios.post('/admin/student_search', { surname: this.state.surname })
             .then(result => {

@@ -105,7 +105,7 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
 
             // show a spinner
             let theSpinner = <Spinner/>;
-            this.setState({ responseMsg: theSpinner });
+            this.setState({ responseMsg: theSpinner, hasError: false, errorMsg: null });
 
             for (let formKeys in this.state.registerForm){
                 formValues[formKeys] = this.state.registerForm[formKeys].value;

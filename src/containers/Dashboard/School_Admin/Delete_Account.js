@@ -7,6 +7,7 @@ class Delete_Account extends Component {
     constructor(props){
         super(props);
 
+        window.scrollTo(0, 0);
         let user = JSON.parse(window.localStorage.getItem('user'));
 
         // initialize state

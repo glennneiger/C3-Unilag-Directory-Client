@@ -1,6 +1,8 @@
 import React from 'react';
 
 const logout = (props) => {
+    window.scrollTo(0, 0);
+
     const logoutHandler = () => {
         window.localStorage.removeItem('token');
         window.localStorage.removeItem('user');
