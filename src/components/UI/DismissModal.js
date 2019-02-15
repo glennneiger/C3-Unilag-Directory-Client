@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 
-class DismissModal extends Component{
-    state = {
-       showModal: this.props.showModal
-    };
+ class DismissModal extends Component{
+//     state = {
+//        showModal: this.props.showModal
+//     };
 
-    componentWillReceiveProps(nextProps){
-        if (this.props.showModal !== nextProps.showModal){
-            this.setState({ showModal: nextProps.showModal })
-        }
-    }
+    // componentWillReceiveProps(nextProps){
+    //     if (this.props.showModal !== nextProps.showModal){
+    //         this.setState({ showModal: nextProps.showModal })
+    //     }
+    // }
 
    render() {
        // if showModal is true, show modal
-       if (this.state.showModal){
+       if (this.props.showModal){
            window.$('#dismissModal').modal('show');
        }
        else{
@@ -35,7 +35,7 @@ class DismissModal extends Component{
                            <p>{this.props.modalMessage}</p>
                        </div>
                        <div className="modal-footer">
-                           <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                           <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.props.dismissAction}>Close</button>
                        </div>
                    </div>
                </div>

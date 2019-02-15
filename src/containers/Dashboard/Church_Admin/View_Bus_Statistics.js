@@ -27,6 +27,13 @@ class View_Bus_Statistics extends Component{
         window.scrollTo(0, 0);
     }
 
+    dismissModal = () => {
+        this.setState({
+            hasError: false,
+            errorMsg: null
+        });
+    };
+
     getMonth = (monthNum) => {
         let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
         return months[monthNum - 1];
@@ -148,7 +155,7 @@ class View_Bus_Statistics extends Component{
 
             mainBody = (
                 <div className="container">
-                    <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+                    <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
 
                     {/*Start row*/}
                     <div className="row">

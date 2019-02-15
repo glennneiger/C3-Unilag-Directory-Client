@@ -193,12 +193,19 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
 
         };  // end submit form
 
+        dismissModal = () => {
+            this.setState({
+                hasError: false,
+                errorMsg: null
+            });
+        };
+
 
         render() {
             let theForm = this.state.registerForm;
             return (
                 <React.Fragment>
-                    <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+                    <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
 
                     <WrappedComponent
                         registerForm={theForm}

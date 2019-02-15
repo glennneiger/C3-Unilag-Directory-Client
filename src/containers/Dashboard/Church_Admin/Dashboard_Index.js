@@ -34,6 +34,13 @@ class Dashboard_Index extends Component{
         return months[monthNum - 1];
     };
 
+    dismissModal = () => {
+        this.setState({
+            hasError: false,
+            errorMsg: null
+        });
+    };
+
    // bar chart configuration
     configureChartData = (rawData) => {
         // TODO: handle default case i.e when there is no data
@@ -166,7 +173,7 @@ class Dashboard_Index extends Component{
 
          return (
              <section className="dashindex">
-                 <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+                 <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
 
                  {mainBody}
              </section>

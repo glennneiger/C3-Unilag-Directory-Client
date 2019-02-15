@@ -34,6 +34,13 @@ class AdminLogin extends Component{
        this.setState({ admin: event.target.value });
    };
 
+    dismissModal = () => {
+        this.setState({
+            hasError: false,
+            errorMsg: null
+        });
+    };
+
    submitForm = (event) => {
       event.preventDefault();
       // scroll to the top position
@@ -62,8 +69,8 @@ class AdminLogin extends Component{
            })
            .catch(error => {
                this.setState({ hasError: true, errorMsg: error.message, loginMessage: '', loading: false });
-
            });
+
       console.log('the login state', this.state.loginForm);
 
       // console.
@@ -76,7 +83,7 @@ class AdminLogin extends Component{
 
        return (
            <section className="login">
-               <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+               <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
 
                <Header />
                {this.state.loginMessage}
@@ -94,12 +101,16 @@ class AdminLogin extends Component{
                                <option value="church">Church Admin</option>
                            </select>
                        </div>
-                       
-                       <label>Email</label>
-                       <input type="text" name="email" onChange={this.handleChange} required/>
 
-                       <label>Password</label>
-                       <input type="password" name="password" onChange={this.handleChange} required/>
+                       <div className="input-wrapper">
+                           <label>Email</label>
+                           <input type="text" name="email" onChange={this.handleChange} required/>
+                       </div>
+
+                        <div className="input-wrapper">
+                            <label>Password</label>
+                            <input type="password" name="password" onChange={this.handleChange} required/>
+                        </div>
 
                        {/*Button Area*/}
 

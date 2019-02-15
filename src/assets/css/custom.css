@@ -690,6 +690,10 @@ input[type="submit"]:disabled, button:disabled{
         margin-bottom: 30px;
     }
 
+    .login-dropdown{
+        margin-bottom: 15px;
+    }
+
     .alert-success, .alert-danger, .theLabel{
         width: 90%;
     }
@@ -797,6 +801,15 @@ input[type="submit"]:disabled, button:disabled{
     }
 }
 
+@media (max-width: 450px){
+    .lds-rolling div,
+    .lds-rolling div:after{
+        width: 120px;
+        height: 120px;
+        border-width: 15px;
+    }
+}
+
 
 
 @media (max-width: 400px){
@@ -810,6 +823,7 @@ input[type="submit"]:disabled, button:disabled{
         font-size: 1.4rem;
         line-height: 1.6;
     }
+
 }
 
 @media (max-width: 350px){

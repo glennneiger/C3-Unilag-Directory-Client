@@ -18,6 +18,13 @@ class Delete_Account extends Component {
         }
     }
 
+    dismissModal = () => {
+        this.setState({
+            hasError: false,
+            errorMsg: null
+        });
+    };
+
     deleteHandler = () => {
        axios.delete(`/delete_admin?admin=church&adminEmail=${this.state.user.email}`)
            .then(result => {
@@ -40,7 +47,7 @@ class Delete_Account extends Component {
     render(){
         return (
             <section className="dashindex">
-                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
 
                 <div className="container">
                     {/*Start row*/}

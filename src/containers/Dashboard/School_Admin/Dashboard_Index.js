@@ -268,8 +268,8 @@ class DashboardIndex extends Component{
                                                 <th scope="col">#</th>
                                                 <th scope="col">Surname</th>
                                                 <th scope="col">First Name</th>
-                                                <th scope="col">Date of Birth</th>
-                                                <th scope="col">Phone Number</th>
+                                                <th scope="col">DOB</th>
+                                                <th scope="col">Phone No</th>
                                                 <th scope="col">Action</th>
                                             </tr>
                                         </thead>
