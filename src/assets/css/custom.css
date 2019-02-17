@@ -222,7 +222,7 @@ canvas{
     color: #b6b6b6;
     font-size: 32px !important;
     text-transform: capitalize !important;
-    font-weight: normal !important;
+    font-weight: bold !important;
 }
 
 .dashboard_body{
@@ -768,6 +768,7 @@ input[type="submit"]:disabled, button:disabled{
 
     .dashboard_body header h1{
         width: 90%;
+        top: 0;
     }
     
     .dashboard_body header button{
