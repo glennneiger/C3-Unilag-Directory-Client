@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6793cf62-d63d-43b5-9f96-617208fbbf70" name="Default Changelist" comment="" />
+    <list default="true" id="6793cf62-d63d-43b5-9f96-617208fbbf70" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/custom.css" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -71,10 +74,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="21" />
+          <entry key="CSS" value="22" />
           <entry key="HTML" value="10" />
           <entry key="JSON" value="13" />
-          <entry key="JavaScript" value="302" />
+          <entry key="JavaScript" value="304" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="TypeScript" value="1" />
         </counts>
@@ -90,11 +93,11 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="6866" />
+          <entry key="CSS" value="6877" />
           <entry key="HTML" value="61" />
           <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="57683" />
-          <entry key="PLAIN_TEXT" value="2854" />
+          <entry key="JavaScript" value="57684" />
+          <entry key="PLAIN_TEXT" value="2922" />
         </counts>
       </usages-collector>
     </session>
@@ -119,38 +122,41 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/UI/ErrorLabel.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/assets/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+            <state relative-caret-position="192">
+              <caret line="684" column="22" selection-start-line="684" selection-start-column="22" selection-end-line="684" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+            <state relative-caret-position="51">
+              <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/UI/Home_Header.js">
+        <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="7" column="32" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="32" />
+            <state relative-caret-position="153">
+              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/UI/Input.js">
+        <entry file="file://$PROJECT_DIR$/src/containers/auth/Student_Register.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="48" column="3" lean-forward="true" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
+            <state relative-caret-position="292">
+              <caret line="75" column="21" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -273,11 +279,9 @@
         <option value="$PROJECT_DIR$/src/containers/auth/Admin_Login.js" />
         <option value="$PROJECT_DIR$/src/containers/auth/Church_Admin_Register.js" />
         <option value="$PROJECT_DIR$/src/containers/auth/School_Admin_Register.js" />
-        <option value="$PROJECT_DIR$/src/containers/auth/Student_Register.js" />
         <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Church_Dashboard.js" />
         <option value="$PROJECT_DIR$/src/containers/Dashboard/School_Admin/Student_Search.js" />
         <option value="$PROJECT_DIR$/src/axios-instance.js" />
-        <option value="$PROJECT_DIR$/src/assets/css/custom.css" />
         <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/Dashboard_Index.js" />
         <option value="$PROJECT_DIR$/src/containers/Dashboard/Church_Admin/View_Bus_Statistics.js" />
@@ -292,6 +296,8 @@
         <option value="$PROJECT_DIR$/src/components/UI/DismissModal.js" />
         <option value="$PROJECT_DIR$/src/components/UI/SuccessLabel.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/containers/auth/Student_Register.js" />
+        <option value="$PROJECT_DIR$/src/assets/css/custom.css" />
       </list>
     </option>
   </component>
@@ -332,11 +338,6 @@
             <path>
               <item name="c3_unilag_directory_app" type="b2602c69:ProjectViewProjectNode" />
               <item name="c3_unilag_directory_app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="c3_unilag_directory_app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="c3_unilag_directory_app" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="c3_unilag_directory_app" type="b2602c69:ProjectViewProjectNode" />
@@ -452,15 +453,15 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\containers\auth" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\public" />
       <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\containers\Dashboard\Church_Admin" />
       <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\assets\css" />
       <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\public\js" />
       <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\assets\icons" />
-      <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\assets" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\OLORONDU CHUKWUEMEKA\Documents\HTML Docs\My works\c3_unilag_directory_app\src\containers\auth" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -563,7 +564,7 @@
       <workItem from="1550240166853" duration="4023000" />
       <workItem from="1550344852954" duration="4038000" />
       <workItem from="1550407577830" duration="1792000" />
-      <workItem from="1550419952145" duration="2144000" />
+      <workItem from="1550419952145" duration="3561000" />
     </task>
     <task id="LOCAL-00001" summary="my first commit">
       <created>1543095091023</created>
@@ -866,11 +867,25 @@
       <option name="project" value="LOCAL" />
       <updated>1550421875977</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="added new book favicon">
+      <created>1550422455532</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1550422455532</updated>
+    </task>
+    <task id="LOCAL-00045" summary="made some changes to the dashboard header">
+      <created>1550423548445</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1550423548445</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="457172000" />
+    <option name="totallyTimeSpent" value="458589000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -885,7 +900,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24330357" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24330357" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -899,7 +914,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5052083" side_tool="true" weight="0.28032786" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49479166" visible="true" weight="0.28032786" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49479166" visible="true" weight="0.28032786" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -932,8 +947,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added root dashboard, index and view-statistics page for the church admin dashboard" />
-    <MESSAGE value="made changes to dashboard header style and added final year card to school_admin and church_admin dashboards" />
     <MESSAGE value="finished Dashboard_Index and set up basic elements of the View_Stats page in Church_Admin" />
     <MESSAGE value="integrated the bar and line chart in the View_Statistics page of the Church_Admin dashboard" />
     <MESSAGE value="added logout pages and service overrides for the leader schoolAdmin" />
@@ -957,7 +970,9 @@
     <MESSAGE value="added support for the online api" />
     <MESSAGE value="changed font-family of logo" />
     <MESSAGE value="cleared all console.log statements" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleared all console.log statements" />
+    <MESSAGE value="added new book favicon" />
+    <MESSAGE value="made some changes to the dashboard header" />
+    <option name="LAST_COMMIT_MESSAGE" value="made some changes to the dashboard header" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/react.d.ts">
@@ -1008,13 +1023,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="41" selection-start-line="3" selection-start-column="41" selection-end-line="3" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="199" column="5" selection-start-line="199" selection-start-column="5" selection-end-line="199" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1154,16 +1162,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/auth/Student_Register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="70" column="4" selection-start-line="70" selection-start-column="4" selection-end-line="70" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/hoc/errorHandler.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1244,13 +1242,6 @@
     <entry file="file://$PROJECT_DIR$/src/components/UI/ActionModal.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/UI/Backdrop.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1275,7 +1266,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/UI/Input.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
-          <caret line="48" column="3" lean-forward="true" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
+          <caret line="48" column="3" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -1323,8 +1314,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="41" lean-forward="true" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
+        <state relative-caret-position="51">
+          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/auth/Student_Register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="75" column="21" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="684" column="22" selection-start-line="684" selection-start-column="22" selection-end-line="684" selection-end-column="22" />
         </state>
       </provider>
     </entry>
