@@ -56,9 +56,6 @@ class School_Dashboard extends Component{
 
     }
 
-    // componentWillUpdate() {
-    //     console.log('parent component will update');
-    // }
 
     componentDidUpdate(){
         let user = this.state.user;
@@ -68,7 +65,6 @@ class School_Dashboard extends Component{
             this.props.history.replace('/login');
         }
 
-        console.log('parent component did update');
     }
 
     setTokenInHeader (token) {
@@ -78,7 +74,6 @@ class School_Dashboard extends Component{
             // console.log('the token', axios.defaults.headers.common['authorization']);
         } else {
             axios.defaults.headers.common['authorization'] = null;
-            console.log('the token', token);
             /*if setting null does not remove `Authorization` header then try
               delete axios.defaults.headers.common['Authorization'];
             */
@@ -119,26 +114,15 @@ class School_Dashboard extends Component{
     };
 
     removeBackdrop = () => {
-        console.log('backdrop removed');
         this.setState({ open: false });
     };
 
-
-    componentDidMount(){
-        console.log('parent component did mount');
-
-    }
-
-    componentWillUnmount(){
-        console.log('parent component unmounted', this.state.mounted);
-    }
 
 
   render(){
       const sidebarLinks = this.configureSidebar();
       let mobileSidebarClass = this.state.open ? 'sidebar-responsive show' : 'sidebar-responsive';
-      console.log('render in parent', this.state.mounted);
-      
+
       return (
           <section className="dashboard">
               <div className="sidebar-normal">

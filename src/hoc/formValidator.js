@@ -111,9 +111,7 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
                 formValues[formKeys] = this.state.registerForm[formKeys].value;
             }
 
-            console.log('form validator values', formValues);
 
-            console.log('the path', this.props);
             // submit the form
             let thePath = this.props.match.url === '/' ? this.props.match.url + 'register_student' : this.props.match.url;
 
@@ -129,7 +127,6 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
                         let tempObject =  { ...registerFormClone[key] } ;
                         registerFormCloneKeys.push(tempObject);
 
-                        // console.log('the temp object', tempObject);
                     }
 
                     // display appropriate label based on registered status
@@ -182,7 +179,6 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
                         }
                     } // end registered if statement
                     else{
-                        console.log('reg form clone', registerFormClone);
                         this.setState({ responseMsg: theMsg });
                     }
 

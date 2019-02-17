@@ -13,7 +13,6 @@ const errorHandler = (WrappedComponent) => {
         };
 
         componentDidMount(){
-            console.log('error props in error handler', this.props);
             // clear any previous error for every new request
             axios.interceptors.request.use(request => {
                 //this.setState({ error: null });
@@ -27,13 +26,6 @@ const errorHandler = (WrappedComponent) => {
             });
         }
 
-        componentDidUpdate(){
-            console.log('error handler component updated');
-        }
-
-        componentWillUnmount(){
-            console.log('error handler will unmount');
-        }
         
        render() {
             // check if error is present;

@@ -37,7 +37,6 @@ class Add_Bus_Stats extends Component{
 
         // get user details from local storage
 
-        console.log('service numbs', this.state.formData.going + this.state.formData.returning);
 
         // set a spinner on submit to depict loading state
         this.setState({ loading: true, submitMessage: theSpinner, hasError: false, errorMsg: null });
@@ -45,7 +44,6 @@ class Add_Bus_Stats extends Component{
         // submit the form
         axios.post(`/admin/bus_stats?service=${this.state.service}`, this.state.formData)
             .then(result => {
-                console.log('data submitted');
                 let cloneFormData = { ...this.state.formData };
                 let successMsg = <SuccessLabel message={result.data.message} />;
 

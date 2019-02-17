@@ -11,8 +11,6 @@ class Assign_Leader extends Component{
     constructor(props){
         super(props);
 
-        console.log('axios header', axios.defaults.headers.common.authorization);
-
         const user = JSON.parse(window.localStorage.getItem('user'));
 
         // initialize state
@@ -33,7 +31,6 @@ class Assign_Leader extends Component{
             return;
         }
 
-        console.log('leader constructor');
 
     }
 
@@ -41,7 +38,6 @@ class Assign_Leader extends Component{
         if (this.props.parentMounted && this.props.schoolAdminsLoading){
             axios.get('/admin/school_admin')
                 .then(result => {
-                    console.log('assign_leader axios fetch');
                     const theSchoolAdmins = result.data.schoolAdmins;
 
                     if (theSchoolAdmins.length === 0){

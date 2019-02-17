@@ -11,7 +11,6 @@ const logout = (props) => {
     };
 
     const cancelLogoutHandler = () => {
-        console.log('logout props', props);
         props.history.replace('/school_admin/dashboard');
     };
 

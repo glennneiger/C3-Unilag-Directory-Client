@@ -105,7 +105,6 @@ class Dashboard_Index extends Component{
 
                 this.props.initializeDashboardData(dataMap);
 
-                console.log('church dashboard fetched data');
 
             }
 

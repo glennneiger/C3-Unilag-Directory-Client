@@ -1,15 +1,6 @@
 import React, { Component } from 'react';
 
  class DismissModal extends Component{
-//     state = {
-//        showModal: this.props.showModal
-//     };
-
-    // componentWillReceiveProps(nextProps){
-    //     if (this.props.showModal !== nextProps.showModal){
-    //         this.setState({ showModal: nextProps.showModal })
-    //     }
-    // }
 
    render() {
        // if showModal is true, show modal

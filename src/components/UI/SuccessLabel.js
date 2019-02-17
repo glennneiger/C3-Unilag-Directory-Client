@@ -1,7 +1,6 @@
 import React from 'react';
 
 const successLabel = (props) => {
-    console.log('leaderform props', props.leaderForm);
     let extraClass = props.leaderForm !== undefined  ? '' : 'theLabel';
     let mainClass = `alert alert-success ${extraClass}`;
 

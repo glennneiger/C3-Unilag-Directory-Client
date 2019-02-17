@@ -25,14 +25,6 @@ class DashboardIndex extends Component{
 
     } ;
 
-    // componentWillUpdate() {
-    //     console.log('child component will update');
-    // }
-
-    componentDidUpdate(){
-        console.log('child component did update');
-    }
-
 
     getMonth = (monthNum) => {
         let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -77,21 +69,17 @@ class DashboardIndex extends Component{
 
 
     async componentDidMount(){
-        console.log('child component did mount');
         try{
             if (this.props.parentMounted && this.props.busStatsChanged ){
-                console.log('church dashboard index', this.props.parentMounted);
                 // make request
                 let getBirthdays = axios.get(`/admin/birthdays?month=${new Date().getMonth() + 1}`);          // get all the birthdays for the current month
                 let getBusStats = axios.get(`/admin/bus_stats?month=${new Date().getMonth() + 1}`);           // get all the bus stats for the current month
                 let getStudentDetails = axios.get('/admin/students');     // get the details for all the students
 
                 const [ monthBirthdays, busDetails, studentDetails ] = await Promise.all([getBirthdays, getBusStats, getStudentDetails]);
-                console.log('the statistics',monthBirthdays, busDetails, studentDetails);
                 let theBirthdays = monthBirthdays.data.birthdays;
                 let birthdaysToday = 0, theChartData = this.configureChartData(busDetails.data.monthData);
 
-                console.log('chart data', theChartData);
 
                 theBirthdays.forEach(birthday => {
                     if (birthday.dob.day === new Date().getDate()){
@@ -127,9 +115,6 @@ class DashboardIndex extends Component{
 
     }  //   end componentDidMount
 
-    componentWillUnmount(){
-        console.log('child component unmounted', this.props.parentMounted);
-    }
 
     dismissModal = () => {
         this.setState({
@@ -139,7 +124,6 @@ class DashboardIndex extends Component{
     };
 
     render () {
-        console.log('render in child component');
 
         // if there are no birthdays in the current month
         let tableBody = (
@@ -157,8 +141,6 @@ class DashboardIndex extends Component{
                 // remove the first Number from the phone number to allow room for 234
                 modifiedNo.splice(0, 1);
 
-
-                console.log('phone no', modifiedNo);
 
                 // link to Whatsapp message API
                 let whatsappLink = `https://api.whatsapp.com/send?phone=234${modifiedNo.join('')}`;

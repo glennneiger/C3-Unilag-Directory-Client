@@ -131,7 +131,6 @@ class View_Bus_Statistics extends Component{
 
                 this.props.loadBusData(dataMap);
 
-                console.log('view bus stats axios fetch');
 
             } // end if statement
 
