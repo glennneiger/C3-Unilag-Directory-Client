@@ -81,9 +81,9 @@ canvas{
 .logo{
     text-decoration: none ;
     font-size: 32px;
-    font-family: Tahoma, sans-serif;
+    font-family: Roboto, sans-serif;
     color: #b6b6b6;
-    font-weight: 400;
+    font-weight: bold;
 }
 
 .logo span{
@@ -209,10 +209,10 @@ canvas{
 
 .dashboard header h1{
     width: 30%;
-    font-family: 'Pacifico', cursive;
+    font-family: Roboto, sans-serif;
     font-size: 32px !important;
     color: #2a8d9c;
-    font-weight: normal !important;
+    font-weight: bold !important;
     position: relative;
     top: -5px;
     margin-bottom: 0;
