@@ -45,6 +45,14 @@ class Student_Search extends Component{
 
     };
 
+    dismissModal = () => {
+        this.setState({
+            hasError: false,
+            errorMsg: null
+        });
+    };
+    
+
    render() {
        let tableBody = (
            <tr>
@@ -72,7 +80,7 @@ class Student_Search extends Component{
 
        return (
            <section className="dashindex" >
-               <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+               <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
 
                <div className="container">
                    {/*Start row*/}
@@ -108,7 +116,7 @@ class Student_Search extends Component{
                                        <th scope="col" style={{ background: '#d8d8d8' }}>#</th>
                                        <th scope="col">Surname</th>
                                        <th scope="col">First Name</th>
-                                       <th scope="col">Phone Number</th>
+                                       <th scope="col">Phone No</th>
                                    </tr>
                                </thead>
                                <tbody>

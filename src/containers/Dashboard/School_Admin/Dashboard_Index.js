@@ -33,16 +33,6 @@ class DashboardIndex extends Component{
         console.log('child component did update');
     }
 
-    // componentWillMount(){
-    //     console.log('child component will mount', this.props.parentMounted);
-    // }
-
-    // componentWillReceiveProps(nextProps){
-    //     console.log('child component will receive props', nextProps.parentMounted);
-    //     if (this.props.parentMounted !== nextProps.parentMounted){
-    //         this.setState({ parentMounted: nextProps.parentMounted });
-    //     }
-    // }
 
     getMonth = (monthNum) => {
         let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -140,6 +130,13 @@ class DashboardIndex extends Component{
     componentWillUnmount(){
         console.log('child component unmounted', this.props.parentMounted);
     }
+
+    dismissModal = () => {
+        this.setState({
+            hasError: false,
+            errorMsg: null
+        });
+    };
 
     render () {
         console.log('render in child component');
@@ -302,7 +299,7 @@ class DashboardIndex extends Component{
 
         return (
             <section className="dashindex">
-                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
 
                 {mainBody}
             </section>

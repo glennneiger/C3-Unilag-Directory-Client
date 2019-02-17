@@ -71,9 +71,7 @@ class AdminLogin extends Component{
                this.setState({ hasError: true, errorMsg: error.message, loginMessage: '', loading: false });
            });
 
-      console.log('the login state', this.state.loginForm);
 
-      // console.
    };
 
    render() {

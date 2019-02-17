@@ -74,6 +74,13 @@ class Add_Bus_Stats extends Component{
         this.setState({ service: event.target.value });
     };
 
+    dismissModal = () => {
+        this.setState({
+            hasError: false,
+            errorMsg: null
+        });
+    };
+
     render() {
 
         // check for register message
@@ -95,7 +102,7 @@ class Add_Bus_Stats extends Component{
 
         return (
             <section >
-                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
 
                 {this.state.submitMessage}
 

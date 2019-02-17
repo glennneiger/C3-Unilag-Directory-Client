@@ -9,9 +9,7 @@ class Church_Admin_Register extends Component{
 
     constructor(props){
         super(props);
-
         window.scrollTo(0, 0);
-        console.log('church admin props', this.props);
     }
 
     render() {

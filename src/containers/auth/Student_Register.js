@@ -10,22 +10,10 @@ class Student_Register extends Component{
 
     constructor(props){
         super(props);
-        this.state = {
-
-        };
 
         window.scrollTo(0, 0);
     }
 
-    submitForm = (event) => {
-        event.preventDefault();
-        var formValues ={};
-
-        for (let formKeys in this.props.registerForm){
-            formValues[formKeys] = this.props.registerForm[formKeys].value;
-        }
-        console.log('form values', formValues);
-    };
 
 
     render() {

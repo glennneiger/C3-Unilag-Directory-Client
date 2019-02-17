@@ -36,11 +36,18 @@ class Delete_Account extends Component {
         this.props.history.replace('/school_admin/dashboard');
     };
 
+    dismissModal = () => {
+        this.setState({
+            hasError: false,
+            errorMsg: null
+        });
+    };
+
 
     render(){
         return (
             <section className="dashindex" >
-                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
 
                 <div className="container">
                     {/*Start row*/}

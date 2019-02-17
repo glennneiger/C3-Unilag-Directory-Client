@@ -87,6 +87,13 @@ class Assign_Leader extends Component{
             });
     };
 
+    dismissModal = () => {
+        this.setState({
+            hasError: false,
+            errorMsg: null
+        });
+    };
+
     render() {
         let mainBody = <Spinner />;
 
@@ -139,7 +146,7 @@ class Assign_Leader extends Component{
 
         return (
            <section className="dashindex">
-               <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg}/>
+               <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
 
                {this.state.responseMsg}
                {mainBody}

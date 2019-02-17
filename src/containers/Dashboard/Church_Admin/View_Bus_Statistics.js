@@ -155,7 +155,6 @@ class View_Bus_Statistics extends Component{
 
             mainBody = (
                 <div className="container">
-                    <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
 
                     {/*Start row*/}
                     <div className="row">
@@ -204,6 +203,8 @@ class View_Bus_Statistics extends Component{
         }
         return (
             <section className="dashindex">
+                <DismissModal showModal={this.state.hasError} modalTitle="Error" modalMessage={this.state.errorMsg} dismissAction={this.dismissModal}/>
+
                 {mainBody}
             </section>
         );

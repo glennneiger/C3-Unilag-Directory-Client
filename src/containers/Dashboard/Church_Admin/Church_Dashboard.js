@@ -28,11 +28,7 @@ class Church_Dashboard extends Component{
 
         // check for token time validity
         if ( currentTime > expireTime){
-
-            // window.localStorage.removeItem('token');
-            // window.localStorage.removeItem('user');
             this.props.history.replace('/login');
-
         }
 
         else{
@@ -62,12 +58,9 @@ class Church_Dashboard extends Component{
             this.props.history.replace('/login');
         }
 
-        console.log('church dashboard component did update');
     }
 
-    componentWillUnmount(){
-        console.log('church parent will unmount')
-    }
+
 
     setTokenInHeader (token) {
 
@@ -76,7 +69,6 @@ class Church_Dashboard extends Component{
             // console.log('the token', axios.defaults.headers.common['authorization']);
         } else {
             axios.defaults.headers.common['authorization'] = null;
-            console.log('the token', token);
             /*if setting null does not remove `Authorization` header then try
               delete axios.defaults.headers.common['Authorization'];
             */
@@ -110,26 +102,15 @@ class Church_Dashboard extends Component{
     };
 
     removeBackdrop = () => {
-        console.log('backdrop removed');
         this.setState({ open: false });
     };
     
-
-    componentDidMount(){
-        console.log('parent component did mount');
-
-    }
-
-    componentWillUnmount(){
-        console.log('parent component unmounted', this.state.mounted);
-    }
 
 
     render(){
         const sidebarLinks = this.configureSidebar();
         let mobileSidebarClass = this.state.open ? 'sidebar-responsive show' : 'sidebar-responsive';
 
-        console.log('render in parent', this.state.mounted);
 
         return (
             <section className="dashboard">

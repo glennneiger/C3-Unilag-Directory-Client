@@ -9,7 +9,6 @@ class School_Admin_Register extends Component{
 
     constructor(props){
         super(props);
-
         window.scrollTo(0, 0);
     }
 
@@ -80,7 +79,7 @@ let leaderOptions = [
     { value: false, displayValue: 'No' }
 ];
 
-for(let i = 0; i <= 4; i++){
+for(let i = 0; i <= 5; i++){
     theValues.push({ value: currentYear + i, displayValue: currentYear + i });
 }
 
