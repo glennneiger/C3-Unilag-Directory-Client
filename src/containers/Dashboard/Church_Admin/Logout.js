@@ -1,7 +1,11 @@
 import React from 'react';
 
 const logout = (props) => {
-    window.scrollTo(0, 0);
+    document.body.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    });
 
     const logoutHandler = () => {
         window.localStorage.removeItem('token');

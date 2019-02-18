@@ -24,7 +24,11 @@ class View_Bus_Statistics extends Component{
             errorMsg: null
         };
 
-        window.scrollTo(0, 0);
+        document.body.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
     }
 
     dismissModal = () => {

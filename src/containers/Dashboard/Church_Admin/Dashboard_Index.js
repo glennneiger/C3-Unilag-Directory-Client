@@ -26,7 +26,12 @@ class Dashboard_Index extends Component{
         };
 
         // scroll to the top of screen
-        window.scrollTo(0, 0);
+        document.body.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+
     }  // end constructor
 
     getMonth = (monthNum) => {

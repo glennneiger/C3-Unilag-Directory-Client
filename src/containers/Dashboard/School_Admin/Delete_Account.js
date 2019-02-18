@@ -7,7 +7,13 @@ class Delete_Account extends Component {
     constructor(props){
         super(props);
 
-        window.scrollTo(0, 0);
+        // scroll to the top of screen
+        document.body.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+
         let user = JSON.parse(window.localStorage.getItem('user'));
 
         // initialize state

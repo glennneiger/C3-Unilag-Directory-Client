@@ -30,8 +30,13 @@ class Add_Bus_Stats extends Component{
 
     submitForm = (event) => {
         event.preventDefault();
+
         // scroll to the top position
-        window.scrollTo(0, 0);
+        document.body.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
 
         let theSpinner = <Spinner />;
 

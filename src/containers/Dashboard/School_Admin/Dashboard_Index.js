@@ -12,18 +12,31 @@ import errorHandler from '../../../hoc/errorHandler';
 import * as actions from '../../../store/actions/index';
 
 class DashboardIndex extends Component{
-    state = {
-        birthdaysArray: this.props.birthdaysArray,
-        chartData: this.props.monthChartData,
-        totalStudents: this.props.totalStudents,
-        finalYearStudents: this.props.finalYearStudents,
-        loading: this.props.busStatsChanged,
-        birthdaysToday: this.props.birthdaysToday,
-        parentMounted: this.props.parentMounted,
-        hasError: false,
-        errorMsg: null
+    constructor(props){
+        super(props);
 
-    } ;
+        this.state = {
+            birthdaysArray: this.props.birthdaysArray,
+            chartData: this.props.monthChartData,
+            totalStudents: this.props.totalStudents,
+            finalYearStudents: this.props.finalYearStudents,
+            loading: this.props.busStatsChanged,
+            birthdaysToday: this.props.birthdaysToday,
+            parentMounted: this.props.parentMounted,
+            hasError: false,
+            errorMsg: null
+
+        } ;
+
+        // scroll to the top of screen
+        document.body.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+
+    }
+
 
 
     getMonth = (monthNum) => {

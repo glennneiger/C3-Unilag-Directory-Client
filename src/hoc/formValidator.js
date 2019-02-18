@@ -17,6 +17,8 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
         };
 
 
+
+
         checkValidity (value, validationRule) {
             let isValid = true;
 
@@ -100,7 +102,15 @@ const formValidator = (WrappedComponent, appState, adminStatus, adminType) => {
         // handler for submitting form
         submitForm = (event) => {
             event.preventDefault();
-            window.scroll(0,0);
+            // const register = document.querySelector('.register');
+            document.body.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+
+            console.log(window.scrollX, window.scrollY);
+
             let formValues = {};
 
             // show a spinner

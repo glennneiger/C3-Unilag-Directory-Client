@@ -43,8 +43,13 @@ class AdminLogin extends Component{
 
    submitForm = (event) => {
       event.preventDefault();
-      // scroll to the top position
-       window.scrollTo(0, 0);
+
+       // scroll to the top of screen
+       document.body.scroll({
+           top: 0,
+           left: 0,
+           behavior: 'smooth'
+       });
 
       let theSpinner = <Spinner />;
       this.setState({ loading: true, loginMessage: theSpinner, hasError: false, errorMsg: null });

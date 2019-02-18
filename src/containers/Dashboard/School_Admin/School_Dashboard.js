@@ -18,6 +18,12 @@ import Backdrop from '../../../components/UI/Backdrop';
 class School_Dashboard extends Component{
     constructor(props){
         super(props);
+        // scroll to the top of screen
+        document.body.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
 
         let theToken = window.localStorage.getItem('token');
         let user = JSON.parse( window.localStorage.getItem('user') );

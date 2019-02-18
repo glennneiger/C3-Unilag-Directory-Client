@@ -31,7 +31,12 @@ class Assign_Leader extends Component{
             return;
         }
 
-
+        // scroll to top of the screen
+        document.body.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
     }
 
     componentDidMount(){
@@ -62,6 +67,14 @@ class Assign_Leader extends Component{
 
     submitForm = (event) => {
         event.preventDefault();
+
+        // scroll to the top of screen
+        document.body.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+
         const theAdminEmail = this.state.selectedAdminEmail;
         const spinner = <Spinner/>;
 
