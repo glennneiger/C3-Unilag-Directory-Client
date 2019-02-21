@@ -1,36 +1,33 @@
 import React, { Component } from 'react';
+import Modal from 'react-responsive-modal';
 
  class DismissModal extends Component{
 
    render() {
-       // if showModal is true, show modal
-       if (this.props.showModal){
-           window.$('#dismissModal').modal('show');
-       }
-       else{
-           // hde modal
-           window.$('#dismissModal').modal('hide');
-       }
+       const theStyles = {
+           modal: {
+               minWidth: '300px'
+           },
+           closeIcon: {
+               position: 'absolute',
+               right: '0'
+           }
+       };
+
 
        return (
-           <div className="modal" id="dismissModal" tabIndex="-1" role="dialog">
-               <div className="modal-dialog" role="document">
-                   <div className="modal-content" style={{ top: '50px'}}>
-                       <div className="modal-header">
-                           <h5 className="modal-title">{this.props.modalTitle}</h5>
-                           <button type="button" className="close" data-dismiss="modal" aria-label="Close" style={{ width: '10%' }}>
-                               <span aria-hidden="true">&times;</span>
-                           </button>
-                       </div>
-                       <div className="modal-body">
-                           <p>{this.props.modalMessage}</p>
-                       </div>
-                       <div className="modal-footer">
-                           <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.props.dismissAction}>Close</button>
-                       </div>
-                   </div>
-               </div>
+           <div style={{ textAlign: 'center' }}>
+               <Modal open={this.props.showModal} onClose={this.props.dismissAction} center styles={theStyles}>
+                   <h2 style={{ borderBottom: '1px solid #222', marginBottom: '10px', paddingBottom: '10px', fontWeight: 'bold' }}>
+                       {this.props.modalTitle}
+                   </h2>
+                   <p style={{ fontSize: '1.13rem' }}>
+                       {this.props.modalMessage}
+                       
+                   </p>
+               </Modal>
            </div>
+
        );
    }
 }

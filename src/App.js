@@ -4,8 +4,9 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import { defaults } from 'react-chartjs-2';
 
 import Spinner from './components/UI/Spinner';
+import StudentRegister from './containers/auth/Student_Register';
 
-const StudentRegister = lazy( () => import('./containers/auth/Student_Register') );
+// const StudentRegister = lazy( () => import('./containers/auth/Student_Register') );
 const SchoolAdminRegister = lazy( () => import('./containers/auth/School_Admin_Register') );
 const SchoolAdminDashboard = lazy( () => import('./containers/Dashboard/School_Admin/School_Dashboard') );
 const ChurchAdminRegister = lazy( () => import('./containers/auth/Church_Admin_Register') );
@@ -28,7 +29,7 @@ class App extends Component {
                             <Route path="/church_admin/dashboard" render={(props) => <ChurchAdminDashboard {...props}/>} />
                             <Route path="/church_admin/register" render={(props) => <ChurchAdminRegister {...props}/>} />
                             <Route path="/login" render={(props) => <AdminLogin {...props}/>} />
-                            <Route path="/"  render={(props) => <StudentRegister {...props}/>} />
+                            <Route path="/"  component={StudentRegister} />
                         </Switch>
                     </Suspense>
                 </StrictMode>

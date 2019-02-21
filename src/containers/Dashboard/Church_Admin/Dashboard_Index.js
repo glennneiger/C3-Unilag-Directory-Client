@@ -9,7 +9,6 @@ import Spinner from '../../../components/UI/Spinner';
 import errorHandler from '../../../hoc/errorHandler';
 import * as actions from '../../../store/actions/index';
 import DismissModal from "../../../components/UI/DismissModal";
-import Wrapper from "../../../hoc/Wrapper";
 
 class Dashboard_Index extends Component{
     constructor(props){
