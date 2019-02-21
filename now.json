@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "c3-unilag-directory-app",
+  "alias": ["c3unilag.now.sh"],
   "builds": [
     {
       "src": "package.json",
